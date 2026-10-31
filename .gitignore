@@ -1,0 +1,28 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+local_data/
+evals/runs/
+data/private/
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+~$*.docx
+
+# Local third-party checkout and private competition submission snapshots
+/tools/
+/submissions/private/
+# Credentials and generated build artifacts
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+.pytest_cache/
+dist/
+build/

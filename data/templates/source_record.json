@@ -1,0 +1,21 @@
+{
+  "source_id": "填写唯一编号",
+  "title": "填写标题",
+  "source_kind": "official_or_employer_or_personal_experience",
+  "url": null,
+  "local_path": null,
+  "published_at": null,
+  "collected_at": null,
+  "scope": {
+    "region": null,
+    "industry": null,
+    "function": null,
+    "target_group": null
+  },
+  "claim_type": "fact_or_opinion_or_method",
+  "evidence_excerpt": "填写短证据并保留位置",
+  "verification_status": "pending",
+  "reviewer": null,
+  "verified_at": null,
+  "usage_note": "未审核，不进入事实推荐或正式统计"
+}

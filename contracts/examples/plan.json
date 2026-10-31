@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "status": "draft",
+  "period_days": 14,
+  "available_minutes": 360,
+  "tasks": [
+    {
+      "task_id": "demo-01",
+      "kind": "exploration",
+      "title": "了解内容工作的实际任务",
+      "purpose": "区分喜欢看内容与喜欢完成内容工作的哪些环节",
+      "actions": [
+        "选一个自己熟悉的话题，说明目标读者",
+        "写一段内容草稿，记录选题、查资料和修改各花多久",
+        "记录最愿意继续与最不愿意继续的环节"
+      ],
+      "estimated_minutes": 90,
+      "deliverable": "一段草稿和简短过程记录",
+      "acceptance": [
+        "说明目标读者与内容目的",
+        "记录至少一个喜欢和一个困难环节，不要求成果必须受欢迎"
+      ],
+      "source_ids": [],
+      "cost_note": "无需付费，可用现有工具完成",
+      "status": "not_started"
+    }
+  ]
+}
