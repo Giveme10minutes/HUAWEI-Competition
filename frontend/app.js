@@ -32,6 +32,7 @@ const state = {
   managingConversation: false,
   replyingMessageId: null,
   streamingText: "",
+  streamFrame: null,
   editingProfileId: null,
   planEditorSource: null,
   planBusy: false,
@@ -368,9 +369,9 @@ function renderMessages() {
     container.append(buildMessage(message));
   }
   if (state.replyingMessageId) {
-    const article = el("article", "msg msg-assistant typing");
+    const article = el("article", `msg msg-assistant ${state.streamingText ? "streaming" : "typing"}`);
     const body = el("div", "msg-body");
-    const bubble = el("div", "bubble");
+    const bubble = el("div", "bubble reply-preview");
     if (state.streamingText) {
       bubble.innerHTML = renderAssistantMarkdown(state.streamingText);
     } else bubble.append(
@@ -385,6 +386,29 @@ function renderMessages() {
     container.append(article);
   }
   renderChatHeader();
+}
+
+function updateStreamPreview(text) {
+  state.streamingText += text;
+  if (state.streamFrame !== null) return;
+  state.streamFrame = window.requestAnimationFrame(() => {
+    state.streamFrame = null;
+    if (!state.replyingMessageId) return;
+    const bubble = $("#messages .reply-preview");
+    if (!bubble) return;
+    const scroller = $("#chat-scroll");
+    const follow = scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight < 80;
+    bubble.closest(".msg").classList.remove("typing");
+    bubble.closest(".msg").classList.add("streaming");
+    bubble.innerHTML = renderAssistantMarkdown(state.streamingText);
+    if (follow) scroller.scrollTop = scroller.scrollHeight;
+  });
+}
+
+function clearStreamPreview() {
+  if (state.streamFrame !== null) window.cancelAnimationFrame(state.streamFrame);
+  state.streamFrame = null;
+  state.streamingText = "";
 }
 
 function buildMessage(message) {
@@ -608,12 +632,8 @@ async function requestReply(userMessageId, conversationId) {
   updateComposerState();
 
   try {
-    const data = await readReplyStream(userMessageId, (text) => {
-      state.streamingText += text;
-      renderMessages();
-      scrollToBottom(false);
-    });
-    state.streamingText = "";
+    const data = await readReplyStream(userMessageId, updateStreamPreview);
+    clearStreamPreview();
     state.replyingMessageId = null;
     if (state.activeConversationId === conversationId) {
       replaceMessage(userMessageId, data.user_message);
@@ -625,13 +645,13 @@ async function requestReply(userMessageId, conversationId) {
     }
     await refreshConversations();
   } catch (error) {
-    state.streamingText = "";
+    clearStreamPreview();
     if (state.activeConversationId === conversationId) {
       await reloadConversationMessages(conversationId);
     }
     toast(error.message, "error");
   } finally {
-    state.streamingText = "";
+    clearStreamPreview();
     state.replyingMessageId = null;
     if (state.activeConversationId === conversationId) {
       renderMessages();
