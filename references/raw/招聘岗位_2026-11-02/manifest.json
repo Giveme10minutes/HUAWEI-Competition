@@ -1,0 +1,1525 @@
+{
+  "collected_at": "2026-11-02T17:26:44+08:00",
+  "files": [
+    {
+      "id": "3262525",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3262525",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3262525.html",
+      "bytes": 77696,
+      "sha256": "b7ee96d1fded4c8994a8d4d35929951fb048299902ade65d31b7a06615608aeb",
+      "fetched_at": "2026-11-02T17:20:22+08:00"
+    },
+    {
+      "id": "2690931",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2690931",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2690931.html",
+      "bytes": 76723,
+      "sha256": "b9d95d74aa904b9c744d8cdc11dc56dd9d6f29ca0739658aee5f4c277068106b",
+      "fetched_at": "2026-11-02T17:20:23+08:00"
+    },
+    {
+      "id": "3046601",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3046601",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3046601.html",
+      "bytes": 78035,
+      "sha256": "6d29f237631a5dfc68671f2246a592b378c9e16a5def486cb528abfe0624a19d",
+      "fetched_at": "2026-11-02T17:20:23+08:00"
+    },
+    {
+      "id": "2242076",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2242076",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2242076.html",
+      "bytes": 78317,
+      "sha256": "45e4c9f211a8817046f2aba26863c1fd583e91a595a38dae67e5694a48979801",
+      "fetched_at": "2026-11-02T17:20:24+08:00"
+    },
+    {
+      "id": "3273894",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3273894",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3273894.html",
+      "bytes": 78040,
+      "sha256": "6c5a83be10bac3cb20e923a223cf9d1505e322253988fd1f32f7bd6410c9baf3",
+      "fetched_at": "2026-11-02T17:20:28+08:00"
+    },
+    {
+      "id": "3261013",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3261013",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3261013.html",
+      "bytes": 82940,
+      "sha256": "b5bf10bbe19259b245992c05463c5aacd84aafa3736b62810632566575ef94ff",
+      "fetched_at": "2026-11-02T17:20:29+08:00"
+    },
+    {
+      "id": "3261260",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3261260",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3261260.html",
+      "bytes": 80523,
+      "sha256": "6cfcb489eceb4c9d54aa20f53354d027d7139568d3384e9c175e66cb10df023d",
+      "fetched_at": "2026-11-02T17:20:30+08:00"
+    },
+    {
+      "id": "3253872",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3253872",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3253872.html",
+      "bytes": 76550,
+      "sha256": "f268459a32019892b0a790d14976c03be60ee3e79a6cd39e08acfea232407fa5",
+      "fetched_at": "2026-11-02T17:20:30+08:00"
+    },
+    {
+      "id": "2693962",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2693962",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2693962.html",
+      "bytes": 79610,
+      "sha256": "3c6ca5acc15121b45df5b096638a4981b6e82c00844ec9c814ecf0930b18fdf9",
+      "fetched_at": "2026-11-02T17:20:31+08:00"
+    },
+    {
+      "id": "3283866",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283866",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283866.html",
+      "bytes": 77111,
+      "sha256": "96a956f284f4f836408994e1470d2ca2eeb94450aa20c140156b6047a13c42ec",
+      "fetched_at": "2026-11-02T17:20:37+08:00"
+    },
+    {
+      "id": "3283871",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283871",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283871.html",
+      "bytes": 76967,
+      "sha256": "9cb92609ccddec2c909755782eccf0f544700e2c45fef75751370eec3bdd2c5d",
+      "fetched_at": "2026-11-02T17:20:38+08:00"
+    },
+    {
+      "id": "3260599",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3260599",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3260599.html",
+      "bytes": 83484,
+      "sha256": "138e657cdf426362e4f88540f00e670878bfa0cca108caffc6c26699e8dbe23f",
+      "fetched_at": "2026-11-02T17:20:38+08:00"
+    },
+    {
+      "id": "3283853",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283853",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283853.html",
+      "bytes": 77074,
+      "sha256": "cb785256fd2785302b2902bbd7b1c35db1000b33b0a8a3907bd49c8947f5e173",
+      "fetched_at": "2026-11-02T17:20:39+08:00"
+    },
+    {
+      "id": "3283859",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283859",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283859.html",
+      "bytes": 76747,
+      "sha256": "e7256d392e54ebcc4e41ca6c049a047dca92a49a43263f9856d76a2c5b0fca2e",
+      "fetched_at": "2026-11-02T17:20:40+08:00"
+    },
+    {
+      "id": "3283977",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283977",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283977.html",
+      "bytes": 85283,
+      "sha256": "41494140b5c4b7a515dfedeee9d6a3718610a397b42d835106fc89a047d9289c",
+      "fetched_at": "2026-11-02T17:20:41+08:00"
+    },
+    {
+      "id": "2714875",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2714875",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2714875.html",
+      "bytes": 77190,
+      "sha256": "9e4d60d91ed139aa5e008ee89418e3216b96a8f79d94b153e173d3986995dd5d",
+      "fetched_at": "2026-11-02T17:20:42+08:00"
+    },
+    {
+      "id": "3282674",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3282674",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3282674.html",
+      "bytes": 77434,
+      "sha256": "1811f220e82b7b61badcf104232f1b38acefc9b43c7cb00f2aaf99dc8c289897",
+      "fetched_at": "2026-11-02T17:20:42+08:00"
+    },
+    {
+      "id": "2622733",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2622733",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2622733.html",
+      "bytes": 84326,
+      "sha256": "ac146a49735defcb27d8643c9dd1ba9d7e37391e6119328ffcca335109b32f1a",
+      "fetched_at": "2026-11-02T17:20:47+08:00"
+    },
+    {
+      "id": "3279385",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3279385",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3279385.html",
+      "bytes": 78563,
+      "sha256": "cbc519eefb14d05593a76124ab0dc76d933bf214f3482952b01815027f4c076c",
+      "fetched_at": "2026-11-02T17:20:47+08:00"
+    },
+    {
+      "id": "3276326",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3276326",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3276326.html",
+      "bytes": 78637,
+      "sha256": "5bbd03408a5a02b00ae8c9251b0d5f429eae078dee86447006a03b4dfbde0c38",
+      "fetched_at": "2026-11-02T17:20:48+08:00"
+    },
+    {
+      "id": "3285019",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3285019",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3285019.html",
+      "bytes": 78098,
+      "sha256": "c020c486bf4ebf358635ae28d7d9b42449ef4ecc8d8af268c44ad6103ebb9ab8",
+      "fetched_at": "2026-11-02T17:20:53+08:00"
+    },
+    {
+      "id": "3283292",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283292",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283292.html",
+      "bytes": 78672,
+      "sha256": "32a28dab1eb1ec2764016fd9474ec01429c20223bf0dac6db9244e119415147f",
+      "fetched_at": "2026-11-02T17:20:54+08:00"
+    },
+    {
+      "id": "3282425",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3282425",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3282425.html",
+      "bytes": 77114,
+      "sha256": "73ab6248efe487fac070855e9ce29a18a8cd6d6cdab359d86432cf4da93c1d58",
+      "fetched_at": "2026-11-02T17:20:54+08:00"
+    },
+    {
+      "id": "3254648",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3254648",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3254648.html",
+      "bytes": 81430,
+      "sha256": "b333042b51c458a97cfae686036d39d3fbd4a67117f3e3365f49e330a0b34fbd",
+      "fetched_at": "2026-11-02T17:20:58+08:00"
+    },
+    {
+      "id": "2636014",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2636014",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2636014.html",
+      "bytes": 77494,
+      "sha256": "42dca18513a3f682ca6880290d9ae40038d022c3db85adf4d43a947d3601ab1b",
+      "fetched_at": "2026-11-02T17:20:59+08:00"
+    },
+    {
+      "id": "721067",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=721067",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/721067.html",
+      "bytes": 78559,
+      "sha256": "f4f6e09c591b818e9aec501b0ed8c069f77d6ddc1dd31f263c97996f2d4ffa3c",
+      "fetched_at": "2026-11-02T17:21:00+08:00"
+    },
+    {
+      "id": "3251435",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3251435",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3251435.html",
+      "bytes": 81732,
+      "sha256": "3fdfae1b8d31dcae89e58321829f2b90142a59b62a174c8c264b47161955a560",
+      "fetched_at": "2026-11-02T17:21:00+08:00"
+    },
+    {
+      "id": "3277394",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3277394",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3277394.html",
+      "bytes": 101063,
+      "sha256": "69d4d20475acecf988a3e7fa35415b92363ab46913794d8304118e330aba3236",
+      "fetched_at": "2026-11-02T17:21:05+08:00"
+    },
+    {
+      "id": "3275185",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3275185",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3275185.html",
+      "bytes": 80744,
+      "sha256": "21fdd83613cb3f6fcfb8c53acf15274ade16af7844c8bc1b3971c9e5dc7b53a7",
+      "fetched_at": "2026-11-02T17:21:06+08:00"
+    },
+    {
+      "id": "3269979",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3269979",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3269979.html",
+      "bytes": 79116,
+      "sha256": "2e812dd77db9dec73f8cceaae954bc04eb74f4b0a168660633b7b081ed896dfc",
+      "fetched_at": "2026-11-02T17:21:06+08:00"
+    },
+    {
+      "id": "3259064",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3259064",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3259064.html",
+      "bytes": 77396,
+      "sha256": "f5624642c93d88fc94bfca93cad6c73e1272ca289a365bae7a45c50e276c52a3",
+      "fetched_at": "2026-11-02T17:21:07+08:00"
+    },
+    {
+      "id": "3259058",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3259058",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3259058.html",
+      "bytes": 78167,
+      "sha256": "875d4d830eb87eb79edb7059c3fedd97958147229ba575fa44b9e08b55f4cc2a",
+      "fetched_at": "2026-11-02T17:21:08+08:00"
+    },
+    {
+      "id": "2612382",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2612382",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2612382.html",
+      "bytes": 77470,
+      "sha256": "82e25ca155c5e36547d4ed08f7cb6d2b3d882a919be91733a8f308eff33348e1",
+      "fetched_at": "2026-11-02T17:21:09+08:00"
+    },
+    {
+      "id": "3244929",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3244929",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3244929.html",
+      "bytes": 76336,
+      "sha256": "471bdfcc377b4dd2a933d7fde72d10a1dc0112af118ff0908f8e8f0e26b99135",
+      "fetched_at": "2026-11-02T17:21:13+08:00"
+    },
+    {
+      "id": "3244942",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3244942",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3244942.html",
+      "bytes": 76389,
+      "sha256": "97950a60d2b9ccac789823523de2fe3d9e4e9dc746c21afbb5900b0937d2b877",
+      "fetched_at": "2026-11-02T17:21:13+08:00"
+    },
+    {
+      "id": "3243250",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3243250",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3243250.html",
+      "bytes": 77741,
+      "sha256": "4ca8c88bce54f8832617c866d96e96ae0c7fcee2631940de7204fb148969de24",
+      "fetched_at": "2026-11-02T17:21:14+08:00"
+    },
+    {
+      "id": "2733734",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2733734",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2733734.html",
+      "bytes": 77604,
+      "sha256": "eb7aac2021867b9e5cf4dfa682515b8790d950a0698b99127bdd8c754e70a750",
+      "fetched_at": "2026-11-02T17:21:15+08:00"
+    },
+    {
+      "id": "2761776",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2761776",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2761776.html",
+      "bytes": 77063,
+      "sha256": "6cd380e3cbbf5864ce785e0aede613a85dcdff722056f52fd868af88fa4a76ca",
+      "fetched_at": "2026-11-02T17:21:16+08:00"
+    },
+    {
+      "id": "2761775",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2761775",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2761775.html",
+      "bytes": 76974,
+      "sha256": "edfd370e8ec4ecc724be33c00befe502776b01320b1110ff996c13234195af1f",
+      "fetched_at": "2026-11-02T17:21:17+08:00"
+    },
+    {
+      "id": "2761777",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2761777",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2761777.html",
+      "bytes": 76935,
+      "sha256": "c3750346e65810f3e25af34b4a810dea2cd5e19a27e6a71adcce31ee76e3024d",
+      "fetched_at": "2026-11-02T17:21:18+08:00"
+    },
+    {
+      "id": "2761276",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2761276",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2761276.html",
+      "bytes": 77716,
+      "sha256": "b0afd9079c272dc8ba69268cdfdf2afbfd33f862d118d66b54d19aa32bcc56a5",
+      "fetched_at": "2026-11-02T17:21:18+08:00"
+    },
+    {
+      "id": "2761248",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2761248",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2761248.html",
+      "bytes": 77128,
+      "sha256": "6d54f4862eee2078f91424c0d07d898b5e07ba59499a7a0a2c8487df73bc5ed1",
+      "fetched_at": "2026-11-02T17:21:19+08:00"
+    },
+    {
+      "id": "2761179",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2761179",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2761179.html",
+      "bytes": 77619,
+      "sha256": "09f2fcaa577eaf8b0fa1b0301eeb09afac2c2a3aaa81337232fc00a3cc2a1bf7",
+      "fetched_at": "2026-11-02T17:21:20+08:00"
+    },
+    {
+      "id": "2761178",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2761178",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2761178.html",
+      "bytes": 79215,
+      "sha256": "b6c607248697562393f7fc65705e822693035375d6cdbcc872e37ca98e9b4722",
+      "fetched_at": "2026-11-02T17:21:21+08:00"
+    },
+    {
+      "id": "2761167",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2761167",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2761167.html",
+      "bytes": 76103,
+      "sha256": "5ddfa61e12de1f3bb68adb17d5e6dd146b7e912ee86b3fa791209b4de22563e3",
+      "fetched_at": "2026-11-02T17:21:22+08:00"
+    },
+    {
+      "id": "2761166",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2761166",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2761166.html",
+      "bytes": 76806,
+      "sha256": "162bfd76330907145f471af79d60d52df5be341e2011eb1bb2e2f8517d104c56",
+      "fetched_at": "2026-11-02T17:21:22+08:00"
+    },
+    {
+      "id": "2759252",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2759252",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2759252.html",
+      "bytes": 79877,
+      "sha256": "7ab74713672e42be159f130bd5da5bfc891fd83830939c888cc41adf34c80d1b",
+      "fetched_at": "2026-11-02T17:21:23+08:00"
+    },
+    {
+      "id": "2758544",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2758544",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2758544.html",
+      "bytes": 77596,
+      "sha256": "ebeb0896faf9b723dd19f89f66d19ea1536440008d9fc554aafb9ab50836da80",
+      "fetched_at": "2026-11-02T17:21:24+08:00"
+    },
+    {
+      "id": "2758543",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2758543",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2758543.html",
+      "bytes": 77632,
+      "sha256": "69337b7601476b568ee07f7af417811276b83ac06567880c534c769c09ea488e",
+      "fetched_at": "2026-11-02T17:21:25+08:00"
+    },
+    {
+      "id": "2758546",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2758546",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2758546.html",
+      "bytes": 77575,
+      "sha256": "fd615e5ea8b07dfa6351d97d3a36f0d290f72f3d76d309b2dd2dc2da3381d202",
+      "fetched_at": "2026-11-02T17:21:25+08:00"
+    },
+    {
+      "id": "2758545",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2758545",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2758545.html",
+      "bytes": 78037,
+      "sha256": "b5dfca03dd4f28cb60358355b1b6fdf365cb0dfb9846e8c49e5a2f5301227b8e",
+      "fetched_at": "2026-11-02T17:21:26+08:00"
+    },
+    {
+      "id": "2756053",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2756053",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2756053.html",
+      "bytes": 76746,
+      "sha256": "5d486a5aef44f6777fa00d15aa04d505746799a57fe6505b225a54103d5c83b3",
+      "fetched_at": "2026-11-02T17:21:27+08:00"
+    },
+    {
+      "id": "2755948",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2755948",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2755948.html",
+      "bytes": 76596,
+      "sha256": "63936da069b66916c8d817fc8ca430505012e9fee0e9a7162dbd8725f0c61089",
+      "fetched_at": "2026-11-02T17:21:28+08:00"
+    },
+    {
+      "id": "2755947",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2755947",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2755947.html",
+      "bytes": 76729,
+      "sha256": "b3fc3505c435527309f22aa33b3403e16fad1f80c0825af6ffa2b1f27165fc75",
+      "fetched_at": "2026-11-02T17:21:29+08:00"
+    },
+    {
+      "id": "2755950",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2755950",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2755950.html",
+      "bytes": 76738,
+      "sha256": "89a817a7811ab46fc9ac9bd8934f5503ff476bf722e4c2de035f833d1c3732ec",
+      "fetched_at": "2026-11-02T17:21:30+08:00"
+    },
+    {
+      "id": "2755949",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2755949",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2755949.html",
+      "bytes": 76831,
+      "sha256": "38df64e392fa4d038185fb0673de7bbb3efe73d03175515481ed6668abcd0134",
+      "fetched_at": "2026-11-02T17:21:30+08:00"
+    },
+    {
+      "id": "2755753",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2755753",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2755753.html",
+      "bytes": 78857,
+      "sha256": "82c28109c5a93f49c0a8adc85949025151573a39cd39b0efb6340b596bef8ec0",
+      "fetched_at": "2026-11-02T17:21:31+08:00"
+    },
+    {
+      "id": "2753983",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2753983",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2753983.html",
+      "bytes": 76022,
+      "sha256": "72e4ddbd8786b2fdb24b81a387a4afd4c32423b9a2cec64a4d01324589ba7cd8",
+      "fetched_at": "2026-11-02T17:21:32+08:00"
+    },
+    {
+      "id": "2753051",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2753051",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2753051.html",
+      "bytes": 76751,
+      "sha256": "4d623335a9114d38d6b5f6d86c15b2ae529366720b83bb2521d14f476512a1e8",
+      "fetched_at": "2026-11-02T17:21:33+08:00"
+    },
+    {
+      "id": "2753054",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2753054",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2753054.html",
+      "bytes": 76751,
+      "sha256": "7bb1e94cab125835545b4770735b0a5b83c5c76e648e338a3dad04563d7ee6bc",
+      "fetched_at": "2026-11-02T17:21:33+08:00"
+    },
+    {
+      "id": "2753053",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2753053",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2753053.html",
+      "bytes": 76751,
+      "sha256": "98af03a52472f4a76cbd36cf819988a1f138779b51e02c1911ff61bf2eb11c5c",
+      "fetched_at": "2026-11-02T17:21:34+08:00"
+    },
+    {
+      "id": "2753052",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2753052",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2753052.html",
+      "bytes": 76749,
+      "sha256": "7d3522f0ee99f4138a598cd16721af9edfba5139679308290e76a1d77d4f5dc8",
+      "fetched_at": "2026-11-02T17:21:35+08:00"
+    },
+    {
+      "id": "2750933",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2750933",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2750933.html",
+      "bytes": 77006,
+      "sha256": "777f9fca2adc2190c8abd83a9764a62ff33ed8488d7f4c742e0adc93fcffa07c",
+      "fetched_at": "2026-11-02T17:21:36+08:00"
+    },
+    {
+      "id": "2750664",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2750664",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2750664.html",
+      "bytes": 76333,
+      "sha256": "0b055ddc284fc459cf11b5e18d9ead53b50a15763c9b1777bcb4ad2a6b4f9f7b",
+      "fetched_at": "2026-11-02T17:21:36+08:00"
+    },
+    {
+      "id": "2748728",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2748728",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2748728.html",
+      "bytes": 77279,
+      "sha256": "b3ea8c7e20d52ba4dd9c7131b963a9c34add6f4888137f5ef125b78eeff58a94",
+      "fetched_at": "2026-11-02T17:21:37+08:00"
+    },
+    {
+      "id": "2748727",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2748727",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2748727.html",
+      "bytes": 78099,
+      "sha256": "116b4e8573f4705b4daf83bf118f9a9cebb673a34df84321a53d7c99d2844d41",
+      "fetched_at": "2026-11-02T17:21:38+08:00"
+    },
+    {
+      "id": "2747784",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2747784",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2747784.html",
+      "bytes": 78464,
+      "sha256": "8dbb8e400fbb96823ec7bae2d27401a62561e71d0e9f5d9be437940dc5431371",
+      "fetched_at": "2026-11-02T17:21:39+08:00"
+    },
+    {
+      "id": "2747783",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2747783",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2747783.html",
+      "bytes": 78751,
+      "sha256": "beff0172420386b18d9df3f2eab454411ed91ca19e4a39e3c4a9934fac530273",
+      "fetched_at": "2026-11-02T17:21:40+08:00"
+    },
+    {
+      "id": "2746546",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2746546",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2746546.html",
+      "bytes": 76572,
+      "sha256": "728870e1bf5d5374afff632531506d6e6a0e27770b97b0e1433d672de78bc803",
+      "fetched_at": "2026-11-02T17:21:40+08:00"
+    },
+    {
+      "id": "2746507",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2746507",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2746507.html",
+      "bytes": 76518,
+      "sha256": "4d80e7ae12be5aa90f05eb64f066e4f927d90186f6318a7ea54eb8d68859f6e9",
+      "fetched_at": "2026-11-02T17:21:41+08:00"
+    },
+    {
+      "id": "2746506",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2746506",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2746506.html",
+      "bytes": 76454,
+      "sha256": "cad8323cfc36480d90fccc20c96c30266316c1a1ac42c9ae9cd2bb0a1e685bfb",
+      "fetched_at": "2026-11-02T17:21:42+08:00"
+    },
+    {
+      "id": "2746438",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2746438",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2746438.html",
+      "bytes": 76602,
+      "sha256": "8c5e4f5fa9c5e25599f0b7b3dd0262cf42300f37b58c4ced1bb38207001727da",
+      "fetched_at": "2026-11-02T17:21:43+08:00"
+    },
+    {
+      "id": "2746443",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2746443",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2746443.html",
+      "bytes": 77109,
+      "sha256": "73147ac4b269671230784a8b785ae9e9faa7e3d1d0760f167269a1ddf2e23941",
+      "fetched_at": "2026-11-02T17:21:44+08:00"
+    },
+    {
+      "id": "2745519",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2745519",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2745519.html",
+      "bytes": 76514,
+      "sha256": "651ac1cdcc576cb4f0f0e8caf737457c6d1c109251c3da38deda66cebcb59a5d",
+      "fetched_at": "2026-11-02T17:21:44+08:00"
+    },
+    {
+      "id": "2745523",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2745523",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2745523.html",
+      "bytes": 76758,
+      "sha256": "87b62456dd71d2c77dd8bec7ff1c63cf547c6eeffafd25daa00bf844fe223cc2",
+      "fetched_at": "2026-11-02T17:21:45+08:00"
+    },
+    {
+      "id": "2745518",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2745518",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2745518.html",
+      "bytes": 76784,
+      "sha256": "c02498e1006e9683c42e4525869d0dff7084ef1a81dd9c0c30cda4216f4ee54c",
+      "fetched_at": "2026-11-02T17:21:46+08:00"
+    },
+    {
+      "id": "2745522",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2745522",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2745522.html",
+      "bytes": 77002,
+      "sha256": "03b94d87f90d834da2e937619d78b6b5d5620f3ca1d40cc9244c5498bdf477e3",
+      "fetched_at": "2026-11-02T17:21:47+08:00"
+    },
+    {
+      "id": "2745526",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2745526",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2745526.html",
+      "bytes": 76578,
+      "sha256": "1b40f410d45f84b6c5420d9064d10d4b99a589ec1dd5207a978d3f11ea686767",
+      "fetched_at": "2026-11-02T17:21:47+08:00"
+    },
+    {
+      "id": "2745521",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2745521",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2745521.html",
+      "bytes": 76656,
+      "sha256": "cd4ad6d62e3c0cd88938b902ee96fac3f4ece8cf6b9df3e0e4615e3aa6c1c012",
+      "fetched_at": "2026-11-02T17:21:48+08:00"
+    },
+    {
+      "id": "2745525",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2745525",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2745525.html",
+      "bytes": 76892,
+      "sha256": "3a23cf95059a76323e7ae18a83511ab586cb3e7f79a81574550c2a93acd032cf",
+      "fetched_at": "2026-11-02T17:21:49+08:00"
+    },
+    {
+      "id": "2745520",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2745520",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2745520.html",
+      "bytes": 76643,
+      "sha256": "2beb57913448d9f31b5fed8d4a0eb06d0782b86b7e2b611636ba7e48f680bd26",
+      "fetched_at": "2026-11-02T17:21:50+08:00"
+    },
+    {
+      "id": "2745524",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2745524",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2745524.html",
+      "bytes": 77315,
+      "sha256": "629071f695394fd217c7544390fd30f864df9eedae6a390938b89c3c57c42ab2",
+      "fetched_at": "2026-11-02T17:21:51+08:00"
+    },
+    {
+      "id": "3284823",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3284823",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3284823.html",
+      "bytes": 76991,
+      "sha256": "212d2350e9baf15d8a9ef86c47d31d7b1470e231cd041c952fd120d798c5c5c0",
+      "fetched_at": "2026-11-02T17:21:56+08:00"
+    },
+    {
+      "id": "3283888",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283888",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283888.html",
+      "bytes": 77572,
+      "sha256": "345ed4daba1b3231d2721643ac745b2a9fd3eafeb825236ad39af7d3b77f6291",
+      "fetched_at": "2026-11-02T17:21:56+08:00"
+    },
+    {
+      "id": "3282982",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3282982",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3282982.html",
+      "bytes": 78794,
+      "sha256": "bec8250a344b825a436b1200551c11b1ee24db4ffd61b0d205a5f487437fcf17",
+      "fetched_at": "2026-11-02T17:21:57+08:00"
+    },
+    {
+      "id": "3238144",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3238144",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3238144.html",
+      "bytes": 78222,
+      "sha256": "13432a8fd0c10184dfcb07e2faffc7c78e6cd00a540354b0b730a59c47d14e9b",
+      "fetched_at": "2026-11-02T17:21:58+08:00"
+    },
+    {
+      "id": "3276705",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3276705",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3276705.html",
+      "bytes": 78975,
+      "sha256": "2ce7b8624719699cbb115f358fa2972d4ad0cc626dc5b44362586ee20c371c86",
+      "fetched_at": "2026-11-02T17:21:59+08:00"
+    },
+    {
+      "id": "2489205",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2489205",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2489205.html",
+      "bytes": 78290,
+      "sha256": "f5b9341e84a6743a2d1ff0b9d99756a19b2c4acf9dcecdb0c090063fb7379e67",
+      "fetched_at": "2026-11-02T17:22:04+08:00"
+    },
+    {
+      "id": "3284051",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3284051",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3284051.html",
+      "bytes": 209849,
+      "sha256": "0c6626a7eddafcf075697aa9e3ccef3cb03bcb621f341d37092c4ebad8422992",
+      "fetched_at": "2026-11-02T17:22:05+08:00"
+    },
+    {
+      "id": "3282138",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3282138",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3282138.html",
+      "bytes": 80222,
+      "sha256": "0efde717ae33b279c228a818ca70185af9cd52c132b2921535c6280340f25636",
+      "fetched_at": "2026-11-02T17:22:06+08:00"
+    },
+    {
+      "id": "3274312",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3274312",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3274312.html",
+      "bytes": 86189,
+      "sha256": "2540d6912960badfa8db7ce4ea0053d5b114a98f992ed894d82a99c8f8ff44ed",
+      "fetched_at": "2026-11-02T17:22:10+08:00"
+    },
+    {
+      "id": "2490410",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2490410",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2490410.html",
+      "bytes": 81437,
+      "sha256": "1c7d53b3e482fccab4e262a4d4bc29db5ef9f3cf2b56e0807ed44ca193e7851e",
+      "fetched_at": "2026-11-02T17:22:11+08:00"
+    },
+    {
+      "id": "3271780",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3271780",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3271780.html",
+      "bytes": 77989,
+      "sha256": "cfe20f1cbf7fa8341240a7957800970323e92dc79ffe75d98cad606b52686c64",
+      "fetched_at": "2026-11-02T17:22:12+08:00"
+    },
+    {
+      "id": "3284036",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3284036",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3284036.html",
+      "bytes": 76780,
+      "sha256": "5c2a748b1f1d82f2a38263b02665ed82cfd6fe877e815a1be2352e8b1a3b9960",
+      "fetched_at": "2026-11-02T17:22:16+08:00"
+    },
+    {
+      "id": "3251544",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3251544",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3251544.html",
+      "bytes": 78792,
+      "sha256": "5f084b86c8447803e1156ad580d8d71c7c92f0e8ebdc63d160f0fb2da5147193",
+      "fetched_at": "2026-11-02T17:22:17+08:00"
+    },
+    {
+      "id": "3272235",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3272235",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3272235.html",
+      "bytes": 76127,
+      "sha256": "0e77f92d7331d5a8a8e7406668017c602789a407745bb69be2ff7dcd1d2907f9",
+      "fetched_at": "2026-11-02T17:22:18+08:00"
+    },
+    {
+      "id": "2710921",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2710921",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2710921.html",
+      "bytes": 77171,
+      "sha256": "b869c0fa12c71bac51e5ea7898b0f90904b33cb672bf4bd9f11a731067fb35bf",
+      "fetched_at": "2026-11-02T17:22:19+08:00"
+    },
+    {
+      "id": "3260368",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3260368",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3260368.html",
+      "bytes": 78269,
+      "sha256": "b95b079197e2d48b34625887a75eaceca9adf4029fbce3b4a2714b4164afd8aa",
+      "fetched_at": "2026-11-02T17:22:19+08:00"
+    },
+    {
+      "id": "3231137",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3231137",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3231137.html",
+      "bytes": 78300,
+      "sha256": "4fe8805c81e52a27e741ff9757eac94f5099400d90fde9a9c0ffedbc1cb7d49e",
+      "fetched_at": "2026-11-02T17:22:20+08:00"
+    },
+    {
+      "id": "3283139",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283139",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283139.html",
+      "bytes": 85587,
+      "sha256": "25ada89e998d685e9897a8ce2a8b8ffbfdc5b3bd1f904350cc24f9819458b8f1",
+      "fetched_at": "2026-11-02T17:22:25+08:00"
+    },
+    {
+      "id": "2671745",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2671745",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2671745.html",
+      "bytes": 84598,
+      "sha256": "e7275193f256accd95894a1f95fbf8092529a42107899553f6a6084e7ccf92db",
+      "fetched_at": "2026-11-02T17:22:26+08:00"
+    },
+    {
+      "id": "3281300",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3281300",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3281300.html",
+      "bytes": 77073,
+      "sha256": "07437d0be9dad5dc39f68cf81a962888286036e2480f145da7c84f415602b728",
+      "fetched_at": "2026-11-02T17:22:27+08:00"
+    },
+    {
+      "id": "3281154",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3281154",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3281154.html",
+      "bytes": 75878,
+      "sha256": "6bbbeba7111bf14eb0db80eafbf06cc8afafad1947d57aec78f3b7f57fa618d4",
+      "fetched_at": "2026-11-02T17:22:28+08:00"
+    },
+    {
+      "id": "3281129",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3281129",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3281129.html",
+      "bytes": 77536,
+      "sha256": "45e4f7c9601ba7dbe1071561600d27a363cccd00ff86d073dd9450aa6afd50af",
+      "fetched_at": "2026-11-02T17:22:28+08:00"
+    },
+    {
+      "id": "1675612",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=1675612",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/1675612.html",
+      "bytes": 78346,
+      "sha256": "55cee5f8a206f60be63f7c6bd7eb4a4f8f13185e39afeb7ce8860d2280fa8ef5",
+      "fetched_at": "2026-11-02T17:22:32+08:00"
+    },
+    {
+      "id": "2685948",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2685948",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2685948.html",
+      "bytes": 78541,
+      "sha256": "2f499c272d08383bac9fb528d041653851460ef9f146ee0d6620d53137154e40",
+      "fetched_at": "2026-11-02T17:22:33+08:00"
+    },
+    {
+      "id": "2633759",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2633759",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2633759.html",
+      "bytes": 78842,
+      "sha256": "ad34f700f1c43b7c7f9b2ec9e341ebddc34fa68890c3cee595c7ab340f388c97",
+      "fetched_at": "2026-11-02T17:22:34+08:00"
+    },
+    {
+      "id": "3258103",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3258103",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3258103.html",
+      "bytes": 78852,
+      "sha256": "6c496fa4df9f2111d0d860beb8d38e3cbcbd8536f4044e321824bf4f3e39845e",
+      "fetched_at": "2026-11-02T17:22:38+08:00"
+    },
+    {
+      "id": "2226526",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2226526",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2226526.html",
+      "bytes": 78302,
+      "sha256": "3941a6169b1f30ed2c147bd517933bdd1dbf6e620fc091f2a740eb3a729207d6",
+      "fetched_at": "2026-11-02T17:22:39+08:00"
+    },
+    {
+      "id": "3235719",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3235719",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3235719.html",
+      "bytes": 78524,
+      "sha256": "782682194e2a61bf6d68ef4d9c6d802caad53d2513df9847e5660b3d05ba8053",
+      "fetched_at": "2026-11-02T17:22:40+08:00"
+    },
+    {
+      "id": "3231559",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3231559",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3231559.html",
+      "bytes": 82646,
+      "sha256": "0f9df50e0ceabe4088ec85d75e9f2461898c625755e15373332584003f06b2be",
+      "fetched_at": "2026-11-02T17:22:41+08:00"
+    },
+    {
+      "id": "3283992",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283992",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283992.html",
+      "bytes": 76939,
+      "sha256": "b238ab627df8958b7955f48a6ec4bea56e7860242fc9e3e6626b557184ac3621",
+      "fetched_at": "2026-11-02T17:22:45+08:00"
+    },
+    {
+      "id": "2648964",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2648964",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2648964.html",
+      "bytes": 79264,
+      "sha256": "a29b090431bc6a5f6bd204f3b44d46882bd1a21b08e8f1472901232e17b72822",
+      "fetched_at": "2026-11-02T17:22:46+08:00"
+    },
+    {
+      "id": "3283592",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283592",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283592.html",
+      "bytes": 79087,
+      "sha256": "233c56a44bd325bc9f0c38f7c39a7afdd7461ea1b1d512f53b1510a58f7c0313",
+      "fetched_at": "2026-11-02T17:22:46+08:00"
+    },
+    {
+      "id": "3283586",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283586",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283586.html",
+      "bytes": 79477,
+      "sha256": "fa7b7bd1195787e240c21b7bc16d81293f5aee9e757ab3a82ce718d15b67ad22",
+      "fetched_at": "2026-11-02T17:22:47+08:00"
+    },
+    {
+      "id": "2756315",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2756315",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2756315.html",
+      "bytes": 76868,
+      "sha256": "ccd9de5f020d7f9c6cbb2fa5767d4585f0de928023ce691d85b3366e7614b570",
+      "fetched_at": "2026-11-02T17:22:48+08:00"
+    },
+    {
+      "id": "2656172",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2656172",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2656172.html",
+      "bytes": 80293,
+      "sha256": "6ec58121d4c6e0ee35722a71bbfa8ef0f871f328f219303f4c637e8af69b1ef3",
+      "fetched_at": "2026-11-02T17:22:49+08:00"
+    },
+    {
+      "id": "187403",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=187403",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/187403.html",
+      "bytes": 77187,
+      "sha256": "063f4432d585afe8854ed7654d513118160c527341c5e0e1fb76f900ca5f7d47",
+      "fetched_at": "2026-11-02T17:22:53+08:00"
+    },
+    {
+      "id": "2499710",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2499710",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2499710.html",
+      "bytes": 77453,
+      "sha256": "4337128fbc133014d8bfe9eacd7ef9c23d47720f97626c5eb1b56708d934131e",
+      "fetched_at": "2026-11-02T17:22:54+08:00"
+    },
+    {
+      "id": "2739750",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2739750",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2739750.html",
+      "bytes": 78970,
+      "sha256": "35c40c5dc31710e2f55d13130d7c153994c4a930825c789f1a40f94d6768a062",
+      "fetched_at": "2026-11-02T17:22:55+08:00"
+    },
+    {
+      "id": "3250293",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3250293",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3250293.html",
+      "bytes": 77892,
+      "sha256": "767714bd2202af21cdc8d0eec4f03f6120a02e8aa2de40ec9faae6a665847f38",
+      "fetched_at": "2026-11-02T17:22:56+08:00"
+    },
+    {
+      "id": "1690496",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=1690496",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/1690496.html",
+      "bytes": 78036,
+      "sha256": "33028fbc518dd9aeca59e2601f628325da30371a862ddc8a93b4022d11ef693a",
+      "fetched_at": "2026-11-02T17:22:56+08:00"
+    },
+    {
+      "id": "3259086",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3259086",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3259086.html",
+      "bytes": 77752,
+      "sha256": "848a94639bf54fedd7f0a8030432dc23cfe686dc291771c6604959a20691581c",
+      "fetched_at": "2026-11-02T17:23:01+08:00"
+    },
+    {
+      "id": "3230329",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3230329",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3230329.html",
+      "bytes": 79232,
+      "sha256": "555bb070ba22ab0ae153e153f8ff450f5651b86a8a7a5a036b5bc496d08a3e60",
+      "fetched_at": "2026-11-02T17:23:02+08:00"
+    },
+    {
+      "id": "2398005",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2398005",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2398005.html",
+      "bytes": 78040,
+      "sha256": "0d228bcc716554efc5c78f2b76b6dfef7fa02941ea1ef1c05ce95ba8f3c97d7b",
+      "fetched_at": "2026-11-02T17:23:03+08:00"
+    },
+    {
+      "id": "3283268",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283268",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283268.html",
+      "bytes": 77520,
+      "sha256": "46993436938426489e5fbed1f4d4008e6d5c9a6ed59dc56ce91351c74dc45e40",
+      "fetched_at": "2026-11-02T17:23:07+08:00"
+    },
+    {
+      "id": "3282661",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3282661",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3282661.html",
+      "bytes": 75997,
+      "sha256": "3fd76bb71e21f1907c84289d061c47a310fab146ac81f4fc74f8a225538914e7",
+      "fetched_at": "2026-11-02T17:23:08+08:00"
+    },
+    {
+      "id": "3261856",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3261856",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3261856.html",
+      "bytes": 84150,
+      "sha256": "05890620899663287a67ab5a5300aa72eb3d48c8e53bf7b1f7f2d1d28d2a3e1f",
+      "fetched_at": "2026-11-02T17:23:09+08:00"
+    },
+    {
+      "id": "3264025",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3264025",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3264025.html",
+      "bytes": 76453,
+      "sha256": "c6c84d8eb54e2c7edd8da66f5eaa5fb7021ba87059c1dd03a4c31a3d8aeba23c",
+      "fetched_at": "2026-11-02T17:23:10+08:00"
+    },
+    {
+      "id": "3263595",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3263595",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3263595.html",
+      "bytes": 90073,
+      "sha256": "4d5c6f565146244a2a47ee9a89f6d9fc22df7e75e2e1f9d409f141009166e8fc",
+      "fetched_at": "2026-11-02T17:23:11+08:00"
+    },
+    {
+      "id": "3259707",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3259707",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3259707.html",
+      "bytes": 77507,
+      "sha256": "40a5d107cf75e6323e4490b4c4dadea6ee2030c3d1da735c80f32d862b60f72f",
+      "fetched_at": "2026-11-02T17:23:11+08:00"
+    },
+    {
+      "id": "2668828",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2668828",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2668828.html",
+      "bytes": 76546,
+      "sha256": "001046b537ed129872e11843e4a459a7c0ec6cca46bb8cc7cbd6853c63177bf1",
+      "fetched_at": "2026-11-02T17:23:12+08:00"
+    },
+    {
+      "id": "3250339",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3250339",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3250339.html",
+      "bytes": 75762,
+      "sha256": "3922a47aa39bdce610ef61be91b9de194b47297a0cc9291181d532d245e26172",
+      "fetched_at": "2026-11-02T17:23:13+08:00"
+    },
+    {
+      "id": "3244839",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3244839",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3244839.html",
+      "bytes": 77461,
+      "sha256": "3c223ab1d817a8974486ab0d7ee737676b9fb9ac9d93f4f545b965d1c4bad274",
+      "fetched_at": "2026-11-02T17:23:14+08:00"
+    },
+    {
+      "id": "2446472",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2446472",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2446472.html",
+      "bytes": 76953,
+      "sha256": "3255d39eba8590fbafd6bea7b7c84e1346bbbabd597ca30f1527c04559c63203",
+      "fetched_at": "2026-11-02T17:23:17+08:00"
+    },
+    {
+      "id": "2750855",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2750855",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2750855.html",
+      "bytes": 76083,
+      "sha256": "7cde27058a31c59a93b64812380a9e89f2c66562c89f38ef69b997547449b3b3",
+      "fetched_at": "2026-11-02T17:23:17+08:00"
+    },
+    {
+      "id": "2750854",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2750854",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2750854.html",
+      "bytes": 76122,
+      "sha256": "ec36481ed4c0756eeb5c29a143f8fcd26a3ce07ae98a9bde0b5f74efaa4fcee8",
+      "fetched_at": "2026-11-02T17:23:18+08:00"
+    },
+    {
+      "id": "2750853",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2750853",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2750853.html",
+      "bytes": 76314,
+      "sha256": "761aa93e3171b529a692aadf3249844db6d85c8fd6bec332f9c39dc604b05338",
+      "fetched_at": "2026-11-02T17:23:19+08:00"
+    },
+    {
+      "id": "3274068",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3274068",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3274068.html",
+      "bytes": 75421,
+      "sha256": "17678986eed278252ec7e129e8a7d2af619e029fa66d0dc0686fda626f083429",
+      "fetched_at": "2026-11-02T17:23:22+08:00"
+    },
+    {
+      "id": "2758049",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2758049",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2758049.html",
+      "bytes": 75114,
+      "sha256": "9535ece1ca58eab7952a425ad2fbd4efab888053960a2b8a0d43952169e91345",
+      "fetched_at": "2026-11-02T17:23:23+08:00"
+    },
+    {
+      "id": "2752793",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2752793",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2752793.html",
+      "bytes": 77000,
+      "sha256": "579fbc0fec6da81339730c89d51cdca33dcb63fd0c74570bce7601c557a053ec",
+      "fetched_at": "2026-11-02T17:23:24+08:00"
+    },
+    {
+      "id": "2752795",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2752795",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2752795.html",
+      "bytes": 76676,
+      "sha256": "e035d193fe226da47f5cda0131fe94f0496c11793ef76cff1175948cdbba01e9",
+      "fetched_at": "2026-11-02T17:23:24+08:00"
+    },
+    {
+      "id": "2752794",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2752794",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2752794.html",
+      "bytes": 76339,
+      "sha256": "060e2ddb9f22acc145cdd35133e2f8bee9768fb000efa525bd0efcfe78333726",
+      "fetched_at": "2026-11-02T17:23:25+08:00"
+    },
+    {
+      "id": "2761080",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2761080",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2761080.html",
+      "bytes": 78306,
+      "sha256": "1903d311fd949134b637f97f989ac15c61d3ae2d128e7ddb3684eaf65e3e9276",
+      "fetched_at": "2026-11-02T17:23:32+08:00"
+    },
+    {
+      "id": "2760623",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2760623",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2760623.html",
+      "bytes": 77716,
+      "sha256": "51e2b2942ab8acffb6af0a7ee498323113153c1a8aeb8189ca8bbb9ef58bc0ff",
+      "fetched_at": "2026-11-02T17:23:33+08:00"
+    },
+    {
+      "id": "2760598",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2760598",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2760598.html",
+      "bytes": 77205,
+      "sha256": "56b17b2b2b6b9fce9e4fb64a65e11db621b37896a9c1a790d4aee57a684d7765",
+      "fetched_at": "2026-11-02T17:23:33+08:00"
+    },
+    {
+      "id": "2757787",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2757787",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2757787.html",
+      "bytes": 76728,
+      "sha256": "85249f1f76a9d46522570f7d1434d521550d0f3a6e6655f65704e69e9b74fa2c",
+      "fetched_at": "2026-11-02T17:23:34+08:00"
+    },
+    {
+      "id": "2757118",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2757118",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2757118.html",
+      "bytes": 77785,
+      "sha256": "3e8df0cd2bbdf489c2d46617ebb3557e8a7171e7bbb9f7384929412def3b9273",
+      "fetched_at": "2026-11-02T17:23:35+08:00"
+    },
+    {
+      "id": "2756472",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2756472",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2756472.html",
+      "bytes": 75951,
+      "sha256": "c1487c8f45a86d464ee47bb1331fc65b340a35b07669cb51dd8f696f6cc3b4cc",
+      "fetched_at": "2026-11-02T17:23:36+08:00"
+    },
+    {
+      "id": "2756503",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2756503",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2756503.html",
+      "bytes": 76608,
+      "sha256": "03776b117a748f5f3456575268b39234e2617d9b28173f6bdf8d9c890e61ff0e",
+      "fetched_at": "2026-11-02T17:23:36+08:00"
+    },
+    {
+      "id": "2748536",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2748536",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2748536.html",
+      "bytes": 75285,
+      "sha256": "11ec08504c6fbd51cd8a1a39b00e7c1d018e5e9b44f7427b3c5d9412a8325fc9",
+      "fetched_at": "2026-11-02T17:23:37+08:00"
+    },
+    {
+      "id": "2746718",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2746718",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2746718.html",
+      "bytes": 75202,
+      "sha256": "d5ec50962e2d40aed534733d4b3a3be05fd0981459528ba8cf5ea41bd03af06b",
+      "fetched_at": "2026-11-02T17:23:38+08:00"
+    },
+    {
+      "id": "2746436",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2746436",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2746436.html",
+      "bytes": 77462,
+      "sha256": "0c32174106b9d66c326cb0bffe2745f6becdac5c39323c5d1e72f137a814d5f1",
+      "fetched_at": "2026-11-02T17:23:39+08:00"
+    },
+    {
+      "id": "2746209",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2746209",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2746209.html",
+      "bytes": 77454,
+      "sha256": "b9aa54630bd56cb1cdce76ea214a58362039210fafaf1283ff77734141a6e882",
+      "fetched_at": "2026-11-02T17:23:40+08:00"
+    },
+    {
+      "id": "3231999",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3231999",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3231999.html",
+      "bytes": 79797,
+      "sha256": "c84557de48ec7d7e687974d8de842a9def1b77c56f375d8ac31d2e17de94b630",
+      "fetched_at": "2026-11-02T17:23:46+08:00"
+    },
+    {
+      "id": "3281967",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3281967",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3281967.html",
+      "bytes": 76012,
+      "sha256": "d0d44bd930a8527908da44efd80745c33b7f65f18c23892e77ce1368a4c99e90",
+      "fetched_at": "2026-11-02T17:23:54+08:00"
+    },
+    {
+      "id": "3281111",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3281111",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3281111.html",
+      "bytes": 78561,
+      "sha256": "71945085b0c43a83d77141311682830cfd1c84f89907b5506b1e126c4631e869",
+      "fetched_at": "2026-11-02T17:23:55+08:00"
+    },
+    {
+      "id": "2668828",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2668828",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2668828.html",
+      "bytes": 76546,
+      "sha256": "035548b8a5791972190dea1234508a0245c92c5cc5e243e4f2252b41e1e15188",
+      "fetched_at": "2026-11-02T17:24:01+08:00"
+    },
+    {
+      "id": "2724238",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2724238",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2724238.html",
+      "bytes": 77078,
+      "sha256": "6e302efabc81d232a079ee81ced88a8d26626e8cedee78e9cf1d0403ad52730d",
+      "fetched_at": "2026-11-02T17:24:02+08:00"
+    },
+    {
+      "id": "2756271",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2756271",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2756271.html",
+      "bytes": 78153,
+      "sha256": "68d864a3e3496dfff710c18603ce75889c5be7bfd2fa0c09f7c77f822038d4a9",
+      "fetched_at": "2026-11-02T17:24:09+08:00"
+    },
+    {
+      "id": "2755532",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2755532",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2755532.html",
+      "bytes": 75706,
+      "sha256": "caa0d5c0bf5fd629c6ab3c02b7039cdd09af9e372b2c393a363e976452b97c80",
+      "fetched_at": "2026-11-02T17:24:09+08:00"
+    },
+    {
+      "id": "2749440",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2749440",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2749440.html",
+      "bytes": 75148,
+      "sha256": "2ff7dee85390ec711578a91708c0fe2211b9be2e6b6d288397c494d21b37c89e",
+      "fetched_at": "2026-11-02T17:24:10+08:00"
+    },
+    {
+      "id": "2749331",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2749331",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2749331.html",
+      "bytes": 75147,
+      "sha256": "3448ad9ecbec4d079f764fc329ebebbdbd93f007593c7dbe9d7b52ebbafd9571",
+      "fetched_at": "2026-11-02T17:24:11+08:00"
+    },
+    {
+      "id": "2749320",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2749320",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2749320.html",
+      "bytes": 76347,
+      "sha256": "1282646450009285edc59b67326d99f0ff3ed94e6247e2973bce541e623ae6cf",
+      "fetched_at": "2026-11-02T17:24:12+08:00"
+    },
+    {
+      "id": "2749254",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2749254",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2749254.html",
+      "bytes": 75149,
+      "sha256": "11aa58846e78086f5381c643c47f6161ebf35bdf9267df2d23aee52ff0342c82",
+      "fetched_at": "2026-11-02T17:24:13+08:00"
+    },
+    {
+      "id": "2749253",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2749253",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2749253.html",
+      "bytes": 75149,
+      "sha256": "6a0c900e23866bb2ac5c82ecd6dd698b4cbd00dfe7f695c52c3c599586f2c8bb",
+      "fetched_at": "2026-11-02T17:24:13+08:00"
+    },
+    {
+      "id": "3046469",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3046469",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3046469.html",
+      "bytes": 77670,
+      "sha256": "b8e048f7cbd1d3e43de7e4150af116e5d5dc553057c8cf6115e5d47a929bb5b4",
+      "fetched_at": "2026-11-02T17:24:20+08:00"
+    },
+    {
+      "id": "2749445",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2749445",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2749445.html",
+      "bytes": 75135,
+      "sha256": "9d860eab0342446ed1f771da92109ba3ad4b983002b1b6a8c3325f00740cf90c",
+      "fetched_at": "2026-11-02T17:24:21+08:00"
+    },
+    {
+      "id": "3244929",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3244929",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3244929.html",
+      "bytes": 76336,
+      "sha256": "eefdf39aced5ee39c34ee1095b63feff0b50fc6125b355df35115829046634ca",
+      "fetched_at": "2026-11-02T17:24:28+08:00"
+    },
+    {
+      "id": "2755777",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2755777",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2755777.html",
+      "bytes": 77168,
+      "sha256": "473aa2811405a0682c75502c5831d186efa18d32483bb981b7c6e5cdb1f6af1a",
+      "fetched_at": "2026-11-02T17:24:28+08:00"
+    },
+    {
+      "id": "2748451",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2748451",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2748451.html",
+      "bytes": 77183,
+      "sha256": "35112133d4baf45b7a5c168d71ab792bfa4ebb31cb026d616446fff0f89d5065",
+      "fetched_at": "2026-11-02T17:24:29+08:00"
+    },
+    {
+      "id": "2746683",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2746683",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2746683.html",
+      "bytes": 75184,
+      "sha256": "24b0152bb9c811b15b35ce1a610046966e48a5d4ce42fd4ac76737bd493a74eb",
+      "fetched_at": "2026-11-02T17:24:30+08:00"
+    },
+    {
+      "id": "3282985",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3282985",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3282985.html",
+      "bytes": 78160,
+      "sha256": "7d96bca02fe57a39f80639bd201b20f572f2272b28478040d85c94cc8734e9bc",
+      "fetched_at": "2026-11-02T17:24:38+08:00"
+    },
+    {
+      "id": "3283151",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3283151",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3283151.html",
+      "bytes": 86661,
+      "sha256": "243c76f08ad0bd4b87be983da6eae6c6869fb164358519a329a76f2e87d8b22d",
+      "fetched_at": "2026-11-02T17:24:45+08:00"
+    },
+    {
+      "id": "3263410",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3263410",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3263410.html",
+      "bytes": 79110,
+      "sha256": "be90943bf136f089c99190a4f5d7c70267c68a82315ada3b82d15cefcf23e1d7",
+      "fetched_at": "2026-11-02T17:24:52+08:00"
+    },
+    {
+      "id": "2600891",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2600891",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2600891.html",
+      "bytes": 76890,
+      "sha256": "2794ccc97de360f4c56af505df7565b0a9f1f11bd45287d8a1e62af1f202116f",
+      "fetched_at": "2026-11-02T17:24:56+08:00"
+    },
+    {
+      "id": "3048775",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3048775",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3048775.html",
+      "bytes": 75508,
+      "sha256": "ec2c5f9c8752002dd09ba2dc7fc950c8705edbfb72f8aa61578d746e3f376473",
+      "fetched_at": "2026-11-02T17:24:56+08:00"
+    },
+    {
+      "id": "3046959",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3046959",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3046959.html",
+      "bytes": 79880,
+      "sha256": "1c964f3f877ec51cdf490e1570b5ef431eae9a93fb4b443f24a2ae463d339cab",
+      "fetched_at": "2026-11-02T17:24:57+08:00"
+    },
+    {
+      "id": "3046256",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3046256",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3046256.html",
+      "bytes": 77310,
+      "sha256": "787b3591ec9014e77e88cb93426e871b96dd02f59b82f7cf95d2c1b62dbaeaa0",
+      "fetched_at": "2026-11-02T17:24:58+08:00"
+    },
+    {
+      "id": "3045589",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3045589",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3045589.html",
+      "bytes": 78753,
+      "sha256": "491a65c4dd8ea0db79a57a8e0826b38fee328fad9c13b3017e65ca47fbf86fd0",
+      "fetched_at": "2026-11-02T17:24:59+08:00"
+    },
+    {
+      "id": "2630447",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2630447",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2630447.html",
+      "bytes": 77300,
+      "sha256": "81eb6f39fca574f288c357bc89ee7436afd64f63b35441f9fe62f6a967c7a17d",
+      "fetched_at": "2026-11-02T17:25:00+08:00"
+    },
+    {
+      "id": "3046469",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=3046469",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/3046469.html",
+      "bytes": 77670,
+      "sha256": "4678a97eb1664b68237e8414cb6c3294dd2c7efb8d26d0c6e5e5969a1cb4c016",
+      "fetched_at": "2026-11-02T17:25:00+08:00"
+    },
+    {
+      "id": "2704294",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2704294",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2704294.html",
+      "bytes": 79270,
+      "sha256": "37eacda18ba2112387c8f312dd335db0343694ba550f4485e8c7c2cde7651c14",
+      "fetched_at": "2026-11-02T17:25:01+08:00"
+    },
+    {
+      "id": "2779083",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2779083",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2779083.html",
+      "bytes": 77380,
+      "sha256": "aaddd5a965d3c390a62f330c156180b801e13709399f4f99445bea58f2953529",
+      "fetched_at": "2026-11-02T17:25:02+08:00"
+    },
+    {
+      "id": "2779072",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2779072",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2779072.html",
+      "bytes": 78312,
+      "sha256": "860f5643a0914314d46d70a562ef8824fbe37d58eef61ab93b73ceb8b35955cb",
+      "fetched_at": "2026-11-02T17:25:03+08:00"
+    },
+    {
+      "id": "2731162",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2731162",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2731162.html",
+      "bytes": 78806,
+      "sha256": "2e453734d8aaa12ff325151c248d82207ae0ef1f115afde1e4e2e52f6748247f",
+      "fetched_at": "2026-11-02T17:25:03+08:00"
+    },
+    {
+      "id": "2775606",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2775606",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2775606.html",
+      "bytes": 78736,
+      "sha256": "30a094edf3bcead20d31b0f513904a527332e677bb633074d28f85feecac1bd8",
+      "fetched_at": "2026-11-02T17:25:04+08:00"
+    },
+    {
+      "id": "2350797",
+      "url": "https://jobs.ynu.edu.cn/detail/job?id=2350797",
+      "path": "references/raw/招聘岗位_2026-11-02/ynu/2350797.html",
+      "bytes": 76579,
+      "sha256": "038be070cf00624eaaedf2c515df4ea4f720177c9d7bc414bc893e8e81304f34",
+      "fetched_at": "2026-11-02T17:25:05+08:00"
+    },
+    {
+      "id": "1e3bec304e9292020nJz0t68F1JS",
+      "url": "https://r.jina.ai/https://activity.zhipin.com/job_detail/1e3bec304e9292020nJz0t68F1JS.html",
+      "path": "references/raw/招聘岗位_2026-11-02/boss/1e3bec304e9292020nJz0t68F1JS.html",
+      "bytes": 33504,
+      "sha256": "f9678a62f4176f5d5e977f7c026c1b8a414dfa0c8bdab966af3c6a3451ca88c6",
+      "fetched_at": "2026-11-02T17:25:23+08:00"
+    },
+    {
+      "id": "48f7aa1673282d081HN909u0EVFY",
+      "url": "https://r.jina.ai/https://activity.zhipin.com/job_detail/48f7aa1673282d081HN909u0EVFY.html",
+      "path": "references/raw/招聘岗位_2026-11-02/boss/48f7aa1673282d081HN909u0EVFY.html",
+      "bytes": 33578,
+      "sha256": "07de25fdb0803e4a8c1a70525e4b34b85f20c713f709188a5632a1999ecb46bd",
+      "fetched_at": "2026-11-02T17:26:33+08:00"
+    }
+  ]
+}

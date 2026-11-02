@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="Keywords" content="云大就业中心 云就业 高校 大学 大学生 就业 就业网 就业信息网 就业指导 就业指导中心 就业中心 创业 创业指导"/>
+<meta name="Description" content="云大就业中心 云就业 高校 大学 大学生 就业 就业网 就业信息网 就业指导 就业指导中心 就业中心 创业 创业指导"/>
+<link href="//o.bysjy.com.cn/website/blue/public/css/global.css" rel="stylesheet">
+<link href="//o.bysjy.com.cn/website/blue/public/css/layout.css" rel="stylesheet">
+<link href="//o.bysjy.com.cn/website/blue/public/css/common.css" rel="stylesheet">
+<link rel="stylesheet" href="https://o.bysjy.com.cn/public/website/public/css/base/base.css">
+<link rel="icon" href="/favicon.ico?1" type="image/x-icon"/>
+<style type="text/css">
+            html{min-width:1200px;}
+    /* 提高二级菜单层级 */
+    .main-nav .son-nav{
+      z-index: 99;
+    }
+</style>
+    <meta name="Keywords" content="中建八局华南公司2027届校招生 中国建筑第八工程局有限公司华南分公司"/>
+    <title>职位详情</title>
+    <!-- element 样式 -->
+    <link rel="stylesheet" href="//ss.bysjy.com.cn/static/element-ui/index.css">
+    <link rel="stylesheet" href="/public/huabi/font.css" />
+    <link rel="stylesheet" href="https://o.bysjy.com.cn/public/website/public/fonts/detail/iconfont.css?v=2026102001" />
+    <link rel="stylesheet" href="/css/details/shield.css">
+    <link rel="stylesheet" href="https://o.bysjy.com.cn/public/static/sharejs/css/share.min.css">
+    <link rel="stylesheet" href="https://o.bysjy.com.cn/public/website/public/css/share.min.css?v=2025120304">
+    <style>
+        [v-cloak] { display: none; }
+        :root {
+            /* 主题色（由后端注入 PAGE_THEME.colors，前端 JS applyTheme 直接设置本组变量；此处为默认兜底） */
+            --primary: #246bfd;
+            --primary-light: #edf3ff;
+            --primary-soft: #f0f6ff;
+            --primary-softer: #e8f1ff;
+            --primary-font: #fff;
+            /* 卡片蒙层：主题色从左往右渐变（JS applyTheme 动态覆盖；此处为默认兜底） */
+            --primary-overlay: linear-gradient(90deg, rgba(36, 107, 253, 1), rgba(36, 107, 253, 0.3));
+        }
+        .job-detail {
+            background: #f5f7fa;
+            min-height: 680px;
+            padding: 0 0 50px;
+            /* skin 的 bottom.html 会给 .container 加 flex:auto 撑满高度把 footer 顶到底部；本页根节点不是 .container，补等价 flex 避免大屏/缩放时底部留白 */
+            flex: 1 1 auto;
+        }
+        .job-detail-wrap {
+            width: 1200px;
+            max-width: calc(100% - 40px);
+            margin: 0 auto;
+        }
+        .job-detail-breadcrumb {
+            padding: 20px 0 16px;
+            color: #8c96a8;
+            font-size: 14px;
+        }
+        .job-detail-breadcrumb a { color: #5d6b82; }
+        .job-detail-breadcrumb .sep { margin: 0 8px; color: #c0c7d1; }
+        .job-warning {
+            margin: 0 0 16px;
+            padding: 12px 16px;
+            color: #e5484d;
+            line-height: 1.7;
+            background: #fff;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .job-warning .icon-xiaoxi-lingdang {
+            margin-right: 6px;
+            color: #e5484d;
+            font-size: 15px;
+            vertical-align: -1px;
+        }
+        .job-warning .job-warning-report {
+            margin-left: 12px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        .job-detail-layout {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        .job-detail-main {
+            flex: 1;
+            min-width: 0;
+        }
+        .job-detail-side {
+            width: 280px;
+            flex: 0 0 280px;
+        }
+        /* 卡片基础结构 */
+        .job-detail-card {
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 4px 18px rgba(30, 55, 90, 0.06);
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            background-color: #fff;
+        }
+        .job-detail-card > * { position: relative; }
+        /* 顶部信息卡：底层 bg7.png 背景图（职位专用，笔记本+简历插画）+ 主题色渐变蒙层 + 顶层内容 */
+        .job-detail-card.job-hero {
+            background: #fff url('https://o.bysjy.com.cn/public/website/public/images/detail/bg7.png') no-repeat center / cover;
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 32px 28px 24px;
+        }
+        .job-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--primary-overlay);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .job-hero > * {
+            position: relative;
+            z-index: 1;
+        }
+        .job-hero-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .job-hero-main { flex: 1; min-width: 0; }
+        .job-hero-title {
+            margin: 0 0 12px;
+            color: var(--primary-font);
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .job-hero-company {
+            margin: 0;
+            color: var(--primary-font);
+            font-size: 15px;
+            opacity: 0.95;
+            word-break: break-all;
+        }
+        .job-hero-side { flex: 0 0 auto; text-align: right; }
+        .job-hero-salary {
+            color: #F7BA2A;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .job-hero-salary .salary-unit {
+            color: var(--primary-font);
+            font-size: 14px;
+            font-weight: 400;
+            margin-left: 2px;
+        }
+        .job-hero-cond {
+            margin-top: 10px;
+            color: var(--primary-font);
+            font-size: 14px;
+        }
+        .job-hero-cond span + span::before {
+            content: '|';
+            margin: 0 10px;
+            opacity: 0.6;
+        }
+        /* 信息卡底部：统计项在左，操作按钮在右；顶部横线分隔（原型口径） */
+        .job-hero-bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .job-hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px 0;
+        }
+        /* 统计块之间的竖分隔线（原型口径）：块间用左右 padding 撑开，换行后行首块自然带线可接受 */
+        .job-hero-stat { padding-right: 36px; }
+        .job-hero-stat + .job-hero-stat {
+            border-left: 1px solid rgba(255, 255, 255, 0.25);
+            padding-left: 36px;
+        }
+        .job-hero-stat-label {
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+        }
+        .job-hero-stat-label .iconfontal {
+            margin-right: 6px;
+            font-size: 16px;
+        }
+        .job-hero-stat-value {
+            /* 缩进与 label 文本对齐：图标 16px + 间距 6px（改图标字号/间距需同步） */
+            padding-left: 22px;
+            margin-top: 6px;
+            color: var(--primary-font);
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+            max-width: 300px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+        .job-hero-btns {
+            flex: 0 0 auto;
+            display: flex;
+            gap: 14px;
+            padding-bottom: 2px;
+        }
+        .job-hero-btns .el-button {
+            margin-left: 0 !important;
+         }
+         .job-hero-btns .el-button:focus, .job-hero-btns .el-button:hover {
+            color: #606266;
+            background: #fff;
+         }
+        .job-hero-btns .job-ai-btn {
+            background-color: #ff9900;
+            color: #fff;
+            border: 0;
+        }
+        .job-hero-btns .job-ai-btn:hover {
+            opacity: 0.8;
+            color: #fff;
+            background: #ff9900;
+        }
+        .job-ai-btn .job-ai-img {
+            width: 20px;
+            height: 12px;
+            margin-right: 4px;
+        }
+        /* 模拟面试（AI面试）二维码弹层：样式还原 uat2 版本 */
+        .popover {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            height: 500px;
+            width: 500px;
+        }
+        .popover::after{
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            width: 10px;
+            height: 10px;
+        }
+        .Qrcode-url{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 230px;
+            left: 275px;
+            width: 170px;
+            height: 170px;
+        }
+        .Qrcode-text{
+            width: 500px;
+            height: 500px;
+            position: relative;
+            background: url('https://o.bysjy.com.cn/yxqqnn2200000006/mates/202412/yxz675abda97b4c2.png') no-repeat;
+        }
+        .job-deliver-btn {
+            background: #fff;
+            color: var(--primary);
+            border-color: #fff;
+        }
+        .job-deliver-btn:hover,
+        .job-deliver-btn:focus {
+            background: #fff;
+            color: var(--primary);
+            border-color: #fff;
+            opacity: 0.9;
+        }
+        /* 老版已投递态保留：置灰不可点 */
+        .job-deliver-btn.is-applied,
+        .job-deliver-btn.is-applied.is-disabled,
+        .job-deliver-btn.is-applied:hover,
+        .job-deliver-btn.is-applied:focus {
+            background: #ececec !important;
+            border-color: #e7e6eb !important;
+            color: #666 !important;
+            opacity: 1;
+        }
+        /* 内容卡片标题：左侧主题色竖条 */
+        .job-detail-title {
+            display: flex;
+            align-items: center;
+            margin: 0 0 16px;
+            color: #172b4d;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .job-detail-title::before {
+            content: '';
+            flex: 0 0 auto;
+            width: 4px;
+            height: 18px;
+            border-radius: 2px;
+            background: var(--primary);
+            margin-right: 8px;
+        }
+        /* 同卡片内第二分区标题（单位简介）与上一分区的间距 */
+        .job-detail-title.job-detail-title-gap { margin-top: 28px; }
+        /* 薪酬福利 / 职位诱惑标签（keywords 经用户确认并入同一标签行） */
+        .job-tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .job-tag-list .job-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            line-height: 1.4;
+            color: var(--primary);
+            background-color: var(--primary-light);
+            border: 1px solid var(--primary-softer);
+        }
+        /* 职位描述 / 单位简介富文本 */
+        .job-desc { color: #3a4557; font-size: 14px; }
+        /* 需求专业（职位描述上方，标题同款样式，随原文分隔符展示） */
+        .job-major-text { margin: 0 0 16px; color: #3a4557; font-size: 14px; line-height: 1.8; }
+        .job-desc-block { margin: 0 0 16px; }
+        .job-desc-block:last-child { margin-bottom: 0; }
+        .job-desc-label {
+            margin: 0 0 4px;
+            color: #172b4d;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .job-desc-text {
+            color: #3a4557;
+            font-size: 14px;
+            line-height: 1.8;
+            word-break: break-word;
+        }
+        .job-desc-text img { max-width: 100%; }
+        .job-desc-empty {
+            padding: 30px 0;
+            color: #8c96a8;
+            text-align: center;
+        }
+        /* 侧栏标题 */
+        .job-side-title {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #172b4d;
+            border-bottom: 1px solid #eee;
+            padding: 10px 20px;
+            margin: 0;
+        }
+        .job-detail-card > .job-side-title {
+            margin: -20px -24px 14px;
+        }
+        .job-side-title .iconfontal {
+            color: var(--primary);
+            margin-right: 6px;
+            font-size: 20px;
+        }
+        .job-side-title .side-title-icon { color: var(--primary); margin-right: 6px; font-size: 18px; }
+        /* 企业信息卡（参照 online.html） */
+        .job-company-head { display: flex; align-items: center; gap: 12px; }
+        .job-company-logo {
+            flex: 0 0 auto;
+            width: 56px;
+            height: 56px;
+            border-radius: 8px;
+            border: 1px solid #eef1f6;
+            background: #fff;
+            object-fit: contain;
+            padding: 2px;
+            box-sizing: border-box;
+        }
+        .job-company-meta { flex: 1; min-width: 0; }
+        .job-company-name {
+            margin: 0;
+            color: #172b4d;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+        .job-company-tags { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 6px; margin: 6px 0 0; }
+        .job-company-tags .ci-tag {
+            display: inline-flex;
+            align-items: center;
+            height: 24px;
+            max-width: 120px;
+            padding: 6px 12px;
+            border-radius: 12px;
+            background-color: #C6DBFB;
+            color: #10347B;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 1;
+            box-sizing: border-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: default;
+        }
+        /* 企业信息字段：与 detail/career.html 的 .career-company-info 完全一致 */
+        .job-company-info { margin-top: 12px; color: #6b778c; font-size: 13px; line-height: 1.6; text-align: left; }
+        .job-company-info p { margin: 0; display: flex; }
+        .job-company-info b { flex: 0 0 auto; color: #344563; font-weight: 600; margin-right: 6px; }
+        .job-company-info .val { flex: 1; min-width: 0; word-break: break-all; }
+        .job-company-btn {
+            display: block;
+            margin-top: 16px;
+            height: 36px;
+            line-height: 34px;
+            text-align: center;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 18px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .job-company-btn:hover { background: var(--primary-light); }
+        .job-side-empty { padding: 24px 0 8px; color: #8c96a8; text-align: center; font-size: 13px; }
+        /* 企信等级卡（参照 online.html / career.html 的 qxdj：bg1 背景 + 左圆形进度条右文字 + 四项指标图块；
+           等级规则原样保留：投诉≥1 显示 D，三项全 A 变绿） */
+        .job-detail-card.qxdj { padding: 20px 0 0; }
+        .job-credit { text-align: center; }
+        .credit-qxdj {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 4px;
+            padding: 16px 18px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: url('https://o.bysjy.com.cn/public/website/public/images/detail/bg1.png') no-repeat center / cover;
+            text-align: left;
+        }
+        .credit-qxdj > * { position: relative; }
+        .credit-progress {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            flex: 0 0 auto;
+        }
+        .progress-ring {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(90deg);
+        }
+        .progress-ring-bg {
+            fill: none;
+            stroke: rgba(44, 134, 251, 0.2);
+            stroke-width: 6;
+        }
+        .progress-ring-value {
+            fill: none;
+            stroke: #2C86FB;
+            stroke-width: 6;
+            stroke-linecap: round;
+            transition: stroke-dasharray 0.6s ease;
+        }
+        .credit-progress img.progress {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            object-fit: contain;
+        }
+        .chil-text {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            color: #fff;
+        }
+        .chil-text .job-credit-level {
+            font-size: 26px;
+            font-weight: 700;
+            color: #FC8306;
+            line-height: 1.2;
+        }
+        /* 老版规则保留：三项等级均为 A 时数字变绿 */
+        .chil-text .job-credit-level.is-green { color: #44b549; }
+        .job-credit-tip { color: #333; font-size: 14px; margin-top: 2px; }
+        .job-credit-beat { color: #333; font-size: 10px; margin-top: 6px; }
+        /* 四项指标：图片 + 文字上下结构（cd1 ~ cd4） */
+        .job-credit-items { display: flex; flex-wrap: wrap; gap: 12px 8px; padding: 20px; }
+        .job-credit-item {
+            flex: 1 1 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            background: #F7F5FD;
+            border-radius: 4px;
+            padding: 10px;
+        }
+        .job-credit-item img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+        .job-credit-item p { margin: 0; color: #8c96a8; font-size: 13px; }
+        .job-credit-item b { font-weight: 600; }
+        .job-credit-item .b1 { color: #208CFB; }
+        .job-credit-item .b2 { color: #e8992c; }
+        .job-credit-item .b3 { color: #42E286; }
+        .job-credit-item .b4 { color: #A176FA; }
+        /* 官方微信二维码卡（老版内容底部裸图二维码迁至侧栏卡片） */
+        .job-qrcode { text-align: center; }
+        .job-qrcode img { max-width: 160px; max-height: 160px; display: block; margin: 0 auto 8px; }
+        .job-qrcode p { margin: 0; color: #8c96a8; font-size: 12px; }
+        /* 分享邀请：微信 / QQ / 复制链接（老版顶部分享条迁移至此，online/jobfair 同款） */
+        .job-detail-card.share .job-side-title {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        .job-detail-card.share .job-side-title::before {
+            content: '';
+            flex: 0 0 auto;
+            width: 6px;
+            height: 100%;
+            min-height: 20px;
+            margin-right: 10px;
+            border-radius: 2px;
+            background-color: var(--primary);
+        }
+        .job-share { text-align: left; }
+        .job-share-tip { color: #D7D7D7; font-size: 14px; margin: 0 0 14px; text-align: left; }
+        .job-share-actions { display: flex; justify-content: center; gap: 24px; align-items: stretch; padding-bottom: 20px; }
+        .job-share-native { display: flex; gap: 24px; align-items: stretch; }
+        /* header.html 对 .social-share 有全局 hack（100px 定宽 + 740px 左移），本页分享条还原为自然布局；
+           注意 social-share.js 会把 .social-share 类追加到容器本身（同元素），后代选择器匹配不到，必须用组合选择器 */
+        .job-share-native.social-share, .job-share-native .social-share { width: auto; margin-left: 0; }
+        .job-share-actions .social-share-icon, .job-share-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 50px;
+            color: #2AB862;
+            font-size: 12px;
+            height: 50px;
+            border-radius: 50px;
+            background: #eee;
+            position: relative;
+            margin: 0;
+        }
+        .job-share-actions .social-share-icon::before { font-size: 28px; }
+        .job-share-actions .icon-wechat::after { content: '微信'; position: absolute; bottom: -30px; font-size: 12px; color: #7F7F7F; }
+        .job-share-actions .icon-qq { color: #37A7F3; }
+        .job-share-actions .icon-qq::after { content: 'QQ'; position: absolute; bottom: -30px; font-size: 12px; color: #7F7F7F; }
+        .job-share-actions .social-share-icon.wechat-qrcode { font-size: 0; }
+        .job-share-item {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            width: 50px;
+            cursor: pointer;
+            color: #7F7FF7;
+            font-size: 12px;
+            position: relative;
+        }
+        .job-share-item:hover { background-color: #7F7FF7; color: #fff; }
+        .job-share-item .iconfontal { font-size: 28px; }
+        .job-share-item em { font-style: normal; position: absolute; bottom: -22px; color: #7F7F7F; }
+        .job-detail-side .social-share { text-align: center; }
+        .social-share .social-share-icon { border: none; }
+        @media (max-width: 960px) {
+            .job-detail-layout { display: block; }
+            .job-detail-side { width: auto; }
+        }
+        @media (max-width: 720px) {
+            .job-hero-top { flex-direction: column; }
+            .job-hero-side { text-align: left; }
+            .job-hero-bottom { flex-direction: column; align-items: stretch; }
+            .job-hero-btns { justify-content: flex-end; }
+        }
+        /* element-ui 全局提示默认层级(约2001)低于固定顶栏(.head-fixed z-index:9999)，提示会被顶栏遮挡，这里提高层级保证可见 */
+        .el-message {
+            z-index: 10001 !important;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8" src="/public/js/libs/social-share.min.js?v=2025120304"></script>
+</head>
+<body class="job-details">
+<style>
+    @font-face {
+        font-family: "iconfont";
+        font-weight: normal;
+        font-style: normal;
+        src: url("https://o.bysjy.com.cn/public/website/public/fonts/tq/iconfont.eot");
+        src: url("https://o.bysjy.com.cn/public/website/public/fonts/tq/iconfont.eot?#iefix") format("embedded-opentype"),
+        url("https://o.bysjy.com.cn/public/website/public/fonts/tq/iconfont.svg#iconfont") format("svg"),
+        url("https://o.bysjy.com.cn/public/website/public/fonts/tq/iconfont.woff") format("woff"),
+        url("https://o.bysjy.com.cn/public/website/public/fonts/tq/iconfont.ttf") format("truetype"); }
+
+    .iconfont {
+        font-family: "iconfont" !important;
+        font-size: 16px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .icon-icon_voipphone:before {
+        content: "\eba2";
+    }
+    html{min-width:1200px;}
+                        </style>
+<input type="hidden" id="token" value="yxqqnn0300000001">
+<input type="hidden" id="qrcode_url" value="https://o.bysjy.com.cn/new_govern/yxqqnn0300000001/2026/config/1778745025-9536.jpg">
+<input type="hidden" id="qq_services" value="">
+<input type="hidden" id="site_theme" value="rich-37">
+
+
+<link href="https://o.bysjy.com.cn/public/website/skin/blue/css/rich-37/header.css?2022120209" rel="stylesheet">
+<style>
+    :root {
+        --main-bg-color: #02549d;
+        --main-bg-color-2: #004780;
+    }
+
+    .header-outside {
+        background-color: var(--main-bg-color);
+    }
+
+    .header-outside * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .header-c {
+        width: 1200px;
+        margin: 0 auto;
+        height: 130px;
+    }
+
+    .header-c .header {
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .main-nav-outside {
+        height: 60px;
+    }
+
+    .main-nav-outside .main-nav .inner {
+        min-width: 1200px;
+        max-width: 1200px;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0;
+    }
+
+    .main-nav-outside .main-nav .nav-list .item-link {
+        font-size: 18px;
+        padding: 0 24px;
+    }
+
+    .main-nav-outside .main-nav {
+        background-color: var(--main-bg-color-2);
+    }
+
+    .main-nav-outside .main-nav .nav-list .item.curr .item-link::after {
+        content: "";
+        position: absolute;
+        left: 30%;
+        bottom: 10px;
+        width: 40%;
+        height: 3px;
+        border-radius: 3px;
+        background-color: #fff;
+    }
+
+    .main-nav-outside .main-nav .nav-list .item:hover .item-link {
+        background-color: var(--main-bg-color) !important;
+        color: #fff !important;
+    }
+
+    .main-nav-outside .main-nav .son-link {
+        color: #fff;
+        background-color: var(--main-bg-color);
+    }
+
+    .main-nav-outside .main-nav .son-link:hover {
+        background-color: var(--main-bg-color-2) !important;
+    }
+
+    .pub-float-toolbar .tool-list .tool-item {
+        background-color: var(--main-bg-color);
+    }
+
+    .search-txt::-webkit-input-placeholder {
+        color: #666;
+    }
+
+    .logo-link {
+        line-height: 64px;
+        font-family: RTWS YueRoundedGothic G0v1,sans-serif;
+        font-weight: 400;
+        font-size: 32px;
+        color: #FFFFFF;
+    }
+
+    .logo-link:hover {
+        color: #FFFFFF;
+    }
+
+    #logo .logo-link img {
+        width: 401px;
+        height: 64px;
+    }
+</style>
+<div class="header-outside">
+    <div class="header-c">
+        <div class="header">
+            <div class="logo" id="logo">
+                <a href="javascript:;" class="logo-link">
+                    <img src="https://o.bysjy.com.cn/new_govern/yxqqnn0300000001/2026/config/1778211036-5571.png" />
+                </a>
+            </div>
+            <img src="https://minio.bysjy.com.cn/yun-campus-res/template/yndx/header-bg-2026.png" style="width: 578px;height: 144px !important;top: 9px;position: absolute;right: -12px;max-height: 144px!important;">
+        </div>
+    </div>
+    <div class="main-nav-outside">
+        <div class="main-nav">
+            <div class="inner">
+                <!--导航-->
+                <ul class="nav-list" id="main_nav" style="display: flex;justify-content: space-between;font-family: MicrosoftYaHei">
+                                        <li class="item">
+                        <a href="/index" class="item-link">网站首页</a>
+                    </li>
+                                                            <li class="item ">
+                        <a href="/module/news?type_id=9572163&menu_id=12238"
+                           class="item-link"  >部门简介</a>
+                                                <div class="son-nav">
+                            <ul class="son-list">
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/detail/news?id=1786244&menu_id=12238&self_id=12240">就业管理科</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/detail/news?id=1786245&menu_id=12238&self_id=46132">职业发展科</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/detail/news?id=1786246&menu_id=12238&self_id=46133">市场服务科</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                                            </li>
+                                        <li class="item ">
+                        <a href="/module/news?type_id=5661&menu_id=12241"
+                           class="item-link"  >新闻公告</a>
+                                                <div class="son-nav">
+                            <ul class="son-list">
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/module/news?type_id=5661&menu_id=12241&self_id=12243">通知公告</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/module/news?type_id=5660&menu_id=12241&self_id=12242">新闻热点</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                                            </li>
+                                        <li class="item ">
+                        <a href="/module/news?type_id=9572146&menu_id=12250"
+                           class="item-link"  >招聘服务</a>
+                                                <div class="son-nav">
+                            <ul class="son-list">
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/module/news?type_id=9572143&menu_id=12250&self_id=12258">院系介绍</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/module/news?type_id=9572164&menu_id=12250&self_id=12259">生源介绍</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/module/news?type_id=9572165&menu_id=12250&self_id=12261">校企合作</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="http://ynu.bysjy.com.cn/frontend/safe/jump_warning.html?url=iCAb6wtjy7CIdE0U5MWcaw2YjB9UQ30RzLpFNFSu5R1sXMdtC6Thar4%2FjXVUDEDZ&notice_id=0&is_white_host=0&title=&token=&menu_id=12250&self_id=46138">JOBONE</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                                            </li>
+                                        <li class="item ">
+                        <a href="/module/news?type_id=5662&menu_id=46139"
+                           class="item-link"  >就业指导</a>
+                                                <div class="son-nav">
+                            <ul class="son-list">
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/module/news?type_id=9572150&menu_id=46139&self_id=46142">公开课堂</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link" target="_blank" href="/module/news?type_id=9572204&menu_id=46139&self_id=46213">活动集锦</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/module/news?type_id=9572209&menu_id=46139&self_id=46217">就业政策</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/module/news?type_id=9572260&menu_id=46139&self_id=46328">求职指南</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                                            </li>
+                                        <li class="item ">
+                        <a href="/module/news?type_id=9572134&menu_id=12244"
+                           class="item-link"  >服务指南</a>
+                                                <div class="son-nav">
+                            <ul class="son-list">
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/module/news?type_id=9572134&menu_id=12244&self_id=46144">文件下载</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="/module/news?type_id=9572152&menu_id=12244&self_id=46145">办事流程</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link" target="_blank" href="/module/news?type_id=9572203&menu_id=12244&self_id=46212">使用教程</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                                            </li>
+                                        <li class="item ">
+                        <a href="http://ynu.bysjy.com.cn/frontend/safe/jump_warning.html?url=AFq%2B%2B6A2LURSQdyAv8pOSHFC%2FFUn5SoW0HZp%2F5I5xqk%3D&notice_id=0&is_white_host=1&title=&token=&menu_id=12251"
+                           class="item-link"  >24365入口</a>
+                                                <div class="son-nav">
+                            <ul class="son-list">
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="http://ynu.bysjy.com.cn/frontend/safe/jump_warning.html?url=rVznuXYJ0zbjXZLBTU7JD%2BgjFKz%2BItCjDJNFoDUq8YPMSb%2FiY6vt%2BCa3fL15wDyB&notice_id=0&is_white_host=1&title=&token=&menu_id=12251&self_id=12254">分站入口</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="http://ynu.bysjy.com.cn/frontend/safe/jump_warning.html?url=rVznuXYJ0zbjXZLBTU7JDzfEaEsn3u0vhbpWjB4oySMq2WmbLdj8NiD%2BC0jI0Z2m&notice_id=0&is_white_host=1&title=&token=&menu_id=12251&self_id=12255">毕业生入口</a>
+                                </li>
+                                                                <li class="son-item">
+                                    <a class="son-link"  href="http://ynu.bysjy.com.cn/frontend/safe/jump_warning.html?url=rVznuXYJ0zbjXZLBTU7JDy%2F0rOScvrqjFfTWV8E0WwU%2FWPSEyRtzfOBfBYVfGIs%2F&notice_id=0&is_white_host=1&title=&token=&menu_id=12251&self_id=12256">用人单位入口</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                                            </li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="job-detail" id="job_app" v-cloak>
+    <div class="job-detail-wrap">
+        <div class="pub-curr-pos job-detail-breadcrumb">
+            <a :href="homeUrl">首页</a><span class="sep">/</span><span>{{ secondNavName }}</span><span class="sep">/</span><span>详情</span>
+        </div>
+        <!-- 招聘提示（老版举报入口恒显示，保留老版行为；与职位信息卡一样通栏占满一整行） -->
+                <p class="job-warning">
+                    <i class="iconfontal icon-xiaoxi-lingdang" aria-hidden="true"></i>招聘提示：{{ warningText }}<a
+                        class="job-warning-report"
+                        href="javascript:;"
+                        @click="openComplaint">校园招聘违规举报</a>
+                </p>
+                <!-- 职位信息卡：职位名/单位 + 薪资/条件 + 统计 + 操作按钮 -->
+                <div class="job-detail-card job-hero">
+                    <div class="job-hero-top">
+                        <div class="job-hero-main">
+                            <h1 class="job-hero-title">{{ job.job_name }}</h1>
+                            <p class="job-hero-company">{{ company.company_name }}</p>
+                        </div>
+                        <div class="job-hero-side">
+                            <div class="job-hero-salary">{{ salaryMain }}<span v-if="salaryUnit" class="salary-unit">{{ salaryUnit }}</span></div>
+                            <div class="job-hero-cond">
+                                <span v-if="degreeText">{{ degreeText }}</span>
+                                <span v-if="job.city_name">{{ job.city_name }}</span>
+                                <span v-if="practiceText">{{ practiceText }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-hero-bottom">
+                        <div class="job-hero-stats">
+                            <div class="job-hero-stat">
+                                <div class="job-hero-stat-label"><i class="iconfontal icon-shijian" aria-hidden="true"></i>发布时间</div>
+                                <div class="job-hero-stat-value">{{ job.publish_time || '-' }}</div>
+                            </div>
+                            <div class="job-hero-stat">
+                                <div class="job-hero-stat-label"><i class="iconfontal icon-renshu" aria-hidden="true"></i>招聘人数</div>
+                                <div class="job-hero-stat-value">{{ job.job_number || '-' }}</div>
+                            </div>
+                            <div class="job-hero-stat">
+                                <div class="job-hero-stat-label"><i class="iconfontal icon-CRMEB-757-zhiweiguanli-mianxing" aria-hidden="true"></i>职位类别</div>
+                                <div class="job-hero-stat-value">{{ job.category || '-' }}</div>
+                            </div>
+                            <!-- <div class="job-hero-stat">
+                                <div class="job-hero-stat-label"><i class="iconfontal icon-liulanliang" aria-hidden="true"></i>点击人次</div>
+                                <div class="job-hero-stat-value">{{ job.view_count || '-' }}</div>
+                            </div> -->
+                        </div>
+                        <div class="job-hero-btns">
+                            <el-button v-if="siteIsOpenAi" class="job-ai-btn" @click="openAiQrcode($event)">
+                                <div style="display:flex;align-items:center;">
+                                    <img src="https://o.bysjy.com.cn/yxqqnn2200000006/mates/202412/yxz675abe19b1200.svg" class="job-ai-img" alt="" />模拟面试
+                                </div>
+                            </el-button>
+                            <el-button
+                                v-if="!hideDeliverBtn"
+                                class="job-deliver-btn"
+                                :class="{'is-applied': isApply === 1}"
+                                :disabled="isApply === 1"
+                                @click="openDeliver">{{ isApply === 1 ? '已投递' : '投递简历' }}</el-button>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="job-detail-layout">
+            <div class="job-detail-main">
+
+                <!-- 职位描述 + 单位简介（同一卡片，上下分区）；需求专业置于职位描述上方，标题同款样式，随原文展示不拆标签 -->
+                <div class="job-detail-card">
+                    <template v-if="job.about_major">
+                        <h2 class="job-detail-title">需求专业</h2>
+                        <p class="job-major-text">{{ job.about_major }}</p>
+                    </template>
+                    <h2 class="job-detail-title">职位描述</h2>
+                    <div v-if="welfareTags.length" class="job-tag-list">
+                        <span
+                            v-for="(tag, tagIdx) in welfareTags"
+                            :key="'tag-' + tagIdx"
+                            class="job-tag">{{ tag }}</span>
+                    </div>
+                    <div v-if="hasDescription" class="job-desc">
+                        <div v-if="job.job_descript" class="job-desc-block">
+                            <p class="job-desc-label">岗位职责：</p>
+                            <div class="job-desc-text" v-html="job.job_descript"></div>
+                        </div>
+                        <div v-if="job.job_require" class="job-desc-block">
+                            <p class="job-desc-label">岗位要求：</p>
+                            <div class="job-desc-text" v-html="job.job_require"></div>
+                        </div>
+                        <div v-if="job.intro_apply" class="job-desc-block">
+                            <p class="job-desc-label">投递说明：</p>
+                            <div class="job-desc-text" v-html="job.intro_apply"></div>
+                        </div>
+                        <div v-if="job.job_other" class="job-desc-block">
+                            <p class="job-desc-label">其他描述：</p>
+                            <div class="job-desc-text" v-html="job.job_other"></div>
+                        </div>
+                    </div>
+                    <div v-else class="job-desc-empty">暂无数据</div>
+
+                    <h2 class="job-detail-title job-detail-title-gap">单位简介</h2>
+                    <div v-if="company.introduction" class="job-desc-text" v-html="company.introduction"></div>
+                    <div v-else class="job-desc-empty">暂无数据</div>
+                </div>
+            </div>
+
+            <div class="job-detail-side">
+                <!-- 企业信息（参照 online.html） -->
+                <div class="job-detail-card">
+                    <h2 class="job-side-title"><i class="iconfontal icon-qiye" aria-hidden="true"></i>企业信息</h2>
+                    <template v-if="hasCompany">
+                        <div class="job-company-head">
+                            <img class="job-company-logo" :src="company.logo_url || '/public/images/global/default-logo.png'" alt="企业logo" />
+                            <div class="job-company-meta">
+                                <p class="job-company-name">{{ company.company_name }}</p>
+                                <div v-if="internshipTags.length" class="job-company-tags">
+                                    <span v-for="tag in internshipTags" :key="tag" class="ci-tag" :title="tag">{{ tag }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-company-info">
+                            <p v-if="company.industry_category"><b>行业：</b><span class="val">{{ company.industry_category }}</span></p>
+                            <p v-if="company.scale"><b>规模：</b><span class="val">{{ company.scale }}</span></p>
+                            <p v-if="company.address"><b>地址：</b><span class="val">{{ company.address }}</span></p>
+                        </div>
+                        <a class="job-company-btn" :href="'/detail/company?company_id=' + company.company_id" target="_blank">查看企业详情</a>
+                    </template>
+                    <div v-else class="job-side-empty">暂无企业信息</div>
+                </div>
+
+                <!-- 企信等级（参照 online.html 的 qxdj 卡；老版等级规则原样保留：投诉≥1 显示 D，全 A 变绿） -->
+                <div v-if="credit" class="job-detail-card qxdj">
+                    <div class="job-credit">
+                        <div class="credit-qxdj">
+                            <div class="credit-progress">
+                                <svg class="progress-ring" viewBox="0 0 120 120" aria-hidden="true">
+                                    <circle class="progress-ring-bg" cx="60" cy="60" r="54"></circle>
+                                    <circle class="progress-ring-value" cx="60" cy="60" r="54" :stroke-dasharray="progressDash"></circle>
+                                </svg>
+                                <img class="progress" src="https://o.bysjy.com.cn/public/website/public/images/detail/xing.png" alt="云研企信等级" />
+                            </div>
+                            <div class="chil-text">
+                                <div class="job-credit-level" :class="{'is-green': creditGreen}">{{ creditGrade }}</div>
+                                <div class="job-credit-tip">云研企信等级</div>
+                                <p class="job-credit-beat">超越 <span style="color: #F7A753;font-size: 14px;">{{ credit.percent_beat }} %</span> 的校园招聘企业</p>
+                            </div>
+                        </div>
+                        <div class="job-credit-items">
+                            <div class="job-credit-item">
+                                <img src="https://o.bysjy.com.cn/public/website/public/images/detail/cd1.png" alt="资料完整度" />
+                                <p>资料完整度</p>
+                                <p class="b1"><b>{{ credit.info_integrity_grade }}</b>&nbsp;({{ credit.info_integrity_score }}%)</p>
+                            </div>
+                            <div class="job-credit-item">
+                                <img src="https://o.bysjy.com.cn/public/website/public/images/detail/cd2.png" alt="招聘活跃度" />
+                                <p>招聘活跃度</p>
+                                <p class="b2"><b>{{ credit.recruit_liveness_grade }}</b>&nbsp;({{ credit.recruit_liveness_score }}分)</p>
+                            </div>
+                            <div class="job-credit-item">
+                                <img src="https://o.bysjy.com.cn/public/website/public/images/detail/cd3.png" alt="高校审核" />
+                                <p>高校审核</p>
+                                <p class="b3"><b>{{ credit.income_audit_grade }}</b>&nbsp;({{ credit.income_audit_cnt }}家)</p>
+                            </div>
+                            <div class="job-credit-item">
+                                <img src="https://o.bysjy.com.cn/public/website/public/images/detail/cd4.png" alt="学生投诉" />
+                                <p>学生投诉</p>
+                                <p class="b4"><b>{{ credit.complaint_cnt }}</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 官方微信（老版内容底部裸图二维码迁至侧栏卡片，老版文案保留） -->
+                <div v-if="!officialQrcodeError" class="job-detail-card">
+                    <h2 class="job-side-title"><i class="el-icon-chat-dot-round side-title-icon" aria-hidden="true"></i>官方微信</h2>
+                    <div class="job-qrcode">
+                        <img :src="officialQrcodeUrl" alt="官方微信二维码" @error="officialQrcodeError = true" />
+                        <p>在微信扫描关注，可以直接投递简历哟</p>
+                    </div>
+                </div>
+
+                <!-- 分享邀请：微信 / QQ / 复制链接（老版顶部分享条迁移至此，online 同款） -->
+                <div class="job-detail-card share">
+                    <h2 class="job-side-title">分享邀请</h2>
+                    <div class="job-share">
+                        <p class="job-share-tip">分享职位，邀请同学一起投递</p>
+                        <div class="job-share-actions">
+                            <div class="job-share-native" ref="shareNative"></div>
+                            <span class="job-share-item" role="button" tabindex="0" @click="copyLink">
+                                <i class="iconfontal icon-lianjie" aria-hidden="true"></i>
+                                <em>复制链接</em>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模拟面试二维码弹窗：还原为 uat2 版本的按钮下方弹层（.popover），由 js/detail/job.js 的 openAiQrcode 动态创建 -->
+
+    <!-- 学生认证弹窗（老版 tmpl_popup 五字段：姓名/身份证/学号/手机/邮箱，校验规则原样保留） -->
+    <el-dialog title="请完成认证" :visible.sync="authVisible" width="480px" append-to-body :close-on-click-modal="false">
+        <el-form label-width="70px" size="small">
+            <el-form-item label="姓名">
+                <el-input v-model="authForm.user_name" placeholder="姓名" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="身份证">
+                <el-input v-model="authForm.id_card_no" placeholder="身份证" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="学号">
+                <el-input v-model="authForm.student_no" placeholder="学号" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="手机">
+                <el-input v-model="authForm.mobile" placeholder="手机" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="邮箱">
+                <el-input v-model="authForm.mail" placeholder="电子邮箱" autocomplete="off"></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button size="small" @click="authVisible = false">取消</el-button>
+            <el-button size="small" type="primary" :loading="authLoading" @click="submitAuth">验证</el-button>
+        </div>
+    </el-dialog>
+
+    <!-- 投诉弹窗（老版 ComplaintDialog 组件原样保留，business_type=职位） -->
+    <complaint-dialog
+        ref="dlgRef"
+        :company_id="companyId"
+        :business_type="'职位'"
+        :business_id="publishId"
+        :company_name="companyName"
+    ></complaint-dialog>
+</div>
+
+<link href="https://o.bysjy.com.cn/public/website/skin/blue/css/rich-37/footer.css?20190104" rel="stylesheet">
+<style>
+    .footer-outside {
+        background: #02549d;
+    }
+
+    .footer-outside * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .footer-content {
+        margin: 0 auto;
+        width: 1200px;
+        color: #ffffff;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 220px;
+        background-image: url("https://minio.bysjy.com.cn/yun-campus-res/template/yndx/bottom-bg-2026.png");
+        background-size: 1191px 199px;
+        background-repeat: no-repeat;
+        background-position: 5px 22px;
+    }
+
+    .footer-content .t {
+        flex: 1;
+    }
+
+    .footer-content .t .title {
+        font-weight: 400;
+        line-height: 30px;
+        font-size: 24px;
+    }
+
+    .footer-content .t .ii-text {
+        display: flex;
+        width: 280px;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .footer-content .t .ti-text {
+        width: 6em;
+        text-align: justify;
+        text-align-last: justify;
+    }
+
+    .footer-content .t .r {
+        position: absolute;
+        top: 0;
+        right: 40px;
+        width: 280px;
+    }
+
+    .foot-wrap {
+        background-color: #004780;
+        color: #ffffff;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .foot-wrap .footer-txt a,.foot-wrap .footer-txt span {
+        color: #ffffff;
+        line-height: 60px;
+        font-size: 14px;
+    }
+
+    .footer-content .right {
+        display: flex;
+        align-items: center;
+        width: 580px;
+        height: 160px;
+        background: rgba(0, 0, 0, 0.1); /* 黑色 + 0.1 透明度 */
+        border-radius: 6px;
+        padding-left: 29px;
+    }
+
+    .right > div {
+        margin-right: 17px;
+    }
+
+    .right .img-card {
+        width: 100px;
+        height: 100px;
+        background-color: #fff;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+    .right .img-card img {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+    .right .img-text {
+        padding-top: 12px;
+        font-size: 14px;
+        text-align: center;
+        width: 100px;
+        line-height: 14px;
+        font-family: Microsoft YaHei, sans-serif;
+        color: #FFFFFF;
+    }
+
+    .wxsys {
+        width: 160px;
+        height: 78px;
+    }
+</style>
+<div class="footer-outside">
+    <div class="footer-content">
+        <div class="t">
+            <p class="title">联系我们<span style="margin-left: 12px; opacity: 0.2">CONTACT</span></p>
+            <div style="position: relative; margin-top: 20px"><p class="ii-text">联系地址：云南省昆明市呈贡区云南大学呈贡校区中山邦翰楼负一楼
+<p class="ii-text">招聘联系邮箱：ydxsjyzx@126.com</p>
+<p class="ii-text">邮编：650500</p>
+<div class="r">
+<p class="ii-text">市场服务科：0871-65148526/65931997</p>
+<p class="ii-text">就业管理科：0871-65033859/65931994</p>
+<p class="ii-text">职业发展科：0871-65931992/65931989</p>
+</div></div>
+        </div>
+        <div class="right">
+            <div>
+                <div class="img-card">
+                                        <img
+                            src="new_govern/yxqqnn0300000001/2026/config/1780022516-8990.jpg"
+                            alt="微信二维码"
+                            onerror="this.src='https://o.bysjy.com.cn/new_govern/yxqqnn0300000001/2026/config/1780022516-8990.jpg'; this.onerror=null;"
+                    >
+                </div>
+                <p class="img-text">云大就业</p>
+            </div>
+            <div>
+                <div class="img-card">
+                                        <img
+                            src="new_govern/yxqqnn0300000001/2026/config/1778745025-9536.jpg"
+                            alt="微信二维码(单独二维码)"
+                            onerror="this.src='https://o.bysjy.com.cn/new_govern/yxqqnn0300000001/2026/config/1778745025-9536.jpg'; this.onerror=null;"
+                    >
+                </div>
+                <p class="img-text">云大就业中心</p>
+            </div>
+            <div style="margin-right: 28px;">
+                <div class="img-card">
+                    <img src="https://o.bysjy.com.cn/new_govern/yxqqnn0300000001/2026/config/1778640543-7261.jpg" alt="网站底部LOGO">
+                </div>
+                <p class="img-text">云大生涯</p>
+            </div>
+            <div>
+                <img src="https://minio.bysjy.com.cn/yun-campus-res/template/yndx/wxsys-2026.png" alt="微信搜一搜" class="wxsys">
+            </div>
+        </div>
+    </div>
+    <div class="foot-wrap">
+        <p class="footer-txt">
+            <span class="text">云南大学版权所有</span>            <span style="padding: 0 10px;">浏览量：今日28057 / 共计4863406</span>
+            <a class="item" href="http://www.bibibi.net" target="_blank" style="color: #F6F6F6;font-size: 14px;">技术支持：云研科技</a>
+        </p>
+    </div>
+</div>
+
+
+
+
+<!-- vue.js -->
+<script type="text/javascript" src="https://minio.bysjy.com.cn/yun-campus-res/src/static/es6-promise.auto.min.js"></script>
+<script type="text/javascript" src="//ss.bysjy.com.cn/static/axios.min.js"></script>
+<script type="text/javascript" src="//ss.bysjy.com.cn/static/vue.min.js"></script>
+<script type="text/javascript" src="https://minio.bysjy.com.cn/yun-campus-res/src/static/httpVueLoader.min.js"></script>
+<script src="https://minio.bysjy.com.cn/yun-campus-res/src/static/element-ui/index.js"></script>
+<script>
+    window.PAGE_DATA = {"params":{"site_logo":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/config\/1778211036-5571.png","jy_qq":"","source_info_url":"","company_tel":1,"logo_text":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/config\/1778640543-7261.jpg","about_us":"","contact_us":"<p class=\"ii-text\">联系地址：云南省昆明市呈贡区云南大学呈贡校区中山邦翰楼负一楼\n<p class=\"ii-text\">招聘联系邮箱：ydxsjyzx@126.com<\/p>\n<p class=\"ii-text\">邮编：650500<\/p>\n<div class=\"r\">\n<p class=\"ii-text\">市场服务科：0871-65148526\/65931997<\/p>\n<p class=\"ii-text\">就业管理科：0871-65033859\/65931994<\/p>\n<p class=\"ii-text\">职业发展科：0871-65931992\/65931989<\/p>\n<\/div>","work_guide":"","contact_dept":"","copyright":"<span class=\"text\">云南大学版权所有<\/span>","institution_like_url":"","site_news_type":"5650","site_notice_type":"5651","site_employee_base":"9572102","site_theme":"rich-37","recruit_warnings":"","hr_site":"https:\/\/hr.bysjy.com.cn","token":"yxqqnn0300000001","contact_tel":"0871-65148526","qrcode_url":"new_govern\/yxqqnn0300000001\/2026\/config\/1778745025-9536.jpg","qrcode_s_url":"new_govern\/yxqqnn0300000001\/2026\/config\/1780022516-8990.jpg"},"recruit_warnings":"","union_list":[],"indexes":[],"swipes":[{"cover_pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/config\/1777347455-1846.png","link":"https:\/\/jobs.ynu.edu.cn\/","title":"2"},{"cover_pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/config\/1777347316-9439.png","link":"https:\/\/jobs.ynu.edu.cn\/","title":"1"}],"navs":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"second_nav_name":"岗位","links":[{"link_name":"云南大学","type":"0","url":"https:\/\/www.ynu.edu.cn\/","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1777358327-7789.png","remark":"","style_type":"1","child_link_name1":"","child_link_url1":"","child_link_name2":"","child_link_url2":""},{"link_name":"教育部","type":"0","url":"http:\/\/ynu.bysjy.com.cn\/frontend\/safe\/jump_warning.html?url=%2BqJ26SDBRaKN6qrMRdi3mnSNpVsDnxVs17LEJYXcz9c%3D&notice_id=0&is_white_host=1&title=&token=","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1778211979-4689.png","remark":"","style_type":"1","child_link_name1":null,"child_link_url1":null,"child_link_name2":null,"child_link_url2":null},{"link_name":"24365大学生就业服务平台","type":"0","url":"http:\/\/ynu.bysjy.com.cn\/frontend\/safe\/jump_warning.html?url=AFq%2B%2B6A2LURSQdyAv8pOSHFC%2FFUn5SoW0HZp%2F5I5xqk%3D&notice_id=0&is_white_host=1&title=&token=","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1777359790-3140.png","remark":"","style_type":"1","child_link_name1":null,"child_link_url1":null,"child_link_name2":null,"child_link_url2":null},{"link_name":"全国高校毕业生就业管理系统","type":"0","url":"http:\/\/ynu.bysjy.com.cn\/frontend\/safe\/jump_warning.html?url=BM%2BdB1xzQZksbSzU2fb%2F2qNijRdJK76Tbhkxwa7oMeLVUsL0B3q1Z8N%2FycMQMOUnnH2jIMQo2kLLK%2FdqRb0Qktb8luL04gBF2%2FT3hUk%2F5Zjm%2FHOzkO%2FCrdUidu6KwV4C&notice_id=0&is_white_host=1&title=&token=","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1777360081-9846.png","remark":"","style_type":"1","child_link_name1":null,"child_link_url1":null,"child_link_name2":null,"child_link_url2":null},{"link_name":"全国征兵网","type":"0","url":"http:\/\/ynu.bysjy.com.cn\/frontend\/safe\/jump_warning.html?url=AfraHW3ea6SvlF8AjeMHPpfJYOqHNisNaiuYBYtyM40%3D&notice_id=0&is_white_host=1&title=&token=","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1777360186-9860.png","remark":"","style_type":"1","child_link_name1":null,"child_link_url1":null,"child_link_name2":null,"child_link_url2":null},{"link_name":"云南高校毕业生智慧就业平台","type":"0","url":"http:\/\/ynu.bysjy.com.cn\/frontend\/safe\/jump_warning.html?url=s97ToykIz0M71q72i73XwBBArxHe8%2B0G%2FIqC6lLvbbI%3D&notice_id=0&is_white_host=0&title=&token=","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1777360308-5305.png","remark":"","style_type":"1","child_link_name1":null,"child_link_url1":null,"child_link_name2":null,"child_link_url2":null}],"systems_links2_long":[],"systems_links2_short":[],"friendship_links":[{"link_type_old_name":"校外招聘","link_type_new_name":"校外招聘","is_hide":0,"link_type":0,"links":[{"link_name":"云南大学","type":"0","url":"https:\/\/www.ynu.edu.cn\/","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1777358327-7789.png","remark":""},{"link_name":"教育部","type":"0","url":"http:\/\/ynu.bysjy.com.cn\/frontend\/safe\/jump_warning.html?url=%2BqJ26SDBRaKN6qrMRdi3mnSNpVsDnxVs17LEJYXcz9c%3D&notice_id=0&is_white_host=1&title=&token=","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1778211979-4689.png","remark":""},{"link_name":"24365大学生就业服务平台","type":"0","url":"http:\/\/ynu.bysjy.com.cn\/frontend\/safe\/jump_warning.html?url=AFq%2B%2B6A2LURSQdyAv8pOSHFC%2FFUn5SoW0HZp%2F5I5xqk%3D&notice_id=0&is_white_host=1&title=&token=","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1777359790-3140.png","remark":""},{"link_name":"全国高校毕业生就业管理系统","type":"0","url":"http:\/\/ynu.bysjy.com.cn\/frontend\/safe\/jump_warning.html?url=BM%2BdB1xzQZksbSzU2fb%2F2qNijRdJK76Tbhkxwa7oMeLVUsL0B3q1Z8N%2FycMQMOUnnH2jIMQo2kLLK%2FdqRb0Qktb8luL04gBF2%2FT3hUk%2F5Zjm%2FHOzkO%2FCrdUidu6KwV4C&notice_id=0&is_white_host=1&title=&token=","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1777360081-9846.png","remark":""},{"link_name":"全国征兵网","type":"0","url":"http:\/\/ynu.bysjy.com.cn\/frontend\/safe\/jump_warning.html?url=AfraHW3ea6SvlF8AjeMHPpfJYOqHNisNaiuYBYtyM40%3D&notice_id=0&is_white_host=1&title=&token=","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1777360186-9860.png","remark":""},{"link_name":"云南高校毕业生智慧就业平台","type":"0","url":"http:\/\/ynu.bysjy.com.cn\/frontend\/safe\/jump_warning.html?url=s97ToykIz0M71q72i73XwBBArxHe8%2B0G%2FIqC6lLvbbI%3D&notice_id=0&is_white_host=0&title=&token=","pic":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/site_config\/1777360308-5305.png","remark":""}]},{"link_type_old_name":"兄弟院校","link_type_new_name":"兄弟院校","is_hide":0,"link_type":1,"links":[]},{"link_type_old_name":"相关企业","link_type_new_name":"相关企业","is_hide":0,"link_type":2,"links":[]},{"link_type_old_name":"教育机构","link_type_new_name":"教育机构","is_hide":0,"link_type":3,"links":[]}],"other_links":[],"famous_company":[],"link_8":[],"menu_id":"","job":{"publish_id":2490410,"job_name":"中建八局华南公司2027届校招生","salary":"10K-15K\/月","city_name":"广州市 韶关市 深圳市 珠海市 汕头市 佛山市 江门市 湛江市 茂名市 肇庆市 惠州市 梅州市 汕尾市 河源市 阳江市 清远市 东莞市 中山市 潮州市 揭阳市 云浮市 福州市 厦门市 莆田市 三明市 ","keywords":"岗前培训 节日礼物 绩效奖金 岗位晋升 带薪年假","is_practice":0,"about_major":"不限专业","publish_hr_openid":"o1sVpuBnAtcdlq_Flm2q1IqVrNKw","job_number":"10","degree_require":"本科及以上","job_descript":"<p style=\"text-indent: 43px; line-height: 33px; text-align: left;\"><\/p><p style=\"line-height: 37px; text-align: left;\">【战略发展类】<\/p><p style=\"line-height: 37px; text-align: left;\">1.涉水业务：港口航道与海岸工程、港口、海岸及近海工程、水利水电工程、水文与水资源工程、水务工程等<\/p><p style=\"line-height: 37px; text-align: left;\">2.石油化工：石油工程、油气储运工程、应用化工技术、石油化工技术等<\/p><p style=\"line-height: 37px; text-align: left;\">3.矿山工程：矿山工程、智能采矿工程等<\/p><p style=\"line-height: 37px; text-align: left;\">4.电力工程：电气工程及其自动化、电气工程与智能控制等<\/p><p style=\"line-height: 37px; text-align: left;\">5.科创产业：建筑工业化、绿色低碳、智能建造、数字产业等<\/p><p style=\"line-height: 37px; text-align: left;\">【高端房建类】<\/p><p style=\"line-height: 37px; text-align: left;\">土木工程、安全工程、工程管理、工程造价、机械工程、交通运输等<\/p><p style=\"line-height: 37px; text-align: left;\">【传统基础设施类】<\/p><p style=\"line-height: 37px; text-align: left;\">道路桥梁与渡河工程、铁道工程、城市地下空间工程、市政工程、交通工程、地质工程、岩土工程、隧道工程<\/p><p style=\"line-height: 37px; text-align: left;\">【机电安装】<\/p><p style=\"line-height: 37px; text-align: left;\">建筑电气与智能化、电气工程及其自动化、给排水科学与工程、建筑环境与能源应用工程等<\/p><p style=\"line-height: 37px; text-align: left;\">【建筑设计\/装饰装修类】<\/p><p style=\"line-height: 37px; text-align: left;\">建筑学、风景园林、环境设计、艺术设计(室内方向)等<\/p><p style=\"line-height: 37px; text-align: left;\">【职能管理类】<\/p><p style=\"line-height: 37px; text-align: left;\">1.人力资源方向：工商管理、人力资源管理等<\/p><p style=\"line-height: 37px; text-align: left;\">2.党建宣传方向：新闻传播学、政治学与行政学、马克思主义理论等<\/p><p style=\"line-height: 37px; text-align: left;\">3.行政办公方向：行政管理、公共管理、汉语言文学等<\/p><p style=\"line-height: 37px; text-align: left;\">4.财务管理方向：会计学、金融学、财务管理等<br>5.法务管理方向：法学、法律（非法学）等<\/p><p><br><\/p>","category":"建筑工程师","welfare":"六险二金","job_require":"<p style=\"text-indent: 43px; line-height: 33px; text-align: left;\"><strong>1、学业要求：<\/strong>应届本科及以上学历，通过英语四级（意向海外岗位须通过英语六级）；<\/p><p style=\"text-indent: 43px; line-height: 33px; text-align: left;\"><strong>2、个人素质：<\/strong>身心健康，素质强，有较强的适应能力和抗压意识，有吃苦耐劳的意识、秉性和心态，有较强的沟通能力、文字组织能力及逻辑思维能力；<\/p><p style=\"text-indent: 43px; line-height: 33px; text-align: left;\"><strong>3、团队意识：<\/strong>热爱建筑施工行业，做事积极主动、领悟能力强、责任心强，具有良好的团队合作意识；<\/p><p style=\"text-indent: 43px; line-height: 33px; text-align: left;\"><strong>4、企业认同：<\/strong>认同中建八局的企业文化，对行业有基本认知，能适应建筑施工行业环境；<\/p><p style=\"text-indent: 43px; line-height: 33px; text-align: left;\"><strong>5、<\/strong><strong>其他要求：<\/strong>就业协议签订前，必须通过两次中建测评。需服从公司工作地域的分配。<\/p><p><br><\/p>","view_count":10597,"job_other":"<p style=\"text-indent: 43px; line-height: 33px; text-align: left;\"><strong>1<\/strong><strong>、<\/strong><strong>薪酬<\/strong><strong>：<\/strong>职级绩效工资、企业效益奖\/项目兑现奖金<\/p><p style=\"text-indent: 43px; line-height: 33px; text-align: left;\"><strong>2、<\/strong><strong>福利<\/strong><strong>：<\/strong>六险两金、项目免费食宿、职称补贴、执业资格补贴、降温费、过节费、年度体检、企业培训、带薪假期、集体生日等等。<\/p><p style=\"text-indent: 43px; line-height: 33px; text-align: left;\"><strong>3、其他：<\/strong>广州户口<\/p>","intro_apply":"<p style=\"text-indent: 43px; line-height: 33px; text-align: left;\">投递简历——AI简历评估——中建测评——AI面试——人工面试——择优录取<\/p><p><br><\/p>","work_address":null,"job_status":"招聘中","publish_time":"2026年10月22日","end_time":"2027年10月22日","time_type":"","amount_welfare_min":null,"amount_welfare_max":null,"modify_time":1792632521,"original_job_number":"","original_salary":"","source":"hr","company":{"state":"已认证","is_disable":0,"company_id":149359,"company_name":"中国建筑第八工程局有限公司华南分公司","review":null,"introduction":"中国建筑第八工程局有限公司（简称中建八局）是隶属于世界五百强企业中国建筑股份有限公司的国有大型建筑施工骨干企业，局总部设在上海。2008年中建八局主要经济技术指标位列中建股份工程局第一名，是最具竞争力和成长性的中国建筑旗舰。中建八局前身是国家建工部直属企业，下辖8个一级资质的全资或控股子公司，两个甲级资质的设计院，8个地区事业部性质的直营公司（由总部直接管理）。中建八局华南分公司是八局分布在华南区域的直营公司。中建八局连续18年被评为省级“重合同、守信用”企业和“AAA”级资信企业，并先后获得“全国用户满意企业”、“全国质量奖”、“全国质量效益型先进施工企业”、“全国重合同守信用企业”、“中国诚信经营企业”、“全国思想政治工作优秀企业”和上海市“优秀施工企业”等称号。","job_mail":"15580034082@163.com","apply_url":null,"industry_category":"房地产业","scale":"1000-5000人","city_name":"广州市","address":"广东省广州市天河区科学大道99号科汇金谷2街8号中建八局华南分公司","logo_url":"https:\/\/yun-campus-res.oss-cn-shenzhen.aliyuncs.com\/company\/1526454651-4272.JPG?x-oss-process=style\/w128-h128","hotcount":3,"video_url":null,"scene_pics":null,"internship_base_tag":[]},"is_apply":0,"apply_cnt":"31","company_id":149359,"company_name":"中国建筑第八工程局有限公司华南分公司","company_address":"广东省广州市天河区科学大道99号科汇金谷2街8号中建八局华南分公司"},"credit_info":{"credit_id":173881,"company_id":149359,"info_integrity_grade":"B","info_integrity_score":76,"recruit_liveness_grade":"A","recruit_liveness_score":305,"income_audit_grade":"A","income_audit_cnt":56,"complaint_cnt":0,"total_score":5981,"ranking":6429,"update_time":"2026年11月2日","billboard_rank":3309,"percent_beat":"99.06"},"is_exist_credit":1,"is_login":0,"is_authentication":0,"student_key":"","is_apply":0,"site_is_open_ai":1};
+    window.PAGE_TOKEN = "yxqqnn0300000001";
+    window.PAGE_THEME = {
+        style: "blue",
+        colors: ["#1e649f","#60b0f4","#60b0f4","#e19b60"],
+        colorMap: {"default":["#0fb89f","#06a18a","#06a18a","#f04760"],"red":["#d0122c","#ff9095","#ff9095","#2fedd3"],"redGold":["#d72825","#fa9829","#fa9829","#28d7da"],"dullRed":["#804000","#a0522d","#c67f5e","#7fbfff"],"wineRed":["#850000","#a90d0d","#c45353","#7affff"],"brightRed":["#a80e0e","#d0122c","#ce5061","#57f1f1"],"orange":["#f53d05","#ff8657","#ff8657","#0ac2fa"],"yellow":["#e5c44f","#ffeca7","#ffeca7","#1a3bb0"],"green":["#44b549","#50df56","#50df56","#bb4ab6"],"blue":["#1e649f","#60b0f4","#60b0f4","#e19b60"],"deepBlue":["#022493","#033dfb","#3c5dd0","#fddb6c"],"purple":["#a3316a","#f699c8","#f699c8","#5cce95"],"cyan":["#0e746b","#14a69a","#14a69a","#f18b94"],"goldGrey":["#b5a783","#dacdad","#dad1b9","#4a587c"],"orangeYellow":["#e0563f","#ef9b09","#ef9b09","#1fa9c0"],"deepGreen":["#005937","#09a066","#09a066","#09a066"],"blackBlue":["#1d3c56","#47c0ff","#47c0ff","#e19b60"],"blackishGreen":["#0b7c81","#0D9398","#CAECED","sienna"],"anShanBlue":["#0c3088","#0c3088","#0c3088","#0c3088"],"blueHndx":["#004780","#004780","#004780","#004780"],"deepPurple":["#7e1b5c","#7e1b5c","#7e1b5c","#7e1b5c"],"deepRed":["#cc1402","#cc1402","#cc1402","#cc1402"],"GFKDcolor":["#cc1402","#cc1402","#cc1402","#cc1402"],"greengrass":["#25873a","#25873a","#25873a","#25873a"],"jilinColor":["#b5a783","#b5a783","#b5a783","#b5a783"],"jiujiangColor":["#3499e7","#3499e7","#3499e7","#3499e7"],"medicalRed":["#ae0b2a","#ae0b2a","#ae0b2a","#ae0b2a"],"xinanshiyouColor":["#1f499d","#1f499d","#1f499d","#1f499d"],"zongColor":["#c4663c","#c4663c","#c4663c","#c4663c"]}    };
+    var G_MODULES = [['js/detail_v2', 'job']];
+    var __page_ver = 2026101703;
+</script>
+<script type="text/javascript" charset="utf-8" src="/common/shield.js?v=20210712"></script>
+<!-- <script src="/public/js/libs/??jquery/jquery.min.js,seajs/sea.js,3rd/seajs-combo.js,jquery/jquery-extend.js,3rd/jquery-cookie.js?v=20190104,jquery/pagination.min.js?v=202063"></script> -->
+<script src="//o.bysjy.com.cn/public/jy_js/lib/jquery/jquery.min.js?v=202063"></script>
+<script src="//o.bysjy.com.cn/public/jy_js/lib/seajs/sea.js?v=202063"></script>
+<script src="//o.bysjy.com.cn/public/jy_js/seajs-combo.js?v=202063"></script>
+<script src="//o.bysjy.com.cn/public/jy_js/lib/jquery/jquery-extend.js?v=202063"></script>
+<script src="//o.bysjy.com.cn/public/jy_js/lib/jquery/jquery-cookie.js?v=202063"></script>
+<script src="//o.bysjy.com.cn/public/jy_js/lib/jquery/pagination.min.js?v=202063"></script>
+<script>
+    if(location.host == "sxsfdx.bysjy.com.cn"){
+        document.body.style = "";
+        document.title = "非常抱歉，该网站已经关闭";
+        document.body.innerHTML = `<style>
+        .outside123 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f6f6f6;
+        }
+        .container123 {
+            width: 600px;
+            background: white;
+            padding: 24px;
+            border: 1px solid #ebebeb;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 16px;
+        }
+        </style>
+        <div class="outside123">
+            <div class="container123">
+                非常抱歉，该网站已经关闭!
+            </div>
+        </div>`;
+        throw SyntaxError();
+    }
+    var G_CONFIG = {"version":"20190104","picPath":"https://o.bysjy.com.cn","aliPath":"https://yun-campus-res.oss-cn-shenzhen.aliyuncs.com","hrSite":"https://hr.bysjy.com.cn","school_union_from":0};
+    //版本更新
+    var config = {
+        base: '/',
+        // js拆分，使用oss的js文件
+        paths: {
+            'libs': 'https://o.bysjy.com.cn/public/website/public/js/libs',
+            'plugs':'https://o.bysjy.com.cn/public/website/public/js/plugs'
+        },
+        comboSuffix: '?' + G_CONFIG.version,
+        // 禁止 SeaJS 将模块合并请求
+        comboExcludes: /.*/
+    };
+    if(window.__page_ver){
+        config.comboSuffix = config.comboSuffix + __page_ver;
+    }
+    config.comboSuffix = config.comboSuffix + '0001';
+
+    _modulePath = [];
+    for (var i = 0, len = G_MODULES.length; i < len; i++) {
+        var module = G_MODULES[i];
+        _modulePath.push(module.join('/'));
+    }
+
+    seajs.config(config);
+
+    _modulePath.push('libs/template');
+    _modulePath.push('plugs/browserCheck');
+//  _modulePath.push('plugs/floatToolbar');
+//  _modulePath.push('plugs/customCombox');
+
+    seajs.use(_modulePath, function () {
+//      //主导航
+//        $.browserCheck();
+        //$('#main_nav').mainNav();
+//      $('.j-pub-combox').customCombox();
+//
+//      // 咨询qq
+//      var params = {"site_logo":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/config\/1778211036-5571.png","jy_qq":"","source_info_url":"","company_tel":1,"logo_text":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/config\/1778640543-7261.jpg","about_us":"","contact_us":"<p class=\"ii-text\">\u8054\u7cfb\u5730\u5740\uff1a\u4e91\u5357\u7701\u6606\u660e\u5e02\u5448\u8d21\u533a\u4e91\u5357\u5927\u5b66\u5448\u8d21\u6821\u533a\u4e2d\u5c71\u90a6\u7ff0\u697c\u8d1f\u4e00\u697c\n<p class=\"ii-text\">\u62db\u8058\u8054\u7cfb\u90ae\u7bb1\uff1aydxsjyzx@126.com<\/p>\n<p class=\"ii-text\">\u90ae\u7f16\uff1a650500<\/p>\n<div class=\"r\">\n<p class=\"ii-text\">\u5e02\u573a\u670d\u52a1\u79d1\uff1a0871-65148526\/65931997<\/p>\n<p class=\"ii-text\">\u5c31\u4e1a\u7ba1\u7406\u79d1\uff1a0871-65033859\/65931994<\/p>\n<p class=\"ii-text\">\u804c\u4e1a\u53d1\u5c55\u79d1\uff1a0871-65931992\/65931989<\/p>\n<\/div>","work_guide":"","contact_dept":"","copyright":"<span class=\"text\">\u4e91\u5357\u5927\u5b66\u7248\u6743\u6240\u6709<\/span>","institution_like_url":"","site_news_type":"5650","site_notice_type":"5651","site_employee_base":"9572102","site_theme":"rich-37","recruit_warnings":"","hr_site":"https:\/\/hr.bysjy.com.cn","token":"yxqqnn0300000001","contact_tel":"0871-65148526","qrcode_url":"new_govern\/yxqqnn0300000001\/2026\/config\/1778745025-9536.jpg","qrcode_s_url":"new_govern\/yxqqnn0300000001\/2026\/config\/1780022516-8990.jpg"};
+//
+//      $.floatToolbar({qq:params.jy_qq});
+
+//      arguments[0].init(Array.prototype.slice.call(arguments, 1));
+    });
+    _modulePath_2 = [];
+    for (var i = 0, len = G_MODULES.length; i < len; i++) {
+        var module = G_MODULES[i];
+        _modulePath_2.push(module.join('/'));
+    }
+    _modulePath_2.push('plugs/browserCheck');
+    _modulePath_2.push('plugs/mainNav');
+    let showFloatToolbar = !$('#App')[0];
+    if(showFloatToolbar){
+        _modulePath_2.push('plugs/floatToolbar');
+    }
+    _modulePath_2.push('plugs/customCombox');
+    seajs.use(_modulePath_2, function () {
+        //主导航
+        $.browserCheck && $.browserCheck();
+        $('#main_nav').mainNav();
+        $('#top_nav').mainNav();
+        $('.j-pub-combox').customCombox();
+
+        // 咨询qq
+        var params = {"site_logo":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/config\/1778211036-5571.png","jy_qq":"","source_info_url":"","company_tel":1,"logo_text":"https:\/\/o.bysjy.com.cn\/new_govern\/yxqqnn0300000001\/2026\/config\/1778640543-7261.jpg","about_us":"","contact_us":"<p class=\"ii-text\">\u8054\u7cfb\u5730\u5740\uff1a\u4e91\u5357\u7701\u6606\u660e\u5e02\u5448\u8d21\u533a\u4e91\u5357\u5927\u5b66\u5448\u8d21\u6821\u533a\u4e2d\u5c71\u90a6\u7ff0\u697c\u8d1f\u4e00\u697c\n<p class=\"ii-text\">\u62db\u8058\u8054\u7cfb\u90ae\u7bb1\uff1aydxsjyzx@126.com<\/p>\n<p class=\"ii-text\">\u90ae\u7f16\uff1a650500<\/p>\n<div class=\"r\">\n<p class=\"ii-text\">\u5e02\u573a\u670d\u52a1\u79d1\uff1a0871-65148526\/65931997<\/p>\n<p class=\"ii-text\">\u5c31\u4e1a\u7ba1\u7406\u79d1\uff1a0871-65033859\/65931994<\/p>\n<p class=\"ii-text\">\u804c\u4e1a\u53d1\u5c55\u79d1\uff1a0871-65931992\/65931989<\/p>\n<\/div>","work_guide":"","contact_dept":"","copyright":"<span class=\"text\">\u4e91\u5357\u5927\u5b66\u7248\u6743\u6240\u6709<\/span>","institution_like_url":"","site_news_type":"5650","site_notice_type":"5651","site_employee_base":"9572102","site_theme":"rich-37","recruit_warnings":"","hr_site":"https:\/\/hr.bysjy.com.cn","token":"yxqqnn0300000001","contact_tel":"0871-65148526","qrcode_url":"new_govern\/yxqqnn0300000001\/2026\/config\/1778745025-9536.jpg","qrcode_s_url":"new_govern\/yxqqnn0300000001\/2026\/config\/1780022516-8990.jpg"};
+
+        if(showFloatToolbar){
+            $.floatToolbar({qq:params.jy_qq});
+        }
+
+        arguments[0].init(Array.prototype.slice.call(arguments, 1));
+    });
+
+    // footer始终靠底部
+    $('body').css({
+        'display': 'flex',
+        'flex-direction': 'column',
+        'height': 'auto',
+        'min-height': '100%'
+    });
+    $('.container').css({
+        'flex': 'auto'
+    });
+        $('.bar-main').click(function(){
+            $('.float-bar .content-wrap').toggleClass('hide');
+        })
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?9d62b12bee08da154fa2a80d8ee90355";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<!-- 学生投递简历通用组件（老版依赖保留：openDeliver(publish_id, jobfair_id, career_id, online_id)） -->
+<script type="text/javascript" src="/public/resources/newcvresume/js/deliver.js?v=20210712"></script>
+</body>
+</html>
+
+
