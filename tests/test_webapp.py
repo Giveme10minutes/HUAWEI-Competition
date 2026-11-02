@@ -6,6 +6,7 @@ These tests use a fake agent; they do not call AgentArts.
 from __future__ import annotations
 
 import tempfile
+import json
 import unittest
 from pathlib import Path
 
@@ -205,6 +206,49 @@ class WebAppTests(unittest.TestCase):
         deleted = self.client.delete(f"/api/profile/{item['id']}")
         self.assertEqual(deleted.status_code, 200)
         self.assertEqual(self.client.get("/api/profile").json()["items"], [])
+
+    def test_agent_uses_current_confirmed_records_without_changing_chat_text(self) -> None:
+        conversation = self.make_conversation()
+        item = self.client.post("/api/profile", json={
+            "category": "现实约束（时间/地点/预算）",
+            "content": "每周可以用两小时探索", "source": "self_reported",
+        }).json()["item"]
+        self.client.post("/api/profile", json={
+            "category": "兴趣与偏好", "content": "待核实兴趣不要发送",
+            "source": "assistant_inferred",
+        })
+        self.client.post(f"/api/profile/{item['id']}/confirm")
+        first = self.client.post("/api/plan/versions", json={
+            "stage_goals": "先了解两种工作活动", "actions": "找一份职业访谈",
+        }).json()["version"]
+        self.client.post(f"/api/plan/versions/{first['id']}/confirm")
+        second = self.client.post("/api/plan/versions", json={
+            "stage_goals": "新规划尚未确认",
+        }).json()["version"]
+
+        user = self.send_message(conversation["id"], "接着我的规划聊聊。")
+        self.assertEqual(self.client.post(f"/api/messages/{user['id']}/respond").status_code, 200)
+        payload = json.loads(self.agent.calls[-1][1].split("\n", 1)[1])
+        self.assertEqual(payload["user_message"], "接着我的规划聊聊。")
+        records = payload["current_records"]
+        self.assertEqual(len(records["confirmed_profile"]), 1)
+        self.assertEqual(records["confirmed_profile"][0]["source"], "self_reported")
+        self.assertEqual(records["confirmed_plan"]["version_no"], 1)
+        self.assertNotIn("待核实兴趣", self.agent.calls[-1][1])
+        self.assertNotIn("新规划尚未确认", self.agent.calls[-1][1])
+        detail = self.client.get(f"/api/conversations/{conversation['id']}").json()
+        self.assertEqual(detail["messages"][0]["content"], "接着我的规划聊聊。")
+
+        # Correcting an item makes it unconfirmed; confirming a new plan replaces v1.
+        self.client.patch(f"/api/profile/{item['id']}", json={"content": "时间暂不确定"})
+        self.client.post(f"/api/plan/versions/{second['id']}/confirm")
+        next_user = self.send_message(conversation["id"], "看一下新版。", "context-second")
+        self.assertEqual(self.client.post(f"/api/messages/{next_user['id']}/respond").status_code, 200)
+        updated = json.loads(self.agent.calls[-1][1].split("\n", 1)[1])["current_records"]
+        self.assertEqual(updated["confirmed_profile"], [])
+        self.assertEqual(updated["confirmed_plan"]["version_no"], 2)
+        self.assertNotIn("每周可以用两小时", self.agent.calls[-1][1])
+        self.assertNotIn("找一份职业访谈", self.agent.calls[-1][1])
 
     def test_plan_history_and_confirmed_versions(self) -> None:
         empty = self.client.get("/api/plan").json()

@@ -28,7 +28,7 @@
         </div>
         <ul id="conversation-list" class="conversation-list"></ul>
         <p id="conversation-empty" class="sidebar-empty">还没有对话。直接说说你的困惑，就会自动开始。</p>
-        <p class="sidebar-foot">对话、线索和规划都保存在本机。</p>
+        <p class="sidebar-foot">记录保存在本机。发送消息时，本轮消息、已确认线索和当前已确认规划会交给在线助手用于回答。</p>
       </aside>
 
       <section class="chat" aria-label="探索对话">
@@ -72,7 +72,7 @@
             <h2>个人线索</h2>
             <span id="profile-count" class="count"></span>
           </div>
-          <p class="panel-note">这里只保存你亲自确认的信息。聊天里助手的推断不会自动变成档案。</p>
+          <p class="panel-note">线索可以先保存为待确认。只有确认后的线索会用于后续对话；聊天里的推断不会自动写入。</p>
 
           <details id="profile-add" class="add-box" open>
             <summary>添加一条线索</summary>
@@ -117,7 +117,7 @@
 
           <div class="editor">
             <h3>编辑规划草稿</h3>
-            <p class="panel-note">可以只写其中一部分；不确定的地方留空就好。确认后仍可修改，旧版本会保留。</p>
+            <p class="panel-note">可从对话中整理或复制内容，只填已讨论的部分。草稿不会自动用于对话；确认后，助手会参考这一版，后续修改保留历史。</p>
             <label for="plan-directions">候选方向及依据</label>
             <textarea id="plan-directions" rows="3" maxlength="8000" placeholder="方向是什么？依据来自哪里？也可以先写几个待比较的可能。"></textarea>
             <label for="plan-gaps">差距与关键未知</label>

@@ -19,6 +19,7 @@ from pydantic import BaseModel
 from . import database
 from .agent import AgentClient, AgentError, LowCodeAgent
 from .config import ROOT, Settings, load_settings
+from .context import build_query
 
 logger = logging.getLogger(__name__)
 
@@ -369,7 +370,8 @@ def create_app(
 
         try:
             reply = agent.reply(
-                session_id=message["conversation_id"], message=message["content"]
+                session_id=message["conversation_id"],
+                message=build_query(settings.db_path, message["content"]),
             )
         except AgentError as exc:
             with database.get_connection(settings.db_path) as conn:
