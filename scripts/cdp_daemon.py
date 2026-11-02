@@ -55,7 +55,30 @@ def ensure():
     return cdp
 
 
+def reset_cdp():
+    cdp = _state.get("cdp")
+    if cdp is not None:
+        try:
+            cdp.close()
+        except Exception:
+            pass
+    _state["cdp"] = None
+    _state["sessions"] = {}
+
+
 def handle(req):
+    """Dispatch one request, reconnecting once if the CDP socket died."""
+    try:
+        return dispatch(req)
+    except (BrokenPipeError, ConnectionError, OSError) as e:
+        log(f"cdp socket lost ({type(e).__name__}), reconnecting")
+        reset_cdp()
+        cdp = ensure()          # new WS handshake = one more "allow" click
+        cdp.call("Target.getTargets")
+        return dispatch(req)
+
+
+def dispatch(req):
     cdp = ensure()
     op = req.get("op", "call")
     if op == "ping":
