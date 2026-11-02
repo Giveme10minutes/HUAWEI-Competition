@@ -25,8 +25,8 @@
 
 | 文件 | 内容 |
 | --- | --- |
-| `岗位样本_BOSS直聘_2026-11-02.csv` | 主表，字段对齐 `data/templates/job_import.csv`，另加薪资、在招状态、平台、原始路径等列 |
-| `来源台账_BOSS直聘_2026-11-02.csv` | 每条记录的来源 URL、采集时间、HTTP 状态、快照路径、核验状态 |
+| `岗位样本_BOSS通用行业_2026-11-02.csv` | 主表，字段对齐 `data/templates/job_import.csv`，另加薪资、在招状态、平台、原始路径等列 |
+| `来源台账_BOSS通用行业_2026-11-02.csv` | 每条记录的来源 URL、采集时间、HTTP 状态、快照路径、核验状态 |
 | `boss_jobs_raw.json` | 采集原始结果（48 条，含 7 条限流记录），保留列表卡片字段与详情字段原文 |
 | `raw_detail_html/` | 职位详情页原始 HTML 快照（gzip，48 份），用于复核与页面改版后重解析 |
 
@@ -61,6 +61,6 @@
 
 ```bash
 python3 scripts/cdp_daemon.py &        # 常驻 CDP 桥，首次连接需在 Chrome 点一次「允许远程调试」
-python3 scripts/boss_collect.py --plan /tmp/plan_full.json --out references/招聘岗位样本_BOSS_2026-11-02 --max-per-keyword 3
-python3 scripts/boss_to_csv.py --raw references/招聘岗位样本_BOSS_2026-11-02/boss_jobs_raw.json --out references/招聘岗位样本_BOSS_2026-11-02/岗位样本_BOSS直聘_2026-11-02.csv
+python3 scripts/boss_collect.py --plan /tmp/plan_full.json --out references/招聘岗位样本_BOSS_通用行业_2026-11-02 --max-per-keyword 3
+python3 scripts/boss_to_csv.py --raw references/招聘岗位样本_BOSS_通用行业_2026-11-02/boss_jobs_raw.json --out references/招聘岗位样本_BOSS_通用行业_2026-11-02/岗位样本_BOSS通用行业_2026-11-02.csv
 ```

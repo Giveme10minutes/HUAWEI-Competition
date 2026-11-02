@@ -116,7 +116,9 @@ def main():
         writer = csv.DictWriter(fh, fieldnames=FIELDS)
         writer.writeheader()
         writer.writerows(rows)
-    ledger_path = out.with_name("来源台账_BOSS直聘_2026-11-02.csv")
+    # 台账名跟随主表名：岗位样本_XXX.csv -> 来源台账_XXX.csv
+    ledger_name = out.name.replace("岗位样本", "来源台账", 1)
+    ledger_path = out.with_name(ledger_name)
     with ledger_path.open("w", newline="", encoding="utf-8-sig") as fh:
         writer = csv.DictWriter(fh, fieldnames=list(ledger[0].keys()) if ledger else ["source_id"])
         writer.writeheader()
