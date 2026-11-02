@@ -26,11 +26,11 @@
 | --- | --- |
 | AgentArts Managed Agents | 保留的连通原型，使用WebSocket调用；不是新低码应用的API |
 | AgentArts低码单智能体 | 通过控制台创建、配置与预览，知识库检索和多轮建议由平台承担 |
-| 低码模型 | 最新页面显示GLM-5.3；此前为DeepSeek-V4-Flash。助手本轮未切换，原因未知；不能将本轮改善仅归因于提示词 |
+| 低码模型 | v0.3回归时GLM-5.3；本轮接口核对时为DeepSeek-V4-Flash。助手未切换；草稿与提交快照分开核对 |
 | 低码知识库 | pangu_embedding向量模型、pangu_rerank精排模型，自动分段 |
 | 本地工具 | Python测试脚本；项目 `.venv` 实查Python 3.15.2、websockets 15.0.1；依赖文件允许websockets>=14,<16，官方前提为Python 3.10+ |
 | 格式与评估材料 | Markdown、JSON Schema及JSON样例、人工案例与本地运行摘要、Excel采集模板 |
-| 版本管理 | Git main；最近提交7758bd5；本次实查无远程地址，有多项未提交和未跟踪文件 |
+| 版本管理 | main保存原型基线8468265，当前开发分支codex/lowcode-api-integration；无远程地址；最新提交见git log及第11节 |
 
 当前实际链路：
 
@@ -166,3 +166,11 @@ FastAPI、SQLite、原生HTML/CSS/JavaScript是已有实施默认建议，未安
 用户已授权整理代码、版本控制并开工。既有Managed Agents调用工具和官方资料按独立里程碑入库；低码提示词、知识种子、回归及交接材料另行入库，不覆盖私有材料。修复some-api.md忽略规则，不改其内容。离线准备检查和Managed Agents dry-run通过。
 
 最新Chrome观察：应用显示“已提交”“尚有未更新版本的修改”，自动保存15:58:49，当前模型DeepSeek-V4-Flash；渠道管理提示“部署成功后查看”。助手未执行提交/部署或换模型。当前草稿、提交快照与部署实例须分别记录，不推断哪个版本正在服务。尚未取得低码实际URL和鉴权，C0进行中。
+
+## 11. C0低码接口工具开工结果
+
+已在main保存两个里程碑：65b82e4为Managed Agents连通工具与官方参考，8468265为低码v0.3、资料种子、回归和交接基线。当前分支codex/lowcode-api-integration，无远程仓库。原稿、私有提交、运行摘要和some-api.md保留本地；官方快照用.gitattributes保留原始空白及字节。
+
+已新增scripts/test_lowcode_agent.py、tests/test_lowcode_agent.py及 [低码API接入说明](低码API接入_2026-11-02.md)，10项离线合成测试和dry-run通过。仅API Key、HTTPS、单智能体SSE；尚无真实低码调用，不复用旧WebSocket或MaaS密钥。没有产品前后端/数据库，未声称C阶段完成。
+
+用户已明确接手云端部署。助手只读打开部署表单：默认版本v20261102155820、IAM鉴权；未点确定。用户需要确认提交快照与草稿差异、完成部署并将完整调用URL及运行时入站密钥填至.env的AGENTARTS_LOWCODE_URL和AGENTARTS_LOWCODE_API_KEY，勿发聊天。若使用其他鉴权，先补适配。填好后进行一次真实连通，再推进业务工具与保存链条。
