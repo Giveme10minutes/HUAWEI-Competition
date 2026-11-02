@@ -1,0 +1,4 @@
+# 本地原型 Web 依赖（已在 .venv 实测：Python 3.15.2）
+fastapi==0.162.0
+uvicorn==0.54.0
+httpx==0.28.1
