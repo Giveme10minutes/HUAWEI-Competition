@@ -47,6 +47,10 @@ class MessageCreate(BaseModel):
     client_id: str = ""
 
 
+class ConversationPatch(BaseModel):
+    pinned: bool
+
+
 class ProfileCreate(BaseModel):
     category: str = ""
     content: str = ""
@@ -88,6 +92,8 @@ def _conversation_payload(row: sqlite3.Row) -> dict[str, Any]:
         "title": row["title"],
         "created_at": row["created_at"],
         "updated_at": row["updated_at"],
+        "pinned": bool(row["pinned"]),
+        "deleted_at": row["deleted_at"],
     }
 
 
@@ -201,7 +207,7 @@ def create_app(
         return {"app_name": APP_NAME, "agent_configured": bool(agent.configured)}
 
     @app.get("/api/conversations")
-    def list_conversations() -> dict[str, Any]:
+    def list_conversations(deleted: bool = False) -> dict[str, Any]:
         with database.get_connection(settings.db_path) as conn:
             rows = conn.execute(
                 """
@@ -212,8 +218,9 @@ def create_app(
                          WHERE m.conversation_id = c.id
                          ORDER BY m.created_at DESC, m.rowid DESC LIMIT 1) AS last_content
                   FROM conversations c
-                 ORDER BY c.updated_at DESC, c.rowid DESC
-                """
+                 WHERE (c.deleted_at IS NOT NULL) = ?
+                 ORDER BY c.pinned DESC, c.updated_at DESC, c.rowid DESC
+                """, (int(deleted),)
             ).fetchall()
         conversations = []
         for row in rows:
@@ -240,11 +247,50 @@ def create_app(
             ).fetchone()
         return {"conversation": _conversation_payload(row)}
 
+    @app.patch("/api/conversations/{conversation_id}")
+    def pin_conversation(conversation_id: str, body: ConversationPatch) -> dict[str, Any]:
+        with database.get_connection(settings.db_path) as conn:
+            changed = conn.execute(
+                "UPDATE conversations SET pinned = ? WHERE id = ? AND deleted_at IS NULL",
+                (int(body.pinned), conversation_id),
+            )
+            if not changed.rowcount:
+                raise HTTPException(status_code=404, detail="没有找到这个对话。")
+        return {"ok": True}
+
+    @app.delete("/api/conversations/{conversation_id}")
+    def delete_conversation(conversation_id: str) -> dict[str, Any]:
+        with database.get_connection(settings.db_path) as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            if conn.execute(
+                "SELECT 1 FROM messages WHERE conversation_id = ? AND status = 'pending'",
+                (conversation_id,),
+            ).fetchone():
+                raise HTTPException(status_code=409, detail="这个对话有消息正在等待回复，请稍后删除。")
+            changed = conn.execute(
+                "UPDATE conversations SET deleted_at = ? WHERE id = ? AND deleted_at IS NULL",
+                (_now(settings), conversation_id),
+            )
+            if not changed.rowcount:
+                raise HTTPException(status_code=404, detail="没有找到这个对话。")
+        return {"ok": True}
+
+    @app.post("/api/conversations/{conversation_id}/restore")
+    def restore_conversation(conversation_id: str) -> dict[str, Any]:
+        with database.get_connection(settings.db_path) as conn:
+            changed = conn.execute(
+                "UPDATE conversations SET deleted_at = NULL WHERE id = ? AND deleted_at IS NOT NULL",
+                (conversation_id,),
+            )
+            if not changed.rowcount:
+                raise HTTPException(status_code=404, detail="没有找到已删除的对话。")
+        return {"ok": True}
+
     @app.get("/api/conversations/{conversation_id}")
     def get_conversation(conversation_id: str) -> dict[str, Any]:
         with database.get_connection(settings.db_path) as conn:
             conversation = conn.execute(
-                "SELECT * FROM conversations WHERE id = ?", (conversation_id,)
+                "SELECT * FROM conversations WHERE id = ? AND deleted_at IS NULL", (conversation_id,)
             ).fetchone()
             if conversation is None:
                 raise HTTPException(status_code=404, detail="没有找到这个对话。")
@@ -271,8 +317,9 @@ def create_app(
             raise HTTPException(status_code=400, detail="消息请求标识无效。")
         now = _now(settings)
         with database.get_connection(settings.db_path) as conn:
+            conn.execute("BEGIN IMMEDIATE")
             conversation = conn.execute(
-                "SELECT * FROM conversations WHERE id = ?", (conversation_id,)
+                "SELECT * FROM conversations WHERE id = ? AND deleted_at IS NULL", (conversation_id,)
             ).fetchone()
             if conversation is None:
                 raise HTTPException(status_code=404, detail="没有找到这个对话。")
@@ -335,8 +382,10 @@ def create_app(
     @app.post("/api/messages/{message_id}/respond")
     def respond_to_message(message_id: str) -> dict[str, Any]:
         with database.get_connection(settings.db_path) as conn:
+            conn.execute("BEGIN IMMEDIATE")
             message = conn.execute(
-                "SELECT * FROM messages WHERE id = ?", (message_id,)
+                """SELECT m.* FROM messages m JOIN conversations c ON c.id = m.conversation_id
+                   WHERE m.id = ? AND c.deleted_at IS NULL""", (message_id,)
             ).fetchone()
             if message is None or message["role"] != "user":
                 raise HTTPException(status_code=404, detail="没有找到这条消息。")

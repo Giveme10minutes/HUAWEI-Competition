@@ -28,6 +28,11 @@
         </div>
         <ul id="conversation-list" class="conversation-list"></ul>
         <p id="conversation-empty" class="sidebar-empty">还没有对话。直接说说你的困惑，就会自动开始。</p>
+        <details class="conversation-trash">
+          <summary>已删除的对话</summary>
+          <p class="hint">可恢复本机对话。删除对话不会删除个人线索、规划或云端会话。</p>
+          <ul id="deleted-conversation-list" class="conversation-list"></ul>
+        </details>
         <p class="sidebar-foot">记录保存在本机。发送消息时，本轮消息、已确认线索和当前已确认规划会交给在线助手用于回答。</p>
       </aside>
 
@@ -146,6 +151,17 @@
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="delete-conversation-dialog" aria-labelledby="delete-conversation-title">
+    <form method="dialog">
+      <h3 id="delete-conversation-title">删除对话？</h3>
+      <p id="delete-conversation-description"></p>
+      <p>可以从“已删除的对话”恢复。个人线索、规划和云端会话不会被删除。</p>
+      <div class="form-actions">
+        <button class="btn" value="cancel" autofocus>取消</button>
+        <button class="btn primary" value="delete">移到已删除</button>
+      </div>
+    </form>
+  </dialog>
   <script src="/static/app.js" defer></script>
 </body>
 </html>

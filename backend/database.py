@@ -16,7 +16,9 @@ CREATE TABLE IF NOT EXISTS conversations (
     id TEXT PRIMARY KEY,
     title TEXT NOT NULL,
     created_at TEXT NOT NULL,
-    updated_at TEXT NOT NULL
+    updated_at TEXT NOT NULL,
+    pinned INTEGER NOT NULL DEFAULT 0,
+    deleted_at TEXT
 );
 
 CREATE TABLE IF NOT EXISTS messages (
@@ -86,6 +88,11 @@ def init_db(db_path: Path) -> None:
     try:
         conn.execute("PRAGMA journal_mode = WAL")
         conn.executescript(SCHEMA)
+        columns = {row[1] for row in conn.execute("PRAGMA table_info(conversations)")}
+        if "pinned" not in columns:
+            conn.execute("ALTER TABLE conversations ADD COLUMN pinned INTEGER NOT NULL DEFAULT 0")
+        if "deleted_at" not in columns:
+            conn.execute("ALTER TABLE conversations ADD COLUMN deleted_at TEXT")
         conn.commit()
     finally:
         conn.close()

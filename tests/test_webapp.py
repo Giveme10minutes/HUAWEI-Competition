@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import tempfile
 import json
+import sqlite3
+from contextlib import closing
 import unittest
 from pathlib import Path
 
@@ -206,6 +208,49 @@ class WebAppTests(unittest.TestCase):
         deleted = self.client.delete(f"/api/profile/{item['id']}")
         self.assertEqual(deleted.status_code, 200)
         self.assertEqual(self.client.get("/api/profile").json()["items"], [])
+
+    def test_pin_delete_restore_conversations_preserves_messages_and_other_records(self) -> None:
+        first = self.make_conversation()
+        user = self.send_message(first["id"])
+        self.assertEqual(self.client.delete(f"/api/conversations/{first['id']}").status_code, 409)
+        self.client.post(f"/api/messages/{user['id']}/respond")
+        second = self.make_conversation()
+        line = self.client.post("/api/profile", json={"category": "其他", "content": "保留的线索"}).json()["item"]
+        plan = self.client.post("/api/plan/versions", json={"actions": "保留的草稿"}).json()["version"]
+        path = f"/api/conversations/{first['id']}"
+        self.assertEqual(self.client.patch(path, json={"pinned": True}).status_code, 200)
+        listed = self.client.get("/api/conversations").json()["conversations"]
+        self.assertEqual(listed[0]["id"], first["id"])
+        self.assertTrue(listed[0]["pinned"])
+        self.assertEqual(self.client.delete(path).status_code, 200)
+        self.assertEqual(self.client.get(path).status_code, 404)
+        self.assertEqual(self.client.post(f"/api/messages/{user['id']}/respond").status_code, 404)
+        self.assertEqual(self.client.post(path + "/messages", json={"content": "不能续写", "client_id": "deleted-send"}).status_code, 404)
+        self.assertEqual([c["id"] for c in self.client.get("/api/conversations").json()["conversations"]], [second["id"]])
+        self.assertEqual(self.client.get("/api/conversations?deleted=true").json()["conversations"][0]["id"], first["id"])
+        with TestClient(create_app(settings=self.settings, agent=FakeAgent())) as reopened:
+            self.assertEqual(len(reopened.get("/api/conversations?deleted=true").json()["conversations"]), 1)
+            self.assertEqual(reopened.post(path + "/restore").status_code, 200)
+            restored = reopened.get(path).json()
+            self.assertTrue(restored["conversation"]["pinned"])
+            self.assertEqual(len(restored["messages"]), 2)
+            self.assertEqual(reopened.patch(path, json={"pinned": False}).status_code, 200)
+            self.assertFalse(reopened.get(path).json()["conversation"]["pinned"])
+            self.assertEqual(reopened.get("/api/profile").json()["items"][0]["id"], line["id"])
+            self.assertEqual(reopened.get("/api/plan").json()["draft"]["id"], plan["id"])
+
+    def test_existing_database_gets_conversation_management_columns(self) -> None:
+        from backend.database import init_db
+        path = Path(self.tempdir.name) / "old.sqlite3"
+        with closing(sqlite3.connect(path)) as conn:
+            with conn:
+                conn.execute("CREATE TABLE conversations (id TEXT PRIMARY KEY, title TEXT NOT NULL, created_at TEXT NOT NULL, updated_at TEXT NOT NULL)")
+                conn.execute("INSERT INTO conversations VALUES ('old', '原有对话', '2026-11-02', '2026-11-02')")
+        init_db(path)
+        init_db(path)
+        with closing(sqlite3.connect(path)) as conn:
+            row = conn.execute("SELECT title, pinned, deleted_at FROM conversations WHERE id = 'old'").fetchone()
+        self.assertEqual(row, ("原有对话", 0, None))
 
     def test_agent_uses_current_confirmed_records_without_changing_chat_text(self) -> None:
         conversation = self.make_conversation()

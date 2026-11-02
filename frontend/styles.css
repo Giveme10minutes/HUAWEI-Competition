@@ -166,6 +166,17 @@ select {
   cursor: pointer;
 }
 
+.conversation-actions { display: flex; gap: 6px; padding: 0 10px 8px; }
+dialog { max-width: min(440px, 90vw); border: 1px solid var(--line-strong); border-radius: 14px; padding: 24px; color: var(--ink); background: var(--paper); }
+dialog::backdrop { background: #0005; }
+dialog p { font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
+.conversation-actions .btn { padding: 3px 8px; font-size: 11px; }
+.conversation-trash { padding: 10px 14px; border-top: 1px solid var(--line-strong); max-height: 30vh; overflow-y: auto; }
+.conversation-trash summary { cursor: pointer; font-size: 12px; }
+.conversation-trash .conversation-list { padding: 0; }
+.deleted-conversation { display: flex; align-items: center; gap: 8px; margin-top: 8px !important; }
+.deleted-conversation .conv-title { flex: 1; min-width: 0; }
+
 .conversation-item:hover {
   background: #f4f2ed;
 }

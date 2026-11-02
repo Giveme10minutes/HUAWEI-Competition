@@ -22,12 +22,14 @@ const STATUS_LABELS = {
 const state = {
   meta: { agent_configured: false },
   conversations: [],
+  deletedConversations: [],
   activeConversationId: null,
   conversationTitle: "新的对话",
   messages: [],
   profileItems: [],
   planData: null,
   busy: false,
+  managingConversation: false,
   replyingMessageId: null,
   editingProfileId: null,
   planEditorSource: null,
@@ -235,8 +237,9 @@ function updateComposerState() {
   const hint = $("#composer-hint");
   send.disabled = state.busy || !input.value.trim();
   newButton.disabled = state.busy;
+  for (const control of $$(".conversation-actions button, #deleted-conversation-list button")) control.disabled = state.busy;
   if (state.busy) {
-    hint.textContent = state.replyingMessageId
+    hint.textContent = state.managingConversation ? "正在更新对话…" : state.replyingMessageId
       ? "助手正在回复，请稍候…"
       : "正在发送…";
   } else {
@@ -276,7 +279,7 @@ function renderConversations() {
       node.classList.add("active");
     }
     node.append(
-      el("span", "conv-title", conversation.title || "新的对话"),
+      el("span", "conv-title", `${conversation.pinned ? "置顶 · " : ""}${conversation.title || "新的对话"}`),
       el(
         "span",
         "conv-preview",
@@ -285,9 +288,74 @@ function renderConversations() {
     );
     node.addEventListener("click", () => openConversation(conversation.id));
     item.append(node);
+    const actions = el("div", "conversation-actions");
+    const pin = button(conversation.pinned ? "取消置顶" : "置顶", "btn tiny", () => manageConversation(conversation, "pin"));
+    const remove = button("删除", "btn tiny", () => manageConversation(conversation, "delete"));
+    pin.disabled = remove.disabled = state.busy;
+    actions.append(pin, remove);
+    item.append(actions);
     list.append(item);
   }
   $("#conversation-empty").hidden = state.conversations.length > 0;
+  const trash = $("#deleted-conversation-list");
+  trash.innerHTML = "";
+  for (const conversation of state.deletedConversations) {
+    const item = el("li", "deleted-conversation");
+    item.append(el("span", "conv-title", conversation.title));
+    const restore = button("恢复", "btn tiny", () => manageConversation(conversation, "restore"));
+    restore.disabled = state.busy;
+    item.append(restore);
+    trash.append(item);
+  }
+  if (!state.deletedConversations.length) trash.append(el("li", "hint", "暂无已删除对话。"));
+}
+
+function confirmConversationDelete(title) {
+  const dialog = $("#delete-conversation-dialog");
+  $("#delete-conversation-description").textContent = `将“${title}”移到已删除对话？`;
+  dialog.returnValue = "cancel";
+  return new Promise((resolve) => {
+    dialog.addEventListener("close", () => resolve(dialog.returnValue === "delete"), {once: true});
+    dialog.showModal();
+  });
+}
+
+async function manageConversation(conversation, action) {
+  if (state.busy) return;
+  if (action === "delete" && !await confirmConversationDelete(conversation.title)) return;
+  if (state.busy) return;
+  state.busy = true;
+  state.managingConversation = true;
+  updateComposerState();
+  try {
+    const url = `/api/conversations/${encodeURIComponent(conversation.id)}`;
+    if (action === "pin") {
+      await api(url, {method: "PATCH", body: {pinned: !conversation.pinned}});
+    } else if (action === "restore") {
+      await api(`${url}/restore`, {method: "POST"});
+    } else {
+      await api(url, {method: "DELETE"});
+      if (state.activeConversationId === conversation.id) {
+        state.activeConversationId = null;
+        state.conversationTitle = "新的对话";
+        state.messages = [];
+        state.replyingMessageId = null;
+        rememberConversation("");
+        renderChatHeader();
+        renderMessages();
+        updateComposerState();
+      }
+    }
+    await refreshConversations();
+    toast(action === "pin" ? (conversation.pinned ? "已取消置顶。" : "已置顶。") : action === "restore" ? "对话已恢复。" : "对话已移到已删除列表，可以恢复。");
+  } catch (error) {
+    toast(error.message, "error");
+  } finally {
+    state.busy = false;
+    state.managingConversation = false;
+    renderConversations();
+    updateComposerState();
+  }
 }
 
 function renderMessages() {
@@ -378,8 +446,9 @@ function replaceMessage(id, updated) {
 
 async function refreshConversations() {
   try {
-    const data = await api("/api/conversations");
+    const [data, deleted] = await Promise.all([api("/api/conversations"), api("/api/conversations?deleted=true")]);
     state.conversations = data.conversations;
+    state.deletedConversations = deleted.conversations;
     renderConversations();
     const current = state.conversations.find(
       (conversation) => conversation.id === state.activeConversationId
@@ -416,7 +485,7 @@ async function openConversation(id, options = {}) {
 
 async function createConversation() {
   const data = await api("/api/conversations", { method: "POST" });
-  state.conversations.unshift({
+  state.conversations.push({
     ...data.conversation,
     message_count: 0,
     last_preview: "",
@@ -426,6 +495,7 @@ async function createConversation() {
   state.messages = [];
   state.replyingMessageId = null;
   rememberConversation(data.conversation.id);
+  state.conversations.sort((a, b) => Number(b.pinned) - Number(a.pinned) || b.updated_at.localeCompare(a.updated_at));
   renderConversations();
   renderMessages();
   updateComposerState();
@@ -1167,6 +1237,7 @@ async function init() {
   }
 
   updateComposerState();
+  await refreshConversations();
   $("#message-input").focus();
 }
 
