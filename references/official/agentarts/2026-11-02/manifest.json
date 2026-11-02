@@ -1,0 +1,13 @@
+{
+  "retrieved_date": "2026-11-02",
+  "files": [
+    {
+      "file": "agentarts_04_0003.web.txt",
+      "sha256": "3cbc7e24277551d2e279f1f83b7c8b906507d28929c76aebdf8ab3bbf69e35c6"
+    },
+    {
+      "file": "managed_agents_client.py",
+      "sha256": "9f9c4b9705653aaed1be207b13667ac464f5c0d4e5177f50a26a69faa7186aae"
+    }
+  ]
+}

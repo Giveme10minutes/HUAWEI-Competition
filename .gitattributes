@@ -1,0 +1,2 @@
+# Preserve downloaded official snapshots byte-for-byte.
+references/official/** -whitespace

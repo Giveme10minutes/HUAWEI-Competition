@@ -1,0 +1,562 @@
+创建Managed Agents_开始使用_智果（AgentArts）智能体平台-华为云 (https://support.huaweicloud.com/qs-agentarts/agentarts_04_0003.html)
+citeturn3view0 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://support.huaweicloud.com/qs-agentarts/agentarts_04_0003.html","lineno":114}); Total lines: 559
+L0: 检测到您已登录华为云国际站账号，为了您更好的体验，建议您访问国际站服务网站 【0†https://www.huaweicloud.com/intl/zh-cn†www.huaweicloud.com】
+L1: 
+L2: 不再显示此消息
+L3: 
+L4: * 中国站
+L5: 
+L6: 中国站
+L7: 
+L8:   * 【1†简体中文†www.huaweicloud.com】
+L9: 
+L10: International
+L11: 
+L12:   * 【2†English†www.huaweicloud.com】
+L13:   * 【3†Bahasa Indonesia†www.huaweicloud.com】
+L14:   * 【4†Español†www.huaweicloud.com】
+L15:   * 【5†Português†www.huaweicloud.com】
+L16:   * 【6†Türkçe†www.huaweicloud.com】
+L17:   * 【7†عربي†www.huaweicloud.com】
+L18:   * 【8†ไทย†www.huaweicloud.com】
+L19:   * 【9†简体中文†www.huaweicloud.com】
+L20:   * 【10†日本語†www.huaweicloud.com】
+L21: 
+L22: Europe
+L23:   * 【11†English†www.huaweicloud.com】
+L24:   * 【12†Deutsch†www.huaweicloud.com】
+L25:   * 【13†Español†www.huaweicloud.com】
+L26:   * 【14†Français†www.huaweicloud.com】
+L27:   * 【15†Nederlands†www.huaweicloud.com】
+L28: 
+L29: * 【16†华为云App†www.huaweicloud.com】
+L30: 
+L31:   * 智果园
+L32:   * 活动
+L33:   * 产品
+L34:   * 解决方案
+L35:   * 定价
+L36:   * 云商店
+L37:   * 伙伴
+L38:   * 开发者
+L39:   * 服务
+L40:   * 了解华为云
+L41: 
+L42: 清空最近搜索
+L43: 
+L44: 快速链接
+L45: 
+L46:   * 云耀云服务器L实例
+L47:   * 免费试用
+L48:   * 云服务器
+L49:   * 域名
+L50:   * 云速建站
+L51: 
+L52: 使用云宝助手，探索更多专业内容
+L53: 
+L54: [Input: 搜索]
+L55: 
+L56:   *     * 售前咨询
+L57: 
+L58: 950808 转 1
+L59: 
+L60:     * 【17†预约咨询†www.huaweicloud.com】
+L61: 
+L62:     * 售后服务
+L63: 
+L64: 【18†工单提交†console.huaweicloud.com】
+L65:     * 建议反馈
+L66: 
+L67: 【19†我有建议†bbs.huaweicloud.com】
+L68: 
+L69:   * 【20†文档】
+L70:   * 【21†备案†beian.huaweicloud.com】
+L71:   * 【22†控制台†console.huaweicloud.com】
+L72:   *     * 【23†账号中心†account.huaweicloud.com】
+L73:     * 【24†费用与成本†account.huaweicloud.com】
+L74:     *     * 【25†待支付订单†account.huaweicloud.com】
+L75:     * 【26†待续费产品†account.huaweicloud.com】
+L76:     * 【27†未读消息†console.huaweicloud.com】
+L77:     *     * 【28†工单管理†console.huaweicloud.com】
+L78:     * 【29†管理控制台†www.huaweicloud.com】
+L79:     *     * 【30†注册†reg.huaweicloud.com】 【31†登录†auth.huaweicloud.com】
+L80:   * 【31†登录†auth.huaweicloud.com】
+L81:   * 【32†注册†reg.huaweicloud.com】
+L82:   * 【33†购物车†auth.huaweicloud.com】
+L83:   * 【34†Image†res-static.hc-cdn.cn】
+L84: 
+L85: admin
+L86:     * 【35†账号中心†account.huaweicloud.com】 【36†未实名认证 已实名认证†account.huaweicloud.com】
+L87:     * 【24†费用与成本†account.huaweicloud.com】
+L88:     *     * 【25†待支付订单0†account.huaweicloud.com】
+L89:     * 【26†待续费产品0†account.huaweicloud.com】
+L90:     * 【27†未读消息0†console.huaweicloud.com】
+L91:     *     * 【37†伙伴中心†partner.huaweicloud.com】
+L92:     * 【38†云商店买家中心†console.huaweicloud.com】
+L93:     * 【39†云商店卖家中心†console.huaweicloud.com】
+L94:     *     * 【40†实时客服†console.huaweicloud.com】
+L95:     *     * 【41†工单管理†console.huaweicloud.com】
+L96:     *     * 【42†开发者空间†devstation.developer.huaweicloud.com】
+L97:     *     * 【43†个性化推荐管理†www.huaweicloud.com】
+L98:     * 【29†管理控制台†www.huaweicloud.com】
+L99:     *     * 【44†admin】 【45†退出登录†portal.huaweicloud.com】
+L100: [Input]
+L101: 
+L102: 取消
+L103: 
+L104: 清空最近搜索
+L105: 
+L106: 快速链接
+L107: 
+L108:   * 云耀云服务器L实例
+L109:   * 免费试用
+L110:   * 云服务器
+L111:   * 域名
+L112:   * 云速建站
+L113: 
+L114: 【46†文档首页】/ 【47†智果（AgentArts）智能体平台】/ 【48†开始使用】/ 创建Managed Agents
+L115: 
+L116: 更新时间：2026-10-26 GMT+08:00
+L117: 
+L118: 【49†查看PDF】
+L119: # 创建Managed Agents
+L120: 
+L121: 本指南将带您完成以下操作：在AgentArts智能体平台创建智能体、获取调用信息、并在本地与智能体对话。
+L122: 
+L123: #### 核心概念
+L124: 
+L125:   * 智能体（Agent）
+L126: 
+L127: 定义功能与职责（“做什么”），涵盖模型、系统提示词、运行环境、工具与技能等配置项。关联运行环境以保障正常执行。同时支持版本管理。
+L128: 
+L129:   * 环境（Environment）
+L130: 
+L131: 定义智能体运行位置（“哪里运行”），涵盖出网网络配置、会话存储等配置项。被智能体关联后禁止修改。
+L132: 
+L133:   * 委托
+L134: 
+L135: 智能体运行所需的云资源访问授权。
+L136: 
+L137:   * Skill
+L138: 
+L139: 从技能库选择挂载到智能体的技能包。
+L140: 
+L141:   * 会话
+L142: 
+L143: 一次完整的交互上下文，引用智能体和环境配置。
+L144: 
+L145: #### 前提条件
+L146: 
+L147:   * 已开通AgentArts服务，并在“管理中心 > 授权管理”完成依赖云服务授权。
+L148: 
+L149:   * 本地已安装Python 3.10或以上（调用智能体时使用）。
+L150:   * 智能体需要关联模型，请在创建智能体之前完成添加模型。
+L151: #### 添加模型
+L152: 
+L153: 这里以添加华为云MaaS的GLM-5.3模型为例，采用标准OpenAI协议，区域选择“西南-贵阳一”。
+L154: 
+L155: 如果已有可以使用的模型，则跳过此步骤。
+L156: 
+L157: #### 获取MaaS的GLM-5.3模型信息
+L158: 
+L159:   1. 进入“西南-贵阳一”【50†MaaS页面†console.huaweicloud.com】，选择“模型推理 > 在线推理”，找到GLM-5.3模型，查看模型类型。
+L160: 
+L161: 图1 获取模型信息1
+L162: 【51†Image: 点击放大】
+L163: 
+L164:   2. 单击“API调用 > 主推版本”，查看模型信息。
+L165: 
+L166: 图2 获取模型信息2
+L167: 【52†Image: 点击放大】
+L168: 
+L169:   3. 获取模型API Key。
+L170: 
+L171: 在MaaS左侧导航，选择“模型与统计 > API Key 管理”，单击“创建 API Key”，如【53†图3】所示，复制并保存API Key信息。
+L172: 
+L173: 图3 创建API Key
+L174: 【54†Image: 点击放大】
+L175: #### 添加模型供应商
+L176: 
+L177:   1. 登录【55†AgentArts控制台†console.huaweicloud.com】，在左侧导航选择“托管与运行 > 模型”。
+L178:   2. 单击“添加模型供应商”，配置模型供应商基本信息，如【56†图4】所示。
+L179: 
+L180: 图4 配置模型供应商基本信息
+L181: 【57†Image: 点击放大】
+L182: 
+L183: 表1 参数说明
+L184: 参数  | 示例  | 说明
+L185: --- | --- | ---
+L186: 名称  | maas  | 模型供应商的名称。 命名规则：以小写字母开头，以小写字母或数字结尾，可以包含小写字母、数字和中划线，长度为2-40个字符。系统会默认生成名称，可根据需求自定义修改。
+L187: 描述（可选）  | 接入华为云MaaS的GLM-5.3模型  | 用于说明该模型供应商的内容与用途。
+L188: Base_url  | https://api.modelarts-maas.com/openai/v1  | 模型API地址，以 https:// 开头的完整 URL，长度为1-2048个字符。
+L189: 
+L190:   3. 配置权限与访问控制，如【58†图5】所示。
+L191: 此处的出站身份认证用于配置模型的认证方式。华为云MaaS的GLM-5.3模型支持API Key认证，通过在HTTP请求中携带API Key实现身份识别。
+L192: 
+L193: 图5 权限与访问控制
+L194: 【59†Image】
+L195: 表2 参数说明
+L196: 参数  | 示例  | 说明
+L197: --- | --- | ---
+L198: 出站身份认证  | API Key认证  | 用于配置模型的认证方式。创建认证方式如下： 单击“创建出站身份”按钮，按页面提示填写身份名称、选择API Key类型、填写在MaaS界面获取的API Key。 图6 创建出站身份
+L199: 【60†Image: 点击放大】
+L200: 位置  | 标头  | API Key的传递位置。 调用MaaS的模型服务时，MaaS要求将API Key放在HTTP请求头中传递，因此选择“标头”。
+L201: 参数名称 (可选)  | Authorization  | 在请求中传递API的密钥时使用的具体名称。 调用MaaS OpenAI兼容接口时，鉴权请求头的名称必须是Authorization。 【61†Image: 点击放大】
+L202: 前缀 (可选)  | Bearer  | 在请求头中传递API Key时，API密钥值之前的前缀部分。 调用MaaS OpenAI兼容接口时，MaaS使用“Bearer $MaaS_API_Key”形式的鉴权，API Key不能直接填写，须添加Bearer前缀。
+L203: 出网网络配置  | 公网访问  | 用于指定访问MaaS模型时使用的网络路径。
+L204:      * 公网访问：能够连接到外部的互联网，访问外部的资源和服务。如无特殊网络要求，建议选择“公网访问”。
+L205:      * 私网访问：连接内部的私有网络，访问内部的资源和服务。如需通过VPC内网访问模型，选择“私网访问”。
+L206:   4. 高级配置。
+L207: 
+L208: 保持默认。
+L209: 
+L210: 模型供应商信息配置完成后，即可【62†添加模型服务】。
+L211: #### 添加模型服务
+L212: 
+L213:   1. 单击“添加模型服务”，配置模型信息，如【63†图7】所示，配置完成后，单击“确定”。
+L214: 
+L215: 图7 配置模型信息
+L216: 【64†Image: 点击放大】
+L217: 表3 参数说明
+L218: 参数  | 示例  | 说明
+L219: --- | --- | ---
+L220: 模型服务名称  | maas  | 模型服务名称。 命名规则：支持中英文、数字及符号 _./-，须以中英文或数字开头结尾，长度2-64个字符。 系统会默认生成名称，可根据需求自定义修改。
+L221: 描述  | 接入华为云MaaS模型即服务的GLM-5.3模型  | 用于说明该模型服务的内容与用途。长度不大于1000个字符。
+L222: 模型名称  | glm-5.3  | 模型名称，接口调用请求体中的model字段的取值。 由英文、数字及符号（连字符、点、下划线、星号、问号和@）组成，支持 * 的前缀通配以及后缀通配，长度为1-256个字符。 支持精确匹配与通配匹配，精确匹配优先。 精确匹配：与请求 model 字段完全一致时匹配。例如，glm-5.3。 前缀通配：*结尾，匹配所有以glm-开头的模型。例如，glm-*。 后缀通配：*开头，匹配所有以-turbo结尾的模型。例如，*-turbo。 同时满足精确和通配匹配时，优先精确匹配。 通配匹配命中后，网关将客户端请求中的原始model值透传给后端，而非通配符本身。例如配置glm-*，请求glm-5.3-turbo 时，后端收到的model为glm-5.3-turbo。
+L223: API接口协议  | 标准OpenAI协议  | 选择模型API接口协议，支持以下三种：
+L224:      * 标准OpenAI协议：兼容OpenAI API标准的协议。适用于大多数主流模型提供商，推荐优先使用。
+L225:      * Anthropic协议：兼容Anthropic API标准的协议。
+L226:      * 华为云MaaS标准API V1：用于对接MaaS V1版本接口，推荐使用适用范围更广的“标准OpenAI协议”。V1版本协议仅支持对接Qwen3-32B、Qwen3-30B-A3B模型，详见【65†MaaS标准API V1】。
+L227: 模型类型  | 文本对话/图像理解  | 模型支持的能力类别，须按模型实际能力选择。
+L228:      * 文本对话/图像理解
+L229:      * 文本向量化
+L230:      * 多模态对话
+L231:      * 文本排序
+L232:      * 实时语音对话
+L233:   2. 单击“创建”。
+L234: 
+L235: 模型供应商显示在模型列表中，添加的模型服务显示在模型供应商详情页面的模型服务列表中，即可被选择使用。
+L236: #### 创建您的第一个智能体
+L237: 
+L238: 创建智能体并获取调用信息。
+L239: 
+L240: #### 创建智能体
+L241: 
+L242:   1. 登录【55†AgentArts智能体平台†console.huaweicloud.com】，在左侧导航选择“Managed Agents”。
+L243:   2. 选择“智能体 > 创建智能体 > 快速创建”，配置智能体名称及模型。
+L244: 
+L245: 图8 选择快速创建
+L246: 【66†Image: 点击放大】
+L247: 
+L248: 图9 创建智能体
+L249: 【67†Image: 点击放大】
+L250: 
+L251:   3. 单击“确定”。
+L252: 
+L253: 系统会自动创建环境，其中，入站身份认证为API Key（调用智能体时，需要使用API Key鉴权），入网配置为defaultgw（访问智能体运行时的网络），未开启日志记录。
+L254: 
+L255: 【68†Image】
+L256: 
+L257: API Key由凭据管理服务（DEW）托管，托管按需计费，费用说明请参考【69†DEW计费说明】。
+L258: 
+L259: 创建后，智能体显示在智能体列表中。
+L260: #### 获取调用信息
+L261: 
+L262: 调用智能体的命令格式如下，需要参考【70†表4】获取相应的调用信息：
+L263: 
+L264:     python managed_agents_client.py --url "ws://{endpoint}/runtimes/{runtime_name}/ws" --auth "Bearer {api_key}" --session-id "{会话ID}" --message "你好"
+L265: 表4 获取调用信息
+L266: 参数  | 操作
+L267: --- | ---
+L268: managed_agents_client.py  | 该脚本用于通过WebSocket与Managed Agents后端交互，测试智能体与用户本地连通性。
+L269: 运行时名称（{runtime_name}）  | 在AgentArts左侧导航，选择“托管与运行 > 智能体运行时”。在Managed Agents中创建的智能体，其运行时名称会显示在“智能体运行时”列表中，以managed-开头。找到目标智能体，复制其运行时名称即可。 【71†Image: 点击放大】
+L270: 访问域名（{endpoint}）  | 单击运行时名称，进入运行时详情页面，在“访问域名”区域，即可复制访问域名。 【72†Image: 点击放大】
+L271: API Key（{api_key}）  | 智能体的API Key。
+L272: 
+L273:   1. 在运行时详情页面，单击URN。 【73†Image: 点击放大】
+L274:   2. 进入工作负载身份详情页面，即可复制API Key值。 【74†Image: 点击放大】
+L275: 会话ID（{会话ID}）  | 每个会话的唯一标识符。用户可自定义会话ID，由英文、数字、“-”、“_”组成，不超过64个字符。例如“123e4567e89b12d3a456426614174000”。
+L276: #### 调用智能体
+L277: 
+L278: 当前版本中，智能体调用使用WebSocket调测脚本完成，主要用于快速体验。标准化API接入能力将随产品版本迭代持续完善并逐步开放。
+L279: 
+L280: 安装依赖
+L281: 
+L282: 打开命令提示符窗口，输入如下命令：
+L283: 
+L284:     pip install websockets>=10.0
+L285: 
+L286: 如果出现以下报错，请执行如下命令：
+L287: 
+L288: 【75†Image: 点击放大】
+L289: 
+L290:     pip install websockets>=10.0 --break-system-packages
+L291: 
+L292: 发送调用智能体命令
+L293: 
+L294: 下载【76†managed_agents_client.py†res-static.hc-cdn.cn】至本地，该脚本用于通过WebSocket与Managed Agents后端交互，测试智能体与用户本地连通性。
+L295: 在managed_agents_client.py脚本所在目录，使用Windows命令提示符（CMD）工具，执行如下命令，将四个占位符替换为在【77†获取调用信息】中获取的值：
+L296: 
+L297:     python managed_agents_client.py --url "ws://{endpoint}/runtimes/{runtime_name}/ws" --auth "Bearer {api_key}" --session-id "{会话ID}" --message "你好"
+L298: 
+L299: 显示结果
+L300: 以下为预期输出（其中{endpoint}和{runtime_name}将显示为您实际的访问域名和运行时名称）：
+L301: 
+L302:     [2/5] 已连接 ws://{endpoint}/runtimes/{runtime_name}/ws
+L303:     [3/5] 服务端就绪
+L304:     [4/5] 已发送: 你好
+L305: 
+L306:     [Frame] {"response_kind":"e2a.chunk","status":"in_progress","body":{"delta_kind":"text","delta":"你好","event_type":"chat.delta"}}
+L307:     你好
+L308:     [Frame] {"response_kind":"e2a.chunk","status":"in_progress","body":{"delta_kind":"text","delta":"！有什么可以帮你的吗？","event_type":"chat.delta"}}
+L309:     ！有什么可以帮你的吗？
+L310:     [Frame] {"response_kind":"e2a.complete","status":"succeeded","is_final":true,"body":{"result":{"content":"你好！有什么可以帮你的吗？"}}}
+L311: 
+L312:     ========================================
+L313:     回复: 你好！有什么可以帮你的吗？
+L314:     ========================================
+L315:     [5/5] 已断开
+L316: 权限校验和用户消息处理均在后台自动完成，终端只显示“Frame”原始帧和流式回复文本。
+L317: #### Managed Agents执行流程
+L318: 
+L319: 通过API发送消息后，Managed Agents执行流程：
+L320: 
+L321:   1. 沙箱配置：沙箱将按照您设置的环境配置完成构建。
+L322:   2. 智能体循环执行：在智能体循环执行过程中，Managed Agents根据您发送的消息，自主决策需要调用的工具。
+L323:   3. 工具执行：所有文件写入操作、bash命令执行以及其余工具调用，都将在沙箱环境中运行。
+L324:   4. 流式事件推送：当智能体执行任务时，您将收到实时状态更新。
+L325:   5. 转为空闲状态：当智能体没有需要执行的任务时，会进入该状态。
+L326: 
+L327: #### 下一步
+L328: 
+L329: 成功创建第一个Managed Agents后，可以进一步探索：
+L330: 
+L331:   * 了解运行环境的完整配置：【78†配置运行环境】。
+L332:   * 深入了解智能体各项配置参数：【79†设置智能体】、【80†模型】、【81†提示词】。
+L333:   * 了解内置工具与Skill的使用：【82†内置工具】、【83†Skill】。
+L334: #### 常见问题
+L335: 
+L336: Q1：报错AgentArts.03002006，如何处理？
+L337: 
+L338: A：创建智能体时，如果报错AgentArts.03002006，请按如下操作进行处理：
+L339: 
+L340: 图10 报错信息
+L341: 【84†Image: 点击放大】
+L342: 
+L343:   1. 在【85†AgentArts智能体平台†console.huaweicloud.com】左侧导航，选择“治理与安全 > 网络配置”。
+L344:   2. 在defaultgw详情页面，单击“编辑”，在编辑页面中不做任何修改，直接单击“确定”即可，如【86†图11】和【87†图12】所示。
+L345: 
+L346: 图11 编辑
+L347: 【88†Image: 点击放大】
+L348: 
+L349: 图12 确定
+L350: 【89†Image: 点击放大】
+L351: 
+L352:   3. 然后返回“Managed Agents”页面，重新创建智能体。
+L353: 
+L354: 【90†上一篇：选择开发路径】
+L355: 
+L356: 【91†下一篇：托管智能体到运行时】
+L357: 
+L358: #### 相关文档
+L359: ### 您对此文档页面的整体评价？
+L360: 
+L361: 0
+L362: 
+L363: 1
+L364: 
+L365: 2
+L366: 
+L367: 3
+L368: 
+L369: 4
+L370: 
+L371: 5
+L372: 
+L373: 6
+L374: 
+L375: 7
+L376: 
+L377: 8
+L378: 
+L379: 9
+L380: 
+L381: 10
+L382: 
+L383: 非常不满意非常满意
+L384: 
+L385: 提供反馈
+L386: 
+L387: 提交成功！非常感谢您的反馈，我们会继续努力做到更好！您可在【92†我的云声建议†bbs.huaweicloud.com】查看反馈及问题处理状态。
+L388: 
+L389: 系统繁忙，请稍后重试
+L390: 
+L391: 您遇到了哪些问题？（最多选三项）
+L392: 
+L393: [Input]
+L394: 
+L395: 内容不易理解
+L396: 
+L397: [Input]
+L398: 
+L399: 内容不正确
+L400: 
+L401: [Input]
+L402: 
+L403: 内容不完整
+L404: 
+L405: [Input]
+L406: 
+L407: 阅读体验不佳
+L408: 
+L409: [Input]
+L410: 
+L411: 产品问题
+L412: 
+L413: [Input]
+L414: 
+L415: 其他
+L416: 
+L417: 您感到满意的原因是？（最多选三项）
+L418: 
+L419: [Input]
+L420: 
+L421: 内容易理解
+L422: 
+L423: [Input]
+L424: 
+L425: 内容正确
+L426: 
+L427: [Input]
+L428: 
+L429: 内容丰富
+L430: 
+L431: [Input]
+L432: 
+L433: 阅读体验友好
+L434: 
+L435: [Input]
+L436: 
+L437: 产品功能完备
+L438: 
+L439: [Input]
+L440: 
+L441: 其他
+L442: 
+L443: 意见反馈
+L444: 
+L445: 0/500
+L446: 
+L447: 请至少选择一项反馈信息并填写问题反馈
+L448: 
+L449: 字符长度不能超过500
+L450: 
+L451: 直接提交 取消
+L452: 
+L453: 如您有其它疑问，您也可以通过华为云社区问答频道来与我们联系探讨
+L454: 【93†云宝助手提问†www.huaweicloud.com】 【94†云社区提问†bbs.huaweicloud.com】
+L455: 
+L456: 2025-09-24
+L457: 
+L458:   * 【95†7*24 多渠道服务支持†www.huaweicloud.com】
+L459:   * 【21†备案 提供免费备案服务†beian.huaweicloud.com】
+L460:   * 【96†专业服务 云业务全流程支持†www.huaweicloud.com】
+L461:   * 【97†退订 享无忧退订服务†www.huaweicloud.com】
+L462:   * 【19†建议反馈 优化改进建议†bbs.huaweicloud.com】
+L463: 
+L464: 热门产品
+L465: 
+L466:   * 【98†弹性云服务器†www.huaweicloud.com】
+L467:   * 【99†对象存储服务†www.huaweicloud.com】
+L468:   * 【100†云数据库 GaussDB†www.huaweicloud.com】
+L469: 
+L470: 【16†华为云App†www.huaweicloud.com】
+L471: 
+L472: 售前咨询热线
+L473: 
+L474: 【101†950808转1†www.huaweicloud.com】
+L475:   * 【18†技术服务咨询†console.huaweicloud.com】
+L476: 
+L477:   * 备案服务 (beian@huaweicloud.com)
+L478: 
+L479: beian@huaweicloud.com
+L480: 
+L481:   * 云商店咨询 (partner@huaweicloud.com)
+L482: 
+L483: partner@huaweicloud.com
+L484: 
+L485: 【102†下载华为云App†www.huaweicloud.com】
+L486: 
+L487: 关注我们
+L488: 
+L489: 关注华为云
+L490: 
+L491: 
+L492: 4000 955 988
+L493: 
+L494: 950808
+L495: 
+L496: 
+L497: 
+L498: 华为云微信
+L499: 
+L500: 扫描二维码
+L501: 
+L502: 
+L503: 
+L504: 华为云微信小程序
+L505: 
+L506: 华为云微信小程序
+L507: 
+L508:     【103†华为云微博 扫描二维码†weibo.com】
+L509:     【102†华为云App 扫描下载华为云App†www.huaweicloud.com】
+L510: 售前咨询：950808转1
+L511: 
+L512:   * 【104†法律条文†www.huaweicloud.com】
+L513:   * 【105†隐私政策†www.huaweicloud.com】
+L514: 关于华为云
+L515:     【106†了解华为云†www.huaweicloud.com】
+L516:     【107†云计算概念】
+L517:     【108†客户案例†www.huaweicloud.com】
+L518:     【109†信任中心†www.huaweicloud.com】
+L519:     【110†新闻报道†www.huaweicloud.com】
+L520:     【111†视频中心†www.huaweicloud.com】
+L521: 
+L522: 热门产品
+L523:     【112†华为云码道代码智能体†codearts.huaweicloud.com】
+L524:     【113†华为云魔坊（ModelArts）†www.huaweicloud.com】
+L525:     【114†MaaS模型即服务†www.huaweicloud.com】
+L526:     【115†智果AgentArts智能体平台†www.huaweicloud.com】
+L527:     【98†弹性云服务器 ECS†www.huaweicloud.com】
+L528:     【116†云数据库 RDS for MySQL†www.huaweicloud.com】
+L529: 支持与服务
+L530:     【117†自助服务】
+L531:     【118†服务公告†www.huaweicloud.com】
+L532:     【119†支持计划†www.huaweicloud.com】
+L533:     【101†联系我们†www.huaweicloud.com】
+L534:     【120†举报中心†www.huaweicloud.com】
+L535: 
+L536: 实用工具
+L537:     【121†开发工具†developer.huaweicloud.com】
+L538:     【122†云宝助手†www.huaweicloud.com】
+L539:     【123†云服务健康看板†status.service.huaweicloud.com】
+L540: 友情链接
+L541:     【124†华为云伙伴作战营†cloudpartner.shixizhi.huawei.com】
+L542:     【125†华为官网†www.huawei.com】
+L543:     【126†华为消费者业务†consumer.huawei.com】
+L544:     【127†华为开发者联盟†developer.huawei.com】
+L545:     【128†华为企业业务†e.huawei.com】
+L546:     【129†华为商城†www.vmall.com】
+L547: 
+L548:   * 【104†法律条文†www.huaweicloud.com】
+L549:   * 【105†隐私政策†www.huaweicloud.com】
+L550: 
+L551: ©2026 Huaweicloud.com 版权所有 【130†黔ICP备20004760号-14†beian.miit.gov.cn】 苏B2-20130048号 A2.B1.B2-20070312
+L552: 
+L553: 增值电信业务经营许可证：B1.B2-20200593 | 代理域名注册服务机构：新网、西数
+L554: 【131†电子营业执照†res-static.hc-cdn.cn】 【132†贵公网安备 52990002000093号†www.beian.gov.cn】
+L555: 
+L556: 【133†Image†res-static.hc-cdn.cn】
+L557: 
+L558: 【134†Image†res-static.hc-cdn.cn】 【135†Image†res-static.hc-cdn.cn】 【136†Image†res-static.hc-cdn.cn】 【137†Image†res-static.hc-cdn.cn】 【138†Image†res-static.hc-cdn.cn】
+

@@ -1,0 +1,2 @@
+# 使用支持 websockets.asyncio.client / additional_headers 的版本。
+websockets>=14,<16
