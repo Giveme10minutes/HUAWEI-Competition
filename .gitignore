@@ -26,3 +26,5 @@ data/private/
 .pytest_cache/
 dist/
 build/
+.some-api.md
+/some-api.md
