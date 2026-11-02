@@ -93,6 +93,7 @@ def main():
                 # 招聘者姓名属于个人信息，不写入样本表；只保留岗位发布信息
                 f"contact_role={(d.get('boss','').split('·')[-1].strip() if '·' in d.get('boss','') else '')}",
                 " ".join(t for t in (d.get("company_tags") or []) if not t.startswith("法定代表人")),
+                rec.get("note_mismatch", ""),
             ])),
         })
 
