@@ -104,39 +104,57 @@ def _decode_event(value: str) -> dict:
     return event
 
 
-def _collect_reply(events: Iterable[dict]) -> tuple[str, dict[str, float]]:
-    """Keep only the final answer; reasoning and tool payloads are ignored."""
+def _reply_events(events: Iterable[dict], secret: str = "") -> Iterator[dict]:
+    """Forward answer deltas only; the summary replaces them on successful end."""
     chunks: list[str] = []
     summary: str | None = None
     latency: dict[str, float] = {}
     total_chars = 0
+    pending = ""
     for event in events:
         kind = event.get("event")
         if kind in ("error", "exception"):
             raise _ProtocolError("平台报告执行失败。")
-        if kind == "message" and isinstance(event.get("content"), str):
-            chunks.append(event["content"])
-            total_chars += len(event["content"])
-        elif kind == "summary_response" and isinstance(event.get("content"), str):
-            summary = event["content"]
-            total_chars += len(summary)
+        if kind in ("message", "summary_response") and isinstance(event.get("content"), str):
+            content = event["content"]
+            total_chars += len(content)
+            if total_chars > MAX_REPLY_CHARS:
+                raise _ProtocolError("回答过大。")
+            if kind == "summary_response":
+                summary = content
+            else:
+                chunks.append(content)
+                pending += content
+                if secret:
+                    pending = pending.replace(secret, "[已隐藏]")
+                    hold = max((n for n in range(1, min(len(secret), len(pending) + 1))
+                                if pending.endswith(secret[:n])), default=0)
+                else:
+                    hold = 0
+                safe = pending[:-hold] if hold else pending
+                pending = pending[-hold:] if hold else ""
+                if safe:
+                    yield {"type": "delta", "text": safe}
         elif kind == "statistic_data" and isinstance(event.get("latency"), dict):
-            latency = {
-                key: value
-                for key, value in event["latency"].items()
-                if key in ("overall", "model", "plugin")
-                and type(value) in (int, float)
-                and math.isfinite(value)
-                and value >= 0
-            }
+            latency = {k: v for k, v in event["latency"].items()
+                       if k in ("overall", "model", "plugin") and type(v) in (int, float)
+                       and math.isfinite(v) and v >= 0}
         elif kind in ("end", "done"):
-            reply = summary if summary is not None else "".join(chunks)
-            if not reply.strip():
+            text = summary if summary is not None else "".join(chunks)
+            text = text.replace(secret, "[已隐藏]") if secret else text
+            if not text.strip():
                 raise _ProtocolError("响应已结束但没有最终回答。")
-            return reply, latency
-        if total_chars > MAX_REPLY_CHARS:
-            raise _ProtocolError("回答过大。")
+            yield {"type": "complete", "reply": AgentReply(text=text.strip(), latency=latency)}
+            return
     raise _ProtocolError("连接在结束事件之前中断。")
+
+
+def _collect_reply(events: Iterable[dict]) -> tuple[str, dict[str, float]]:
+    for event in _reply_events(events):
+        if event["type"] == "complete":
+            reply = event["reply"]
+            return reply.text, reply.latency
+    raise _ProtocolError("没有收到最终回答。")
 
 
 class _NoRedirect(HTTPRedirectHandler):
@@ -167,6 +185,12 @@ class LowCodeAgent:
         return self._configured
 
     def reply(self, session_id: str, message: str) -> AgentReply:
+        for event in self.stream(session_id, message):
+            if event["type"] == "complete":
+                return event["reply"]
+        raise AgentError("助手没有返回可用回答，请重试。", "empty_reply")
+
+    def stream(self, session_id: str, message: str) -> Iterator[dict]:
         if not self._configured:
             raise AgentError(
                 "在线助手尚未连接；你的消息已保存在本地，可稍后重试。",
@@ -201,10 +225,10 @@ class LowCodeAgent:
                     raise _ProtocolError("接口未返回成功状态。")
                 if response.headers.get_content_type() != "text/event-stream":
                     raise _ProtocolError("接口未返回事件流。")
-                text, latency = _collect_reply(
+                yield from _reply_events(
                     _sse_events(
                         iter(lambda: response.readline(MAX_EVENT_BYTES + 1), b"")
-                    )
+                    ), self._key,
                 )
         except HTTPError as exc:
             if exc.code in (401, 403):
@@ -235,10 +259,3 @@ class LowCodeAgent:
             ) from None
         except Exception:
             raise AgentError("调用助手时出现异常，请稍后重试。", "unexpected") from None
-
-        text = text.strip()
-        if self._key:
-            text = text.replace(self._key, "[已隐藏]")
-        if not text:
-            raise AgentError("助手没有返回可用回答，请重试。", "empty_reply")
-        return AgentReply(text=text, latency=latency)

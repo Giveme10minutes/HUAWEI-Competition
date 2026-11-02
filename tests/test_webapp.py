@@ -14,7 +14,7 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from backend.agent import AgentError, AgentReply
+from backend.agent import AgentError, AgentReply, _reply_events
 from backend.app import create_app
 from backend.config import Settings
 
@@ -114,6 +114,58 @@ class WebAppTests(unittest.TestCase):
             {item["id"] for item in listed}, {conversation["id"], second["id"]}
         )
         self.assertEqual(len(self.agent.calls), 1)
+
+    def test_transport_yields_answer_before_end_and_summary_replaces_deltas(self) -> None:
+        source_finished = []
+        def upstream():
+            yield {"event": "reasoning_content", "content": "不展示的思考"}
+            yield {"event": "message", "content": "第一段"}
+            yield {"event": "message", "content": "第二段"}
+            yield {"event": "summary_response", "content": "最终校准回答"}
+            source_finished.append(True)
+            yield {"event": "done"}
+        stream = _reply_events(upstream())
+        self.assertEqual(next(stream), {"type": "delta", "text": "第一段"})
+        self.assertFalse(source_finished)
+        rest = list(stream)
+        self.assertEqual(rest[-1]["reply"].text, "最终校准回答")
+        self.assertNotIn("不展示的思考", str(rest))
+        split_secret = list(_reply_events(iter([
+            {"event": "message", "content": "内容secret-"},
+            {"event": "message", "content": "key结尾"},
+            {"event": "done"},
+        ]), "secret-key"))
+        self.assertNotIn("secret-", "".join(e.get("text", "") for e in split_secret))
+
+    def test_stream_saves_only_complete_reply_and_replay_avoids_second_call(self) -> None:
+        def stream(session_id, message):
+            self.agent.calls.append((session_id, message))
+            yield {"type": "delta", "text": "片段"}
+            yield {"type": "complete", "reply": AgentReply(text="完整回答")}
+        self.agent.stream = stream
+        conversation = self.make_conversation()
+        user = self.send_message(conversation["id"])
+        path = f"/api/messages/{user['id']}/stream"
+        response = self.client.post(path)
+        events = [json.loads(line[6:]) for line in response.text.splitlines() if line.startswith("data: ")]
+        self.assertEqual([e["type"] for e in events], ["start", "delta", "complete"])
+        self.assertEqual(events[-1]["data"]["reply"]["content"], "完整回答")
+        self.client.post(path)
+        self.assertEqual(len(self.agent.calls), 1)
+        self.assertEqual(len(self.client.get(f"/api/conversations/{conversation['id']}").json()["messages"]), 2)
+
+    def test_stream_failure_does_not_save_partial_as_a_complete_reply(self) -> None:
+        def stream(session_id, message):
+            yield {"type": "delta", "text": "尚未完成的内容"}
+            raise AgentError("模拟流中断", "interrupted")
+        self.agent.stream = stream
+        conversation = self.make_conversation()
+        user = self.send_message(conversation["id"])
+        response = self.client.post(f"/api/messages/{user['id']}/stream")
+        self.assertIn('"type": "error"', response.text)
+        messages = self.client.get(f"/api/conversations/{conversation['id']}").json()["messages"]
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(messages[0]["status"], "failed")
 
     def test_failure_keeps_message_and_retry_does_not_duplicate(self) -> None:
         conversation = self.make_conversation()

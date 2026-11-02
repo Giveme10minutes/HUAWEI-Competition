@@ -31,6 +31,7 @@ const state = {
   busy: false,
   managingConversation: false,
   replyingMessageId: null,
+  streamingText: "",
   editingProfileId: null,
   planEditorSource: null,
   planBusy: false,
@@ -370,13 +371,16 @@ function renderMessages() {
     const article = el("article", "msg msg-assistant typing");
     const body = el("div", "msg-body");
     const bubble = el("div", "bubble");
-    bubble.append(
+    if (state.streamingText) {
+      bubble.innerHTML = renderAssistantMarkdown(state.streamingText);
+    } else bubble.append(
       document.createTextNode("正在回复"),
       el("span", "typing-dot"),
       el("span", "typing-dot"),
       el("span", "typing-dot")
     );
     body.append(bubble);
+    if (state.streamingText) body.append(el("div", "msg-meta", "正在生成，尚未保存完整回答…"));
     article.append(body);
     container.append(article);
   }
@@ -591,6 +595,7 @@ async function handleSend(event) {
 
 async function requestReply(userMessageId, conversationId) {
   state.replyingMessageId = userMessageId;
+  state.streamingText = "";
   const current = state.messages.find(
     (message) => message.id === userMessageId
   );
@@ -603,10 +608,13 @@ async function requestReply(userMessageId, conversationId) {
   updateComposerState();
 
   try {
-    const data = await api(
-      `/api/messages/${encodeURIComponent(userMessageId)}/respond`,
-      { method: "POST" }
-    );
+    const data = await readReplyStream(userMessageId, (text) => {
+      state.streamingText += text;
+      renderMessages();
+      scrollToBottom(false);
+    });
+    state.streamingText = "";
+    state.replyingMessageId = null;
     if (state.activeConversationId === conversationId) {
       replaceMessage(userMessageId, data.user_message);
       if (!state.messages.some((message) => message.id === data.reply.id)) {
@@ -617,16 +625,50 @@ async function requestReply(userMessageId, conversationId) {
     }
     await refreshConversations();
   } catch (error) {
+    state.streamingText = "";
     if (state.activeConversationId === conversationId) {
       await reloadConversationMessages(conversationId);
     }
     toast(error.message, "error");
   } finally {
+    state.streamingText = "";
     state.replyingMessageId = null;
     if (state.activeConversationId === conversationId) {
       renderMessages();
       updateComposerState();
     }
+  }
+}
+
+async function readReplyStream(messageId, onDelta) {
+  const response = await fetch(`/api/messages/${encodeURIComponent(messageId)}/stream`, {method: "POST"});
+  if (!response.ok || !response.body) throw new Error("无法读取回复，请稍后重试。");
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let complete = null;
+  try {
+    while (true) {
+      const {value, done} = await reader.read();
+      buffer += decoder.decode(value, {stream: !done});
+      let boundary;
+      while ((boundary = buffer.indexOf("\n\n")) >= 0) {
+        const frame = buffer.slice(0, boundary);
+        buffer = buffer.slice(boundary + 2);
+        const data = frame.split("\n").filter(line => line.startsWith("data:")).map(line => line.slice(5).trimStart()).join("\n");
+        if (!data) continue;
+        const event = JSON.parse(data);
+        if (event.type === "error") throw new Error(event.message || "回复中断，请重试。");
+        if (event.type === "delta" && typeof event.text === "string") onDelta(event.text);
+        if (event.type === "complete") complete = event.data;
+      }
+      if (done) break;
+    }
+    if (!complete) throw new Error("回复连接中断，未收到完整回答；请重试。");
+    return complete;
+  } finally {
+    await reader.cancel().catch(() => {});
+    reader.releaseLock();
   }
 }
 

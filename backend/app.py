@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+import threading
 import logging
 import re
 import sqlite3
@@ -12,7 +14,7 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -379,8 +381,7 @@ def create_app(
             ).fetchone()
         return {"message": _message_payload(row)}
 
-    @app.post("/api/messages/{message_id}/respond")
-    def respond_to_message(message_id: str) -> dict[str, Any]:
+    def reply_events(message_id: str):
         with database.get_connection(settings.db_path) as conn:
             conn.execute("BEGIN IMMEDIATE")
             message = conn.execute(
@@ -394,10 +395,11 @@ def create_app(
                 (message_id,),
             ).fetchone()
             if existing is not None:
-                return {
+                yield {"type": "complete", "data": {
                     "user_message": _message_payload(message),
                     "reply": _message_payload(existing),
-                }
+                }}
+                return
             conversation = conn.execute(
                 "SELECT * FROM conversations WHERE id = ?",
                 (message["conversation_id"],),
@@ -418,10 +420,18 @@ def create_app(
             ).fetchone()
 
         try:
-            reply = agent.reply(
-                session_id=message["conversation_id"],
-                message=build_query(settings.db_path, message["content"]),
-            )
+            query = build_query(settings.db_path, message["content"])
+            reply = None
+            if hasattr(agent, "stream"):
+                for event in agent.stream(session_id=message["conversation_id"], message=query):
+                    if event["type"] == "delta":
+                        yield event
+                    elif event["type"] == "complete":
+                        reply = event["reply"]
+            else:
+                reply = agent.reply(session_id=message["conversation_id"], message=query)
+            if reply is None:
+                raise AgentError("连接中断，未收到完整回答，请重试。", "incomplete")
         except AgentError as exc:
             with database.get_connection(settings.db_path) as conn:
                 conn.execute(
@@ -469,10 +479,11 @@ def create_app(
                 user_message = conn.execute(
                     "SELECT * FROM messages WHERE id = ?", (message_id,)
                 ).fetchone()
-                return {
+                yield {"type": "complete", "data": {
                     "user_message": _message_payload(user_message),
                     "reply": _message_payload(existing),
-                }
+                }}
+                return
             reply_id = uuid.uuid4().hex
             try:
                 conn.execute(
@@ -511,10 +522,11 @@ def create_app(
                 user_message = conn.execute(
                     "SELECT * FROM messages WHERE id = ?", (message_id,)
                 ).fetchone()
-                return {
+                yield {"type": "complete", "data": {
                     "user_message": _message_payload(user_message),
                     "reply": _message_payload(existing),
-                }
+                }}
+                return
             conn.execute(
                 """
                 UPDATE messages
@@ -533,10 +545,57 @@ def create_app(
             user_message = conn.execute(
                 "SELECT * FROM messages WHERE id = ?", (message_id,)
             ).fetchone()
-        return {
+        yield {"type": "complete", "data": {
             "user_message": _message_payload(user_message),
             "reply": _message_payload(reply_row),
-        }
+        }}
+
+    active_replies: set[str] = set()
+    reply_lock = threading.Lock()
+
+    def guarded_reply_events(message_id: str):
+        with reply_lock:
+            if message_id in active_replies:
+                raise HTTPException(status_code=409, detail="该消息正在回复，请等待完成。")
+            active_replies.add(message_id)
+        try:
+            yield from reply_events(message_id)
+        finally:
+            with database.get_connection(settings.db_path) as conn:
+                conn.execute(
+                    "UPDATE messages SET status = 'failed', error = ?, updated_at = ? WHERE id = ? AND status = 'pending'",
+                    ("回复未完成，请重试。", _now(settings), message_id),
+                )
+            with reply_lock:
+                active_replies.discard(message_id)
+
+    @app.post("/api/messages/{message_id}/respond")
+    def respond_to_message(message_id: str):
+        result = None
+        for event in guarded_reply_events(message_id):
+            if event["type"] == "complete":
+                result = event["data"]
+        return result
+
+    @app.post("/api/messages/{message_id}/stream")
+    def stream_reply(message_id: str):
+        def generate():
+            events = guarded_reply_events(message_id)
+            try:
+                yield 'data: {"type":"start"}\n\n'
+                for event in events:
+                    yield "data: " + json.dumps(event, ensure_ascii=False) + "\n\n"
+            except HTTPException as exc:
+                detail = exc.detail
+                message = detail.get("message", "回复失败，请重试。") if isinstance(detail, dict) else str(detail)
+                yield "data: " + json.dumps({"type": "error", "message": message}, ensure_ascii=False) + "\n\n"
+            except Exception:
+                yield 'data: {"type":"error","message":"回复中断，请重试；原消息已保留。"}\n\n'
+            finally:
+                events.close()
+        return StreamingResponse(generate(), media_type="text/event-stream", headers={
+            "Cache-Control": "no-cache", "X-Accel-Buffering": "no",
+        })
 
     @app.get("/api/profile")
     def list_profile() -> dict[str, Any]:
