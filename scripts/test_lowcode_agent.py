@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""AgentArts low-code single-agent API probe; cloud deployment is still unverified.
+"""AgentArts low-code single-agent HTTP/SSE API probe.
 
 Protocol sources and setup: docs/低码API接入_2026-11-02.md.
 Only Bearer API Key authentication is implemented. No automatic retries or writes.
@@ -89,7 +89,8 @@ def collect_reply(events):
             latency = {k: v for k, v in event['latency'].items()
                        if k in ('overall', 'model', 'plugin') and type(v) in (int, float)
                        and math.isfinite(v) and v >= 0}
-        elif kind == 'end':
+        elif kind in ('end', 'done'):
+            # Official docs use end; deployed single-agent API observed done (2026-11-02).
             reply = summary if summary is not None else ''.join(chunks)
             if not reply.strip():
                 raise ProbeError('响应已结束但没有最终回答，调用未通过。')

@@ -27,6 +27,15 @@ class LowcodeProtocolTests(unittest.TestCase):
             {'event': 'message', 'content': '你'}, {'event': 'message', 'content': '好'},
             {'event': 'end'})))[0], '你好')
 
+    def test_deployed_done_event_uses_summary_without_duplicate_text(self):
+        self.assertEqual(collect_reply(sse_events(stream(
+            {'event': 'message', 'reasoning_content': '不显示'},
+            {'event': 'message', 'content': '回答'},
+            {'event': 'summary_response', 'content': '回答'},
+            {'event': 'done'})))[0], '回答')
+        with self.assertRaises(ProbeError):
+            collect_reply(sse_events(stream({'event': 'done'})))
+
     def test_sse_multiline_and_comments(self):
         data = io.BytesIO(b': heartbeat\r\nevent: message\r\ndata: {"event":"message",\r\ndata: "content":"ok"}\r\n\r\ndata: {"event":"end"}\r\n\r\n')
         self.assertEqual(collect_reply(sse_events(data))[0], 'ok')
