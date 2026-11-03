@@ -1,5 +1,8 @@
 # 大学生职业探索与学习行动 Agent
 
+最新界面（2026-11-03）：已迁移为 React + TypeScript + 官方 shadcn/ui，保留原有本地记录与API。首次运行先 `npm --prefix frontend ci`、`npm --prefix frontend run build`，再运行 `.venv/bin/python scripts/run_web.py`。后端呈现 frontend/dist；详细范围与验证见 [shadcn前端重构](docs/shadcn前端重构_2026-11-03.md)。下方早期“无前后端”等段落为历史，实际状态看progress.md。
+
+
 2026-11-03：网页接入真实流式回答，收到片段即显示，成功结束后保存完整文本；断流保留用户消息并允许重试，不展示模型思考。首个片段之前仍可能等待模型推理或检索。
 
 2026-11-03：对话列表支持置顶、取消置顶及可恢复删除。“已删除的对话”中可恢复原记录；个人线索、规划与云端会话不会随对话删除。验证范围见最新进度。

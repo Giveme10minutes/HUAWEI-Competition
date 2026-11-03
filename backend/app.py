@@ -25,7 +25,7 @@ from .context import build_query
 
 logger = logging.getLogger(__name__)
 
-FRONTEND_DIR = ROOT / "frontend"
+FRONTEND_DIR = ROOT / "frontend" / "dist"
 APP_NAME = "职业探索助手"
 CLIENT_ID_RE = re.compile(r"[A-Za-z0-9_-]{1,64}")
 MESSAGE_LIMIT = 4000
@@ -198,11 +198,13 @@ def create_app(
     )
     app.state.settings = settings
     app.state.agent = agent
-    app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
+    app.mount("/static", StaticFiles(directory=FRONTEND_DIR, check_dir=False), name="static")
 
     @app.get("/", include_in_schema=False)
     def index() -> FileResponse:
-        return FileResponse(FRONTEND_DIR / "index.html")
+        if not (FRONTEND_DIR / "index.html").is_file():
+            raise HTTPException(status_code=503, detail="前端尚未构建，请在 frontend 目录运行 npm ci 和 npm run build。")
+        return FileResponse(FRONTEND_DIR / "index.html", headers={"Cache-Control": "no-cache"})
 
     @app.get("/api/meta")
     def get_meta() -> dict[str, Any]:

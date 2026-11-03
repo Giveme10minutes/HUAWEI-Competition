@@ -24,6 +24,8 @@ def main() -> None:
     parser.add_argument("--host", default="127.0.0.1", help="默认仅本机访问")
     parser.add_argument("--port", type=int, default=8000)
     args = parser.parse_args()
+    if not (ROOT / "frontend" / "dist" / "index.html").exists():
+        parser.error("前端尚未构建，请先在 frontend 目录运行 npm ci 和 npm run build。")
     uvicorn.run(
         "backend.main:app",
         host=args.host,

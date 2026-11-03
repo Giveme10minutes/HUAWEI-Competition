@@ -28,3 +28,6 @@ dist/
 build/
 .some-api.md
 /some-api.md
+
+# Frontend TypeScript incremental cache
+*.tsbuildinfo
