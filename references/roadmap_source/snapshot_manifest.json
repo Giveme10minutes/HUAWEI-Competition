@@ -1,0 +1,15 @@
+{
+  "source_id": "RM-SRC-LOCAL-20261103",
+  "archived_on": "2026-11-03",
+  "original_path": "/Users/chenyu/Downloads/developer-roadmap-master",
+  "project_snapshot": "references/roadmap_source/local_snapshot/developer-roadmap-master",
+  "upstream_commit": null,
+  "download_date": null,
+  "file_count": 11332,
+  "logical_bytes": 8052093,
+  "sha256_path_content_manifest": "c77e102ebe2856e963c912f24200464a3c4dbdfb191a25efe1d61db9d8b50b3f",
+  "manifest_algorithm": "Sort relative paths lexicographically; hash UTF-8(relative_path + NUL + file_sha256 + newline) in order. All files included.",
+  "copy_validation": "All copied file SHA-256 values matched source at archive time",
+  "roadmap_directories": 97,
+  "license_sha256": "875c1bdc92d1f919eb24f543e2a8837cde03f1d93aa943b4f795638688c9d799"
+}

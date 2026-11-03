@@ -31,3 +31,6 @@ build/
 
 # Frontend TypeScript incremental cache
 *.tsbuildinfo
+
+# Local roadmap reference snapshot; not a distributable project asset
+/references/roadmap_source/local_snapshot/
