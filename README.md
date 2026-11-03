@@ -1,5 +1,7 @@
 # 大学生职业探索与学习行动 Agent
 
+2026-11-03 设计更新：需求v0.4、开发计划v0.2已按多Agent＋知识库路线修订，尚未实施；现有单Agent与本地原型继续保留。下一步见开发计划M1—M2。
+
 最新界面（2026-11-03）：已迁移为 React + TypeScript + 官方 shadcn/ui，保留原有本地记录与API。首次运行先 `npm --prefix frontend ci`、`npm --prefix frontend run build`，再运行 `.venv/bin/python scripts/run_web.py`。后端呈现 frontend/dist；详细范围与验证见 [shadcn前端重构](docs/shadcn前端重构_2026-11-03.md)。下方早期“无前后端”等段落为历史，实际状态看progress.md。
 
 
@@ -42,7 +44,7 @@ cd /Users/chenyu/Desktop/Project/HUAWEI-Competition
 
 ## 文档入口
 
-- [需求文档 v0.3](docs/职业探索与学习行动Agent_需求文档_v0.1.md)：功能与验收要求，文件名沿用旧版本号。
+- [需求文档 v0.4](docs/职业探索与学习行动Agent_需求文档_v0.1.md)：功能与验收要求，文件名沿用旧版本号。
 - [开发计划](docs/开发计划_v0.1.md)：阶段与依赖。
 - [赛事规则核验](docs/赛事规则核验_2026-10-31.md)：已确认报名与评分，上传截止/重传规则待确认。
 - [前后端原型 v0.1](docs/前后端原型_v0.1_2026-11-02.md)：本地启动、已实现范围、实际验证结果与限制。
