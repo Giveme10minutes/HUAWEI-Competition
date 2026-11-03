@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>职业探索助手</title>
-  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/styles.css?v=20261103-design2">
 </head>
 <body>
   <div id="app">
@@ -17,16 +17,16 @@
           <p>从迷茫开始，慢慢看清方向</p>
         </div>
       </div>
-      <span class="local-note">本机使用 · 自动保存</span>
+      <span class="local-note">记录保存在本机</span>
     </header>
 
     <main class="layout">
       <aside class="sidebar" aria-label="对话列表">
         <div class="sidebar-head">
-          <h2>我的对话</h2>
+          <h2>探索空间</h2>
           <button id="new-conversation" class="btn primary tiny" type="button">＋ 新对话</button>
         </div>
-        <ul id="conversation-list" class="conversation-list"></ul>
+        <nav class="workspace-nav" aria-label="我的探索记录"><button type="button" class="workspace-link" data-open-panel="profile"><span>个人线索</span><span aria-hidden="true">＋</span></button><button type="button" class="workspace-link" data-open-panel="plan"><span>我的职业规划</span><span aria-hidden="true">↗</span></button></nav><button id="toggle-history" class="btn mobile-history" type="button" aria-expanded="false">对话记录</button><p class="nav-caption">最近对话</p><ul id="conversation-list" class="conversation-list"></ul>
         <p id="conversation-empty" class="sidebar-empty">还没有对话。直接说说你的困惑，就会自动开始。</p>
         <details class="conversation-trash">
           <summary>已删除的对话</summary>
@@ -42,23 +42,23 @@
             <h2 id="chat-title">新的对话</h2>
             <p id="chat-subtitle">不用先填完整资料，想到什么就说什么。</p>
           </div>
+          <button type="button" class="btn view-plan" data-open-panel="plan">查看我的规划</button>
         </div>
         <div id="agent-notice" class="notice" hidden></div>
         <div id="chat-scroll" class="chat-scroll">
           <div id="welcome" class="welcome">
-            <h2>从哪里开始都可以</h2>
-            <p>你可以从一句“我很迷茫”开始。助手会陪你把模糊的感受慢慢说清楚，不要求先确定专业、兴趣或目标。</p>
+            <div class="explore-symbol" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M12 49V35a12 12 0 0 1 12-12h16a12 12 0 0 0 12-12M12 49l-6-6m6 6 6-6M52 11l-6 6m6-6 6 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="23" r="5" fill="currentColor"/></svg></div><h2>你的方向，从这里聊起。</h2>
+            <p>不必先想清楚未来。聊聊你的经历、犹豫，<br>或最近让你感兴趣的一件小事。</p>
             <div class="prompt-chips">
-              <button class="chip" type="button" data-prompt="我很迷茫，不知道以后想做什么。">我很迷茫，不知道以后想做什么</button>
-              <button class="chip" type="button" data-prompt="我不知道自己喜欢什么，想先聊聊。">我不知道自己喜欢什么</button>
-              <button class="chip" type="button" data-prompt="我想比较几个方向，但不知道从哪开始。">我想比较几个方向</button>
-              <button class="chip" type="button" data-prompt="我有个大概想法，想知道还差什么。">我想知道还差什么</button>
+              <button class="chip" type="button" data-prompt="我很迷茫，不知道以后想做什么。"><strong>还没有方向</strong><span>从经历和兴趣里找线索</span></button>
+              <button class="chip" type="button" data-prompt="我想比较几个方向，但不知道从哪开始。"><strong>在几个方向间犹豫</strong><span>看看差异，也看看依据</span></button>
+              <button class="chip" type="button" data-prompt="我有个大概想法，想知道还差什么。"><strong>已经有个目标</strong><span>梳理差距和下一步安排</span></button>
             </div>
           </div>
           <div id="messages" class="messages" aria-live="polite"></div>
         </div>
         <form id="composer" class="composer">
-          <textarea id="message-input" rows="1" maxlength="4000" placeholder="说说你现在的情况或困惑…"></textarea>
+          <textarea aria-label="发送给职业探索助手的消息" id="message-input" rows="1" maxlength="4000" placeholder="说说你现在的情况或困惑…"></textarea>
           <div class="composer-foot">
             <span id="composer-hint" class="hint">Enter 发送 · Shift + Enter 换行</span>
             <button id="send-button" class="btn primary" type="submit" disabled>发送</button>
@@ -66,7 +66,8 @@
         </form>
       </section>
 
-      <aside class="context" aria-label="个人线索与职业规划">
+      <dialog id="context-dialog" class="context" aria-label="个人线索与职业规划">
+        <div class="context-heading"><span>我的探索记录</span><button type="button" id="close-context" class="btn" aria-label="关闭探索记录">关闭</button></div>
         <div class="tabs" role="tablist">
           <button class="tab active" type="button" role="tab" aria-selected="true" data-tab="profile">个人线索</button>
           <button class="tab" type="button" role="tab" aria-selected="false" data-tab="plan">职业规划</button>
@@ -79,7 +80,7 @@
           </div>
           <p class="panel-note">线索可以先保存为待确认。只有确认后的线索会用于后续对话；聊天里的推断不会自动写入。</p>
 
-          <details id="profile-add" class="add-box" open>
+          <details id="profile-add" class="add-box">
             <summary>添加一条线索</summary>
             <form id="profile-form">
               <label for="profile-category">类别</label>
@@ -146,7 +147,7 @@
             <p id="plan-history-empty" class="empty-box">还没有保存过版本。</p>
           </div>
         </section>
-      </aside>
+      </dialog>
     </main>
   </div>
 
@@ -162,6 +163,6 @@
       </div>
     </form>
   </dialog>
-  <script src="/static/app.js" defer></script>
+  <script src="/static/app.js?v=20261103-design2" defer></script>
 </body>
 </html>

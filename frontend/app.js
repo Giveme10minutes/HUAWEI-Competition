@@ -1205,6 +1205,23 @@ function switchTab(name) {
 }
 
 function bindEvents() {
+  $("#toggle-history").addEventListener("click", (event) => {
+    const open = $(".sidebar").classList.toggle("history-open");
+    event.currentTarget.setAttribute("aria-expanded", String(open));
+  });
+  for (const trigger of $$("[data-open-panel]")) {
+    trigger.addEventListener("click", () => {
+      switchTab(trigger.dataset.openPanel);
+      $("#context-dialog").showModal();
+    });
+  }
+  $("#close-context").addEventListener("click", () => $("#context-dialog").close());
+  $("#context-dialog").addEventListener("click", (event) => {
+    if (event.target === event.currentTarget) {
+      const rect = event.currentTarget.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) event.currentTarget.close();
+    }
+  });
   $("#composer").addEventListener("submit", handleSend);
   $("#message-input").addEventListener("input", () => {
     resizeInput();
