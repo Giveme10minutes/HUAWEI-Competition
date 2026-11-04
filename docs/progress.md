@@ -409,3 +409,14 @@ v0.4 相对 v0.3 新增：先定位当前决策与三类状态分支、方向六
 核验：2026-11-03 用 curl 实际打开并阅读 7 条前端、5 条后端官方文档（均英文），记录用途、前置与日期；roadmap.sh 4 个入口仅确认可达，未据此还原顺序。检查项：正文引用均可回溯来源表、每阶段要素齐全、比较卡无排名、岗位事实与建议分开、正文无本机绝对路径、未复制原仓库正文。未上传知识库，未运行 AgentArts 或检索，未声称验收通过。
 
 **检索续查**：相同查询在知识库命中测试可返回低分片段，但工作流语义检索节点输出空列表。节点设置实际为阈值0.500、topK 3；尝试修改后重开仍显示原值，故单节点再次空检索仍是原设置下的结果，不能判断降低阈值是否有效。详细记录见[核验记录](多Agent原型配置与核验_2026-11-03.md)。
+
+## 26. roadmap 学习路线检索资料包试点 v0.1（2026-11-04）
+
+新增本地处理脚本 `scripts/prepare_roadmap_pilot.py`，把 roadmap.sh 三条路线（frontend / backend / python）从 `references/raw/roadmap-ai/` 转为可追溯检索资料包 `local_data/roadmap_pilot_v0.1/`（nodes / relations / chunks / resources / review_items 五个 jsonl + manifest / qa_report / qa_samples / retrieval_cases / README）。原始 101 条路线未改动、未删除，本次只限制处理与验收范围。该目录由 `.gitignore` 的 `local_data/` 整目录规则覆盖，全部留在本地。
+
+数据处理口径：节点唯一键为 (roadmap, node_id)；描述匹配逐节点重新判定（id / title_fallback / ambiguous / missing），歧义不任取；父子、深度、路径一律标为结构推导，不写成官方事实；原图连线原样保留端点与样式，端点落在布局节点时标 `layout_node`；不生成 prerequisite；已知错位（Docker、Kubernetes、System Design）只隔离并记待审核，不重写原始结构；资源全部 `link_status=unchecked`。
+
+实测结果：保留节点 422（frontend 137 / backend 186 / python 99），检索片段 362，资源 1162，关系 579（图示连线 160 + 推导分组 419，prerequisite 0），缺描述 56（标 navigation_only），匹配歧义 4 条待人工确认。10 项确定性检查全部通过，30 节点 / 15 边抽样核对全部通过，跨进程重跑五份 jsonl 的 SHA-256 一致。检索案例 10 条为 `not_run`：本地无检索器，按约定未引入 embedding、向量库或云服务。
+
+未完成：4 条歧义归属、3 处错位修正均需人工判断；未核验资源链接；未扩展到其余 98 条路线。这是本地资料试点，**不是知识库已上传，不是 M3/M4 验收，也不代表产品已接入**。详见 [roadmap检索资料包_试点说明_v0.1](roadmap检索资料包_试点说明_v0.1.md)。
+
