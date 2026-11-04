@@ -452,3 +452,15 @@ v0.4 相对 v0.3 新增：先定位当前决策与三类状态分支、方向六
 
 未完成：4 条歧义归属、3 处错位修正均需人工判断；未核验资源链接；未扩展到其余 98 条路线。这是本地资料试点，**不是知识库已上传，不是 M3/M4 验收，也不代表产品已接入**。详见 [roadmap检索资料包_试点说明_v0.1](roadmap检索资料包_试点说明_v0.1.md)。
 
+## 27. 技术库 JavaScript/SQL 第二批（2026-11-04）
+
+新增 6 篇本地教程：JavaScript 3 篇（值与类型、函数作用域与对象数组、异步错误与模块），SQL 3 篇（关系模型与基础查询、连接聚合与子查询、写入事务与索引）。技术目录累计 11 篇（HTTP 1、Git 1、Python 3、JavaScript 3、SQL 3），均在 `local_data/knowledge_libraries_v0.6/technical/content/`，被 Git 忽略，仅本机保留。
+
+正文每篇含 1 个一级标题、3 个实质章节、3 个可独立运行代码块，讲解/练习/答案/检查点/常见误区直接写在正文；链接只列于“来源”用于溯源。18 个代码块实际执行：JS 用 Node v24.14.0、SQL 用 sqlite3 3.54.0 全新 `:memory:`，rc 全 0，注释输出与 stdout 一致。主 Agent 用独立审计核对两批的结构、标题、引用集合、section map、used_by、sha256、汉字/总字符/节数，最终 problems 0。
+
+来源：JavaScript 11 个官方页（MDN 9、ECMA-262、Node ESM），实际读取；SQL 17 条（SQLite 14、PostgreSQL 2、ISO/IEC 9075 标准页 1），其中 ISO 页 HTTP 403、正文未取得，证据 JSON 记 `body_readable:false`、`used_by:[]`，未引用标准原文，SQL 示例和方言差异依据 SQLite/PostgreSQL 官方页。原文出处每条用 route+node_id 对照原始 nodes.jsonl/content；JS 6 条、SQL 6 条，均未声称覆盖整条路线（JS 路线 135 节点、SQL 路线 127 节点）。
+
+口径变化：来源编号改为整批全局（同一 [S] 在 6 篇内指向同一 URL）；汉字数统一为“全文含代码与 Markdown”，与 Python 批次一致，SQL 三篇为 1424/1383/1541，JavaScript 为 1600/1594/1600。
+
+未完成/边界：这只是 101 条路线技术中的 5 个技术、11 篇，不是全部技术覆盖；其余 TypeScript、HTML、CSS、Node.js、React 等仍待分批。未上传云端、未建库、未做平台检索；未重跑 HTTP/Git/Python 已验证场景；M3 状态不变。ISO 标准正文不可得是外部访问限制，不是已审标准全文。详见本地 `review/batches/javascript_sources.json`、`javascript_checks.json`、`sql_sources.json`、`sql_checks.json`。
+
