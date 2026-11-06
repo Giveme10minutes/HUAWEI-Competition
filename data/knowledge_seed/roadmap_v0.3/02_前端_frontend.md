@@ -1,7 +1,8 @@
 # 前端开发（Frontend）：方向、学习主题与岗位比较线索
 
-资料ID：RM-P03-FRONTEND ｜ 样例版本 v0.3 ｜ 整理日期：2026-11-06
-资料类型：职业方向与学习路线索引 ｜ 对应仓库路线：`roadmaps/frontend`
+前端开发主要围绕用户可直接操作的界面，处理页面内容、交互和可用性，并与服务端协作。具体分工因团队而异。
+
+来源：本地 v0.2 前端资料的方向定位；整理日期：2026-11-06。
 
 ## 前端开发：方向定位与工作内容线索
 
@@ -31,7 +32,7 @@
 
 ## 前端开发学习阶段：核心能力
 
-- 按前端主题清单选择学习内容，逐个做出小作品。
+- 选择前端学习内容，逐个做出小作品。
 - 为每个作品写清目标、做法与结果。
 - 遇到问题时，区分概念不清和工具问题。
 
@@ -53,166 +54,34 @@
 
 来源：本地 v0.2 前端资料“学习阶段”；此阶段划分为整理者建议，不是唯一顺序或岗位要求。
 
-## 前端开发学习主题索引（1—20）
+## 前端开发学习内容：网页基础与数据交互
 
-以下是 frontend 路线的主题名称索引，不代表前端岗位必备技能，也不代表必须全部学习。来源：本地 v0.2 前端资料“主题清单”，原名称取自 roadmap.sh 内容仓库快照。
+前端开发需要理解网页结构、样式、交互以及浏览器如何获取数据。可以围绕一个简单页面练习：展示内容、响应用户操作，再向服务端请求数据。
 
-| 主题 | 文件标识 |
-| --- | --- |
-| Accessibility | `accessibility` |
-| AI Agents | `agents` |
-| AI-Assisted Coding | `ai-assisted-coding` |
-| AI vs. Traditional Software Development | `ai-vs-traditional-coding` |
-| Angular | `angular` |
-| Anthropic | `anthropic` |
-| Antigravity | `antigravity` |
-| Apollo | `apollo` |
-| AI Applications in Frontend Development | `applications` |
-| Astro | `astro` |
-| Authentication Strategies | `auth-strategies` |
-| Biome | `biome` |
-| Browsers | `browsers-and-how-they-work` |
-| Bun | `bun` |
-| Cache-Control | `cache-control` |
-| Claude Code | `claude-code` |
-| Cloudflare | `cloudflare` |
-| AI-Powered Code Reviews | `code-reviews` |
-| GitHub Copilot | `copilot` |
-| CORS | `cors` |
+相关技术与主题（5 项）：HTML（网页结构）、CSS（样式和布局）、JavaScript（交互逻辑）、Web APIs（浏览器提供的接口）、HTTP（客户端与服务端通信协议）。这些是不同类型的技术和概念，不需要当作互相替代的软件。
 
-## 前端开发学习主题索引（21—40）
+来源：本地 v0.2 前端资料的主题清单；用途说明参照 [MDN Web 技术](https://developer.mozilla.org/en-US/docs/Web)。这些是学习参考，不代表具体岗位的完整任职要求。
 
-以下是 frontend 路线的主题名称索引，不代表前端岗位必备技能，也不代表必须全部学习。来源：本地 v0.2 前端资料“主题清单”，原名称取自 roadmap.sh 内容仓库快照。
+## 前端开发学习内容：界面组件与应用框架
 
-| 主题 | 文件标识 |
-| --- | --- |
-| Content Security Policy | `csp` |
-| Modern CSS | `css-frameworks` |
-| CSS | `css` |
-| Cursor | `cursor` |
-| Custom Elements | `custom-elements` |
-| Cypress | `cypress` |
-| Deployment | `deployment` |
-| Design Systems | `design-systems` |
-| Desktop Applications in JavaScript | `desktop-apps` |
-| DevTools Usage | `devtools-usage` |
-| DNS | `dns-and-how-it-works` |
-| Documentation Generation with AI | `docs-generation` |
-| Electron | `electron` |
-| Eleventy | `eleventy` |
-| esbuild | `esbuild` |
-| ESLint | `eslint` |
-| Flutter | `flutter` |
-| Gemini | `gemini` |
-| Git | `git` |
-| GitHub Pages | `github-pages` |
+前端开发可以用组件组织可复用的界面，并根据项目选择合适的库或框架。学习时可以选择一种工具做一个小应用，理解组件、数据和交互之间的关系；不必同时掌握所有选项。
 
-## 前端开发学习主题索引（41—60）
+相关软件与技术（5 项）：React、Vue.js、Angular、Svelte、Astro。它们是不同的界面开发工具，设计和适用场景并不完全相同。
 
-以下是 frontend 路线的主题名称索引，不代表前端岗位必备技能，也不代表必须全部学习。来源：本地 v0.2 前端资料“主题清单”，原名称取自 roadmap.sh 内容仓库快照。
+来源：本地 v0.2 前端资料的主题清单；框架学习参考 [MDN 客户端框架介绍](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/Introduction)。以上是路线示例，不是招聘要求。
 
-| 主题 | 文件标识 |
-| --- | --- |
-| GitHub | `github` |
-| GitLab | `gitlab` |
-| Graphql | `graphql` |
-| How Does The Internet Work | `how-does-the-internet-work` |
-| How LLMs Work | `how-llms-work` |
-| HTML Templates | `html-templates` |
-| HTML | `html` |
-| HTTPS | `https` |
-| Implementing AI | `implementing-ai` |
-| Internet | `internet` |
-| Ionic | `ionic` |
-| JavaScript | `javascript` |
-| Jest | `jest` |
-| Pick a Framework | `learn-a-framework` |
-| Generative AI for Frontend Development | `learn-the-basics` |
-| Lighthouse | `lighthouse` |
-| Linters formatters | `linters--formatters` |
-| Model Context Protocol (MCP) | `mcp` |
-| Mobile Apps | `mobile-apps` |
-| Module Bundlers | `module-bundlers` |
+## 前端开发工具链：依赖管理、构建与协作
 
-## 前端开发学习主题索引（61—80）
+前端项目可以用版本控制记录代码变更、使用托管服务协作，并借助包管理和构建工具管理依赖、运行开发环境与生成构建产物。可以先在一个小项目中练习提交代码、安装依赖和构建。
 
-以下是 frontend 路线的主题名称索引，不代表前端岗位必备技能，也不代表必须全部学习。来源：本地 v0.2 前端资料“主题清单”，原名称取自 roadmap.sh 内容仓库快照。
+相关软件与技术（6 项）：Git（版本控制）、GitHub 和 GitLab（代码托管与协作服务）、npm 和 pnpm（包管理工具）、Vite（前端开发与构建工具）。这些工具职责不同，不是要求全部选用。
 
-| 主题 | 文件标识 |
-| --- | --- |
-| Netlify | `netlify` |
-| Next.js | `nextjs` |
-| npm | `npm` |
-| Nuxt.js | `nuxtjs` |
-| OpenAI | `openai` |
-| OWASP Security Risks | `owasp-risks` |
-| Package Managers | `package-managers` |
-| Parcel | `parcel` |
-| Performance | `performance` |
-| Playwright | `playwright` |
-| pnpm | `pnpm` |
-| Prettier | `prettier` |
-| Prompt Engineering | `prompting-techniques` |
-| Progressive Web Apps | `pwas` |
-| Railway | `railway` |
-| React Native | `react-native` |
-| react-router | `react-router` |
-| React | `react` |
-| Refactoring with AI | `refactoring` |
-| Relay Modern | `relay-modern` |
+来源：本地 v0.2 前端资料的主题清单；工具链参考 [MDN 客户端工具概览](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Client-side_tools/Overview) 和 [Vite 入门](https://vite.dev/guide/)。
 
-## 前端开发学习主题索引（81—100）
+## 前端开发学习内容：测试与质量检查
 
-以下是 frontend 路线的主题名称索引，不代表前端岗位必备技能，也不代表必须全部学习。来源：本地 v0.2 前端资料“主题清单”，原名称取自 roadmap.sh 内容仓库快照。
+前端开发需要检查界面和交互是否符合预期，并识别性能或可用性方面的问题。可以先选择一个页面，为关键交互编写测试，再根据检查结果改进；不同工具覆盖的检查范围不同。
 
-| 主题 | 文件标识 |
-| --- | --- |
-| Render | `render` |
-| Rolldown | `rolldown` |
-| Rollup | `rollup` |
-| Service Workers | `service-workers` |
-| Shadow DOM | `shadow-dom` |
-| Skills | `skills` |
-| SolidJS | `solid-js` |
-| Static Site Generators | `ssg` |
-| Server-side rendering | `ssr` |
-| Streamed Responses | `streamed-responses` |
-| SvelteKit | `svelte-kit` |
-| Svelte | `svelte` |
-| SWC (Speedy Web Compiler) | `swc` |
-| Tailwind CSS | `tailwind` |
-| Tanstack Start | `tanstack-start` |
-| Tauri | `tauri` |
-| Testing your apps | `testing` |
-| Type Checkers | `type-checkers` |
-| Repo Hosting Services | `vcs-hosting` |
-| Vercel | `vercel` |
+相关软件与技术（5 项）：Jest、Vitest（JavaScript 测试工具）、Cypress、Playwright（可用于浏览器自动化测试）、Lighthouse（网页质量审计工具）。它们是可选示例，不代表一个项目必须同时使用。
 
-## 前端开发学习主题索引（101—112）
-
-以下是 frontend 路线的主题名称索引，不代表前端岗位必备技能，也不代表必须全部学习。来源：本地 v0.2 前端资料“主题清单”，原名称取自 roadmap.sh 内容仓库快照。
-
-| 主题 | 文件标识 |
-| --- | --- |
-| Version Control Systems | `version-control` |
-| Vite | `vite` |
-| Vitest | `vitest` |
-| Vue.js | `vuejs` |
-| Vuepress | `vuepress` |
-| Web APIs | `web-apis` |
-| Web Components | `web-components` |
-| Web Security Knowledge | `web-security` |
-| Domain Name | `what-is-domain-name` |
-| Hosting | `what-is-hosting` |
-| What is HTTP? | `what-is-http` |
-| Yarn | `yarn` |
-
-## 前端开发：相邻方向与资料边界
-
-前端属于应用开发方向。更细的阶段版本及方向地图分别见 `../roadmap_v0.1/11_前端.md`、`../roadmap_v0.1/00_direction_map.md`；岗位原文条件见 `../computing_pilot_v0.1/`，路线材料与岗位原文不能互相替代。上方前后端定位比较依据 v0.2 对应文件。
-
-本资料不提供学时、周数、薪资、就业率、前景判断、具体课程或书籍推荐、个人适配结论及招聘要求。技术生态会变化，主题清单整理日期为 2026-11-03，使用时应核实。
-
-## 前端开发：来源与整理说明
-
-主题名称来自 roadmap.sh 内容仓库的本地快照中 `roadmaps/frontend/content/` 的文件标题；v0.2 未复制其说明正文、资源链接或图片。方向定位、学习阶段和边界由整理者编排，不是招聘方要求，也不是唯一正确路径。本 v0.3 样例依据本地 v0.2 前后端文件调整章节、保留前端 112 条主题并增加比较线索；尚未经过 AgentArts 分段与检索测试。
+来源：本地 v0.2 前端资料的主题清单；工具选择与使用应结合其各自文档和项目环境。
