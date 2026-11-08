@@ -69,6 +69,20 @@ class RecordIntegrationTests(unittest.TestCase):
         self.assertEqual(r.status_code,502)
         self.assertEqual(self.client.get('/api/plan').json()['versions'],[])
 
+    def test_streamed_final_branch_ignores_end_duplicate_and_reasoning(self):
+        events = [
+            {'event':'message','data':{'node_type':'LLM','node_id':'intent','text':'内部分类'}},
+            {'event':'message','data':{'node_type':'LLM','node_id':'node_main_learn','text':'','reasoning_content':'不展示'}},
+            {'event':'message','data':{'node_type':'LLM','node_id':'node_main_learn','text':'你'}},
+            {'event':'message','data':{'node_type':'LLM','node_id':'node_main_learn','text':'好'}},
+            {'event':'message','data':{'node_type':'End','text':'你好'}},
+            {'event':'workflow_finished','data':{'status':{'code':1},'outputs':{'responseContent':'你好'}}},
+            {'event':'end'},
+        ]
+        results = list(_reply_events(events))
+        self.assertEqual([e['text'] for e in results if e['type']=='delta'], ['你', '好'])
+        self.assertEqual(results[-1]['reply'].text, '你好')
+
     def test_workflow_events_only_forward_end_and_final_output(self):
         events=[{'event':'message','data':{'node_type':'LLM','text':'内部草稿','reasoning_content':'不可展示'}},
                 {'event':'message','data':{'node_type':'End','text':'最终'}},

@@ -111,13 +111,25 @@ def _reply_events(events: Iterable[dict], secret: str = "") -> Iterator[dict]:
     latency: dict[str, float] = {}
     total_chars = 0
     pending = ""
+    workflow_answer_node: str | None = None
     for event in events:
         kind = event.get("event")
-        # Published workflows use data.text on End events and responseContent
-        # on workflow_finished. Never forward intermediate LLM/reasoning events.
+        # Stream only this workflow's four final-answer branches (or End as a
+        # fallback), never the router, other intermediate LLMs, or reasoning.
         if kind == "message" and "content" not in event:
             data = event.get("data", {})
-            if not isinstance(data, dict) or data.get("node_type") != "End":
+            if not isinstance(data, dict):
+                continue
+            node_id = data.get("node_id")
+            if data.get("node_type") == "LLM" and node_id in {
+                "node_main_explore", "node_main_plan", "node_main_learn", "node_main_feedback"
+            }:
+                if workflow_answer_node is not None and workflow_answer_node != node_id:
+                    raise _ProtocolError("工作流返回了多个回答分支。")
+                if not data.get("text"):
+                    continue
+                workflow_answer_node = node_id
+            elif data.get("node_type") != "End" or workflow_answer_node is not None:
                 continue
             event = {"event": "message", "content": data.get("text", "")}
         elif kind == "workflow_finished":

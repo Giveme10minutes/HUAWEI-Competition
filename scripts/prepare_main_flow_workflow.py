@@ -58,7 +58,7 @@ def build(rows):
         n = copy.deepcopy(template)
         n.update(id=f'node_main_{key}', name=name, inputs=[ref('query', start['id'], 'query')])
         n['configs'].update(system_prompt=COMMON + instruction, template_content='本轮消息及应用提供的上下文：\n{{query}}',
-            enable_history=True, history_size=8, enable_thinking=False, stream=False,
+            enable_history=True, history_size=8, enable_thinking=False, stream=True,
             max_tokens=4096, temperature=0.5, isDefaultName=False, model=copy.deepcopy(model))
         nodes.append(n)
         edges.extend([dict(source=intent['id'], target=n['id'], branch=f'branch_{i}', exception_branch=False),
@@ -72,9 +72,9 @@ def build(rows):
     layouts.update({agg['id']: dict(x=1600, y=400), end['id']: dict(x=2050, y=400)})
     old_identity = w['resource_id']
     identity = str(uuid.uuid4())
-    name = '职业探索_模型主流程_v011'
+    name = '职业探索_模型主流程_v012'
     w.update(resource_id=identity, resource_name=name)
-    w['metadata'].update(id=identity, name=name, code='career_model_main_v011', description='独立模型主流程草稿：探索、规划、教学、反馈。无检索与业务写入。')
+    w['metadata'].update(id=identity, name=name, code='career_model_main_v012', description='独立模型主流程草稿：探索、规划、教学、反馈。无检索与业务写入。')
     for field in ('dsl_path', 'ir_path'):
         if isinstance(w['metadata'].get(field), str):
             w['metadata'][field] = w['metadata'][field].replace(old_identity, identity)
@@ -127,7 +127,7 @@ def validate(rows):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--source', type=Path, default=Path('local_data/workflow_backups/before_threshold0_latest.jsonl'))
-    p.add_argument('--output', type=Path, default=Path('local_data/main_flow_v0.1/职业探索_模型主流程_v0.1.1.jsonl'))
+    p.add_argument('--output', type=Path, default=Path('local_data/main_flow_v0.1/职业探索_模型主流程_v0.1.2_stream.jsonl'))
     args = p.parse_args()
     original = args.source.read_bytes()
     rows = build([json.loads(x) for x in original.decode().splitlines() if x.strip()])

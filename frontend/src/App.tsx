@@ -21,6 +21,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { createAnswerReveal } from "@/lib/answer-reveal";
 import { api, replyStream, blankPlan, planFields, planContent } from "@/lib/api";
 import type {
   Conversation,
@@ -427,8 +428,11 @@ export default function App() {
   async function requestReply(id: string, cid: string) {
     setReplying(true);
     setStream("");
+    const reveal = createAnswerReveal(setStream);
+    let received = "";
     try {
-      const d = await replyStream(id, (text) => setStream((s) => s + text));
+      const d = await replyStream(id, (text) => { received += text; reveal.update(received); });
+      await reveal.finish(d.reply.content);
       setMessages((ms) => [
         ...ms
           .filter((m) => m.id !== d.reply.id)
@@ -444,6 +448,7 @@ export default function App() {
       }
       throw e;
     } finally {
+      reveal.cancel();
       setStream("");
       setReplying(false);
       await lists().catch(() => {});
