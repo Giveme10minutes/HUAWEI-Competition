@@ -286,10 +286,12 @@ body {
   font-size: 16px;
   line-height: 1.7;
   min-height: 76px;
-  max-height: 200px;
+  max-height: min(60dvh, 560px);
   padding: 8px 12px;
   resize: none;
-  field-sizing: fixed;
+  flex: none;
+  overflow-y: auto;
+  field-sizing: content;
 }
 .prompt-input [data-slot="input-group-addon"] {
   padding: 4px 8px 2px;

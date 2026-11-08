@@ -345,12 +345,6 @@ export default function App() {
       live = false;
     };
   }, []);
-  useEffect(() => {
-    if (textarea.current) {
-      textarea.current.style.height = "auto";
-      textarea.current.style.height = `${Math.min(textarea.current.scrollHeight, 200)}px`;
-    }
-  }, [input]);
   async function record(action: () => Promise<void>) {
     if (recordLock.current) return;
     recordLock.current = true;
