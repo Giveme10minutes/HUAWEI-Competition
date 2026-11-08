@@ -555,12 +555,8 @@ export default function App() {
       toast.error("请补齐每项行动的名称、目标、动作、成果、验收和正整数分钟数");
       return;
     }
-    if (editor.task_items.length && (!editor.stage_goals.trim() || editor.available_minutes == null || !Number.isInteger(editor.available_minutes) || editor.available_minutes < 1)) {
-      toast.error("请填写阶段目标和本规划周期净可用总分钟数");
-      return;
-    }
-    if (editor.available_minutes != null && editor.task_items.reduce((sum, t) => sum + t.minutes, 0) * 5 > editor.available_minutes * 4) {
-      toast.error("行动合计超过周期净可用时间的80%，请先调整");
+    if (editor.task_items.length && !editor.stage_goals.trim()) {
+      toast.error("请填写行动关联的阶段目标");
       return;
     }
     if (!planFields.some(([k]) => editor[k].trim())) {
@@ -1248,12 +1244,7 @@ export default function App() {
                       />
                     </Field>
                   ))}
-                  <Field>
-                    <FieldLabel htmlFor="plan-budget">本规划周期净可用总时间（分钟）</FieldLabel>
-                    <Input id="plan-budget" type="number" min={1} value={editor.available_minutes ?? ""} onChange={e => setEditor(f => ({ ...f, available_minutes: e.target.value ? Number(e.target.value) : null }))} />
-                    <FieldDescription>填写整个周期合计，例如两周、每周2小时填240。行动合计上限为80%。</FieldDescription>
-                  </Field>
-                  <p>行动合计 {editor.task_items.reduce((sum, t) => sum + t.minutes, 0)} 分钟{editor.available_minutes != null ? ` / 建议上限 ${Math.floor(editor.available_minutes * .8)} 分钟` : "，请补充周期时间"}</p>
+                  <p>行动预计合计 {editor.task_items.reduce((sum, t) => sum + t.minutes, 0)} 分钟（仅作参考）</p>
                   {editor.task_items.map((task, i) => <Card key={i}>
                     <CardHeader><CardTitle>行动 {i + 1}</CardTitle><CardDescription>将随本版规划保存；确认后出现在学习行动栏。</CardDescription></CardHeader>
                     <CardContent><FieldGroup>

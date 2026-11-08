@@ -40,12 +40,9 @@ class RecordIntegrationTests(unittest.TestCase):
         self.assertEqual(self.client.post(f"/api/messages/{reply['id']}/extract", json={'kind':'profile'}).status_code, 502)
         self.assertEqual(self.client.get('/api/profile').json()['items'], [])
 
-    def test_plan_task_budget_confirmation_and_history(self):
+    def test_plan_tasks_without_budget_limit_confirmation_and_history(self):
         task = dict(title='整理名单',goal='体验信息整理',instructions='用虚构数据去重', minutes=30,evidence='去重结果',acceptance='无重复且原数据保留')
-        body = dict(stage_goals='体验信息整理',actions='整理名单',task_items=[task],available_minutes=30)
-        self.assertEqual(self.client.post('/api/plan/versions', json=body).status_code, 400)
-        self.assertEqual(self.client.get('/api/plan').json()['versions'], [])
-        body['available_minutes']=60
+        body = dict(stage_goals='体验信息整理',actions='整理名单',task_items=[task],available_minutes=None)
         r = self.client.post('/api/plan/versions',json=body)
         self.assertEqual(r.status_code,200,r.text)
         version=r.json()['version']
@@ -63,17 +60,17 @@ class RecordIntegrationTests(unittest.TestCase):
         with TestClient(create_app(self.settings,self.agent)) as restarted:
             self.assertEqual(restarted.get('/api/plan').json()['confirmed']['id'],new['id'])
 
-    def test_over_budget_extraction_opens_preview_but_cannot_be_saved(self):
+    def test_over_budget_extraction_can_be_saved_without_warning(self):
         reply = self.answer()
         task = dict(title='整理名单',goal='体验整理',instructions='虚构数据去重',minutes=60,evidence='结果',acceptance='无重复')
         body = dict(stage_goals='体验整理',actions='去重',task_items=[task],available_minutes=60)
         self.agent.result = json.dumps(body, ensure_ascii=False)
         r = self.client.post(f"/api/messages/{reply['id']}/extract", json={'kind':'plan'})
         self.assertEqual(r.status_code, 200, r.text)
-        self.assertTrue(r.json()['warnings'])
+        self.assertEqual(r.json()['warnings'], [])
         self.assertEqual(r.json()['plan']['task_items'][0]['minutes'], 60)
         self.assertEqual(self.client.get('/api/plan').json()['versions'], [])
-        self.assertEqual(self.client.post('/api/plan/versions',json=r.json()['plan']).status_code, 400)
+        self.assertEqual(self.client.post('/api/plan/versions',json=r.json()['plan']).status_code, 200)
         body['task_items'][0]['minutes'] = 30
         self.assertEqual(self.client.post('/api/plan/versions',json=body).status_code, 200)
 
