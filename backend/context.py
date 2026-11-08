@@ -18,11 +18,14 @@ def build_query(db_path: Path, message: str) -> str:
                WHERE status = 'confirmed' ORDER BY created_at, id"""
         ).fetchall()
         plan = conn.execute(
-            """SELECT version_no, directions, gaps, stage_goals, actions
+            """SELECT version_no, directions, gaps, stage_goals, actions, task_items, available_minutes
                FROM plan_versions WHERE plan_id = 'main' AND status = 'confirmed'
                ORDER BY version_no DESC LIMIT 1"""
         ).fetchone()
 
+    if plan:
+        plan = dict(plan)
+        plan["task_items"] = json.loads(plan["task_items"])
     snapshot = {
         "confirmed_profile": [dict(item) for item in items],
         "confirmed_plan": dict(plan) if plan else None,

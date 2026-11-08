@@ -113,6 +113,22 @@ def _reply_events(events: Iterable[dict], secret: str = "") -> Iterator[dict]:
     pending = ""
     for event in events:
         kind = event.get("event")
+        # Published workflows use data.text on End events and responseContent
+        # on workflow_finished. Never forward intermediate LLM/reasoning events.
+        if kind == "message" and "content" not in event:
+            data = event.get("data", {})
+            if not isinstance(data, dict) or data.get("node_type") != "End":
+                continue
+            event = {"event": "message", "content": data.get("text", "")}
+        elif kind == "workflow_finished":
+            data = event.get("data", {})
+            if not isinstance(data, dict) or data.get("status", {}).get("code") != 1:
+                raise _ProtocolError("工作流未成功完成。")
+            output = data.get("outputs", {}).get("responseContent")
+            if not isinstance(output, str):
+                raise _ProtocolError("工作流缺少最终文本输出。")
+            event = {"event": "summary_response", "content": output}
+            kind = "summary_response"
         if kind in ("error", "exception"):
             raise _ProtocolError("平台报告执行失败。")
         if kind in ("message", "summary_response") and isinstance(event.get("content"), str):

@@ -93,6 +93,11 @@ def init_db(db_path: Path) -> None:
             conn.execute("ALTER TABLE conversations ADD COLUMN pinned INTEGER NOT NULL DEFAULT 0")
         if "deleted_at" not in columns:
             conn.execute("ALTER TABLE conversations ADD COLUMN deleted_at TEXT")
+        plan_columns = {row[1] for row in conn.execute("PRAGMA table_info(plan_versions)")}
+        for column, definition in (("task_items", "TEXT NOT NULL DEFAULT '[]'"),
+                                   ("available_minutes", "INTEGER")):
+            if column not in plan_columns:
+                conn.execute(f"ALTER TABLE plan_versions ADD COLUMN {column} {definition}")
         conn.commit()
     finally:
         conn.close()

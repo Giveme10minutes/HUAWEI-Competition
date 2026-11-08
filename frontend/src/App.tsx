@@ -29,6 +29,8 @@ import type {
   PlanContent,
   Plan,
   Plans,
+  ClueProposal,
+  TaskItem,
 } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import {
@@ -192,6 +194,7 @@ function PlanSections({ plan }: { plan: Plan }) {
             <p className="whitespace-pre-wrap leading-7">{plan[key]}</p>
           </section>
         ))}
+      {!!plan.task_items.length && <section><h3 className="section-title">本版行动及验收</h3><div className="flex flex-col gap-3">{plan.task_items.map((t, i) => <div key={i}><p>{i + 1}. {t.title} · {t.minutes}分钟</p><p>目标：{t.goal}</p><p>{t.instructions}</p><p>成果：{t.evidence}</p><p>验收：{t.acceptance}</p></div>)}</div></section>}
     </div>
   );
 }
@@ -239,6 +242,8 @@ export default function App() {
     content: "",
     source: "self_reported",
   });
+  const [proposals, setProposals] = useState<ClueProposal[]>([]);
+  const [extracting, setExtracting] = useState<string | null>(null);
   const [confirmation, setConfirmation] = useState<{
     title: string;
     description: string;
@@ -495,6 +500,35 @@ export default function App() {
       setBusy(false);
     }
   }
+  async function extract(m: Msg, kind: "profile" | "plan") {
+    if (recordLock.current || busy) return;
+    await record(async () => {
+      setExtracting(m.id);
+      try {
+        if (kind === "profile") {
+          const d = await api<{ items: ClueProposal[] }>(`/api/messages/${m.id}/extract`, "POST", { kind });
+          setProposals(d.items);
+          openPanel("profile");
+          toast.success(d.items.length ? "已整理候选线索，请逐条审核" : "没有提取到有原话支持的新线索");
+        } else {
+          const d = await api<{ plan: PlanContent }>(`/api/messages/${m.id}/extract`, "POST", { kind });
+          setEditor(d.plan);
+          setDraftId(null);
+          openPanel("plan");
+          toast.success("已放入编辑区，尚未保存或确认");
+        }
+      } finally { setExtracting(null); }
+    });
+  }
+  function useTask(task: TaskItem, index: number, feedback = false) {
+    if (busy) return;
+    const version = plans.confirmed;
+    if (!version) return;
+    const text = `我想${feedback ? "反馈成果或讨论困难" : "开始学习并完成任务"}。当前已确认规划v${version.version_no}，第${index + 1}项：${task.title}。\n阶段关联：${task.goal}\n动作：${task.instructions}\n预计${task.minutes}分钟。成果：${task.evidence}\n原验收：${task.acceptance}\n${feedback ? "我的成果或困难：" : "请从适合我基础的第一小步开始，不直接给出整个练习答案。"}`;
+    const apply = async () => { setInput(text); setSheet(false); setTimeout(() => textarea.current?.focus(), 0); };
+    if (input.trim()) ask("替换尚未发送的输入？", "任务内容将放入输入框，确认后仍需手动发送。", apply);
+    else void apply();
+  }
   async function saveProfile(event: FormEvent) {
     event.preventDefault();
     if (!profileForm.content.trim()) return;
@@ -505,6 +539,7 @@ export default function App() {
         { ...profileForm, content: profileForm.content.trim() },
       );
       await loadProfiles();
+      setProposals(ps => ps.filter(p => p.content !== profileForm.content.trim()));
       setProfileEdit(null);
       setProfileForm({
         category: categories[0],
@@ -516,6 +551,18 @@ export default function App() {
     });
   }
   async function savePlan(confirm = false) {
+    if (editor.task_items.some(t => !t.title.trim() || !t.goal.trim() || !t.instructions.trim() || !t.evidence.trim() || !t.acceptance.trim() || !Number.isInteger(t.minutes) || t.minutes < 1)) {
+      toast.error("请补齐每项行动的名称、目标、动作、成果、验收和正整数分钟数");
+      return;
+    }
+    if (editor.task_items.length && (!editor.stage_goals.trim() || editor.available_minutes == null || !Number.isInteger(editor.available_minutes) || editor.available_minutes < 1)) {
+      toast.error("请填写阶段目标和本规划周期净可用总分钟数");
+      return;
+    }
+    if (editor.available_minutes != null && editor.task_items.reduce((sum, t) => sum + t.minutes, 0) * 5 > editor.available_minutes * 4) {
+      toast.error("行动合计超过周期净可用时间的80%，请先调整");
+      return;
+    }
     if (!planFields.some(([k]) => editor[k].trim())) {
       toast.error("至少填写一项规划内容");
       return;
@@ -568,6 +615,12 @@ export default function App() {
                     <NotebookPen />
                     <span>个人线索</span>
                     <Badge variant="secondary">{profiles.length}</Badge>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton onClick={() => openPanel("tasks")}>
+                    <Check /><span>学习行动</span>
+                    <Badge variant="secondary">{plans.confirmed?.task_items.length || 0}</Badge>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
@@ -774,6 +827,16 @@ export default function App() {
                             <MessageFooter>
                               <span>{time(m.created_at)}</span>
                               {m.role === "assistant" && (
+                                <>
+                                <Button size="sm" variant="outline" disabled={busy || recordBusy} onClick={() => void extract(m, "profile")}>
+                                  {extracting === m.id && <Spinner />}整理线索
+                                </Button>
+                                <Button size="sm" variant="outline" disabled={busy || recordBusy} onClick={() => {
+                                  const run = async () => { await extract(m, "plan"); };
+                                  if (planFields.some(([k]) => editor[k].trim()) || editor.task_items.length)
+                                    ask("将回答整理为新规划草稿？", "会替换编辑区内容，已保存版本保持不变。", run);
+                                  else void run();
+                                }}>整理规划</Button>
                                 <Button
                                   variant="ghost"
                                   size="icon-sm"
@@ -789,6 +852,7 @@ export default function App() {
                                 >
                                   <Copy />
                                 </Button>
+                                </>
                               )}
                               {m.role === "user" &&
                                 ["failed", "pending"].includes(m.status) &&
@@ -905,8 +969,23 @@ export default function App() {
             <TabsList className="mx-6">
               <TabsTrigger value="profile">个人线索</TabsTrigger>
               <TabsTrigger value="plan">职业规划</TabsTrigger>
+              <TabsTrigger value="tasks">学习行动</TabsTrigger>
             </TabsList>
+            <TabsContent value="tasks" className="records-body">
+              <h2>当前学习行动</h2>
+              <p className="record-intro">来自已确认规划{plans.confirmed ? ` v${plans.confirmed.version_no}` : ""}。开始学习或反馈成果时，会把原任务要求带入对话。</p>
+              {!plans.confirmed?.task_items.length && <NoData title="还没有已确认的行动">从助手回答整理规划，在规划编辑区补齐行动并确认后显示。</NoData>}
+              {plans.confirmed?.task_items.map((task, i) => <Card key={`${plans.confirmed!.id}-${i}`}>
+                <CardHeader><CardTitle>{i + 1}. {task.title}</CardTitle><CardDescription>{task.minutes} 分钟 · {task.goal}</CardDescription></CardHeader>
+                <CardContent className="flex flex-col gap-3"><p className="whitespace-pre-wrap">{task.instructions}</p><p>提交成果：{task.evidence}</p><p>原验收：{task.acceptance}</p></CardContent>
+                <CardFooter className="flex gap-2"><Button disabled={busy} onClick={() => useTask(task, i)}>开始学习</Button><Button variant="outline" disabled={busy} onClick={() => useTask(task, i, true)}>反馈成果或困难</Button></CardFooter>
+              </Card>)}
+            </TabsContent>
             <TabsContent value="profile" className="records-body">
+              {!!proposals.length && <section className="flex flex-col gap-3" aria-label="候选线索">
+                <h3>从对话整理的候选线索</h3><p className="text-sm text-muted-foreground">尚未保存。先对照原话审核，保存后仍需确认才用于对话。</p>
+                {proposals.map((p, i) => <Card key={i} size="sm"><CardHeader><CardTitle>{p.category}</CardTitle><CardDescription>{p.source === "self_reported" ? "自述概括" : "助手推断，需核实"}</CardDescription></CardHeader><CardContent><p>{p.content}</p><p className="mt-2 text-muted-foreground">原话：{p.quote}</p></CardContent><CardFooter className="flex gap-2"><Button variant="outline" disabled={recordBusy} onClick={() => { setProfileEdit(null); setProfileForm({ category: p.category, content: p.content, source: p.source }); setAddOpen(true); }}>放入表单编辑</Button><Button variant="ghost" onClick={() => setProposals(ps => ps.filter((_, j) => j !== i))}>忽略</Button></CardFooter></Card>)}
+              </section>}
               <div className="flex items-center justify-between gap-3">
                 <h2>个人线索</h2>
                 <Badge variant="secondary">
@@ -1169,6 +1248,21 @@ export default function App() {
                       />
                     </Field>
                   ))}
+                  <Field>
+                    <FieldLabel htmlFor="plan-budget">本规划周期净可用总时间（分钟）</FieldLabel>
+                    <Input id="plan-budget" type="number" min={1} value={editor.available_minutes ?? ""} onChange={e => setEditor(f => ({ ...f, available_minutes: e.target.value ? Number(e.target.value) : null }))} />
+                    <FieldDescription>填写整个周期合计，例如两周、每周2小时填240。行动合计上限为80%。</FieldDescription>
+                  </Field>
+                  <p>行动合计 {editor.task_items.reduce((sum, t) => sum + t.minutes, 0)} 分钟{editor.available_minutes != null ? ` / 建议上限 ${Math.floor(editor.available_minutes * .8)} 分钟` : "，请补充周期时间"}</p>
+                  {editor.task_items.map((task, i) => <Card key={i}>
+                    <CardHeader><CardTitle>行动 {i + 1}</CardTitle><CardDescription>将随本版规划保存；确认后出现在学习行动栏。</CardDescription></CardHeader>
+                    <CardContent><FieldGroup>
+                      {([['title', '名称'], ['goal', '关联阶段目标'], ['instructions', '具体动作'], ['evidence', '提交成果'], ['acceptance', '必交验收']] as const).map(([key, label]) => <Field key={key}><FieldLabel htmlFor={`task-${i}-${key}`}>{label}</FieldLabel><Textarea id={`task-${i}-${key}`} rows={2} value={task[key]} onChange={e => setEditor(f => ({ ...f, task_items: f.task_items.map((t, j) => j === i ? { ...t, [key]: e.target.value } : t) }))} /></Field>)}
+                      <Field><FieldLabel htmlFor={`task-${i}-minutes`}>预计分钟</FieldLabel><Input id={`task-${i}-minutes`} type="number" min={1} value={task.minutes} onChange={e => setEditor(f => ({ ...f, task_items: f.task_items.map((t, j) => j === i ? { ...t, minutes: Number(e.target.value) } : t) }))} /></Field>
+                    </FieldGroup></CardContent>
+                    <CardFooter><Button variant="ghost" onClick={() => setEditor(f => ({ ...f, task_items: f.task_items.filter((_, j) => j !== i) }))}>移除这项行动</Button></CardFooter>
+                  </Card>)}
+                  <Button variant="outline" disabled={editor.task_items.length >= 20} onClick={() => setEditor(f => ({ ...f, task_items: [...f.task_items, { title: '', goal: '', instructions: '', minutes: 30, evidence: '', acceptance: '' }] }))}>添加学习行动</Button>
                   <Field>
                     <FieldLabel htmlFor="plan-note">
                       修改说明（可选）

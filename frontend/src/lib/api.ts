@@ -26,8 +26,15 @@ export const planFields = [
   ["stage_goals", "阶段目标"],
   ["actions", "近期学习实践安排"],
 ] as const;
+export type TaskItem = {
+  title: string; goal: string; instructions: string; minutes: number;
+  evidence: string; acceptance: string;
+};
+export type ClueProposal = { category: string; content: string; source: string; quote: string };
 export type PlanContent = Record<(typeof planFields)[number][0], string> & {
   change_note: string;
+  task_items: TaskItem[];
+  available_minutes: number | null;
 };
 export type Plan = PlanContent & {
   id: string;
@@ -46,10 +53,16 @@ export const blankPlan = (): PlanContent => ({
   stage_goals: "",
   actions: "",
   change_note: "",
+  task_items: [],
+  available_minutes: null,
 });
 // Only editable fields enter a write request; persisted versions also carry numeric metadata.
 export function planContent(value: PlanContent): PlanContent {
-  return Object.fromEntries(Object.keys(blankPlan()).map(key => [key, value[key as keyof PlanContent].trim()])) as PlanContent;
+  return {
+    ...Object.fromEntries([...planFields.map(([key]) => key), "change_note"].map(key => [key, (value[key as keyof PlanContent] as string).trim()])),
+    task_items: value.task_items.map(t => ({ ...t })),
+    available_minutes: value.available_minutes,
+  } as PlanContent;
 }
 export async function api<T>(
   path: string,
