@@ -37,7 +37,8 @@ def build(rows):
     pick = lambda kind: copy.deepcopy(next(n for n in old if n['type'] == kind))
     start, intent, agg, end = (pick(t) for t in ('Start', 'IntentDetection', 'Aggregation', 'End'))
     template = next(n for n in old if n['type'] == 'LLM' and n['name'] == '阶段规划与行动')
-    model = copy.deepcopy(template['configs']['model'])
+    model = copy.deepcopy(next(n['configs']['model'] for n in old
+        if n['type'] == 'LLM' and n['configs'].get('model', {}).get('model_name') == 'deepseek-v4.1-flash-1017'))
     def ref(name, node, var):
         return dict(name=name, type='string', description='', required=True, source='user', reflection=False,
                     value=dict(type='ref', content=dict(ref_node_id=node, ref_var_name=var, source='system' if node == start['id'] else 'user'), hint=''))
@@ -71,14 +72,17 @@ def build(rows):
     layouts.update({agg['id']: dict(x=1600, y=400), end['id']: dict(x=2050, y=400)})
     old_identity = w['resource_id']
     identity = str(uuid.uuid4())
-    name = '职业探索_模型主流程_v01'
+    name = '职业探索_模型主流程_v011'
     w.update(resource_id=identity, resource_name=name)
-    w['metadata'].update(id=identity, name=name, code='career_model_main_v01', description='独立模型主流程草稿：探索、规划、教学、反馈。无检索与业务写入。')
+    w['metadata'].update(id=identity, name=name, code='career_model_main_v011', description='独立模型主流程草稿：探索、规划、教学、反馈。无检索与业务写入。')
     for field in ('dsl_path', 'ir_path'):
         if isinstance(w['metadata'].get(field), str):
             w['metadata'][field] = w['metadata'][field].replace(old_identity, identity)
     w['metadata'].update(status='draft', deploy_wf_version=None, test_status=0)
     w['dsl'].update(id=identity, name=name, description=w['metadata']['description'], nodes=nodes, edges=edges, layouts=layouts, comments=[])
+    w['dsl']['configs']['default_model'].update(
+        model_name=model['model_name'], model_type=model['model_type'],
+        model=model['model_id'], model_deployment_id=model['model_deployment_id'])
     model_id = model['model_id']
     # Keep real model/provider dependencies; remove unused model and knowledge bindings.
     rows = [r for r in rows if r['resource_type'] not in ('model',) or r['resource_id'] == model_id]
@@ -96,6 +100,12 @@ def validate(rows):
     assert set(nodes) == set(d['layouts'])
     assert len(d['edges']) == 10
     outputs = {k: {o['name'] for o in n.get('outputs', [])} for k, n in nodes.items()}
+    models = [n['configs']['model'] if n['type'] == 'LLM' else n['configs']['llm']['model']
+              for n in nodes.values() if n['type'] in ('LLM', 'IntentDetection')]
+    assert len(models) == 5
+    assert all(m['model_name'] == 'deepseek-v4.1-flash-1017' for m in models)
+    assert {m['model_id'] for m in models} == {r['resource_id'] for r in rows if r['resource_type']=='model'}
+    assert d['configs']['default_model']['model'] == models[0]['model_id']
     for edge in d['edges']:
         assert edge['source'] in nodes and edge['target'] in nodes
         if 'branch' in edge:
@@ -117,7 +127,7 @@ def validate(rows):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--source', type=Path, default=Path('local_data/workflow_backups/before_threshold0_latest.jsonl'))
-    p.add_argument('--output', type=Path, default=Path('local_data/main_flow_v0.1/职业探索_模型主流程_v0.1.jsonl'))
+    p.add_argument('--output', type=Path, default=Path('local_data/main_flow_v0.1/职业探索_模型主流程_v0.1.1.jsonl'))
     args = p.parse_args()
     original = args.source.read_bytes()
     rows = build([json.loads(x) for x in original.decode().splitlines() if x.strip()])
