@@ -63,6 +63,20 @@ class RecordIntegrationTests(unittest.TestCase):
         with TestClient(create_app(self.settings,self.agent)) as restarted:
             self.assertEqual(restarted.get('/api/plan').json()['confirmed']['id'],new['id'])
 
+    def test_over_budget_extraction_opens_preview_but_cannot_be_saved(self):
+        reply = self.answer()
+        task = dict(title='整理名单',goal='体验整理',instructions='虚构数据去重',minutes=60,evidence='结果',acceptance='无重复')
+        body = dict(stage_goals='体验整理',actions='去重',task_items=[task],available_minutes=60)
+        self.agent.result = json.dumps(body, ensure_ascii=False)
+        r = self.client.post(f"/api/messages/{reply['id']}/extract", json={'kind':'plan'})
+        self.assertEqual(r.status_code, 200, r.text)
+        self.assertTrue(r.json()['warnings'])
+        self.assertEqual(r.json()['plan']['task_items'][0]['minutes'], 60)
+        self.assertEqual(self.client.get('/api/plan').json()['versions'], [])
+        self.assertEqual(self.client.post('/api/plan/versions',json=r.json()['plan']).status_code, 400)
+        body['task_items'][0]['minutes'] = 30
+        self.assertEqual(self.client.post('/api/plan/versions',json=body).status_code, 200)
+
     def test_extraction_failure_preserves_chat(self):
         reply=self.answer(); self.agent.result='不是JSON'
         r=self.client.post(f"/api/messages/{reply['id']}/extract",json={'kind':'plan'})

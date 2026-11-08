@@ -650,10 +650,20 @@ def create_app(
                     raise ValueError('Unsupported clue')
                 return {"items": [i.model_dump() for i in proposal.items], "source_message_id": message_id}
             proposal = PlanFields.model_validate(raw)
-            _plan_texts(proposal)
+            # Extraction is a read-only preview. Let the user inspect and repair
+            # budget issues instead of rejecting the only editable candidate.
+            for field in ('directions', 'gaps', 'stage_goals', 'actions'):
+                _clean(getattr(proposal, field), PLAN_FIELD_LIMIT, field)
+            _clean(proposal.change_note, PLAN_NOTE_LIMIT, '修改说明')
+            warnings = []
+            total = sum(t.minutes for t in proposal.task_items)
+            if proposal.task_items and proposal.available_minutes is None:
+                warnings.append('请核对并补充整个规划周期的净可用总分钟数，再保存行动。')
+            elif proposal.available_minutes is not None and total * 5 > proposal.available_minutes * 4:
+                warnings.append(f'整理出的行动合计{total}分钟，超过建议上限{proposal.available_minutes * 4 // 5}分钟。请核对周期总时间并删减行动，再保存。')
             if not any(getattr(proposal, k).strip() for k in ('directions','gaps','stage_goals','actions')):
                 raise HTTPException(status_code=400, detail="这条回答还没有可整理的规划，请先继续讨论。")
-            return {"plan": proposal.model_dump(), "source_message_id": message_id}
+            return {"plan": proposal.model_dump(), "source_message_id": message_id, "warnings": warnings}
         except AgentError as exc:
             raise HTTPException(status_code=502, detail=exc.message) from None
         except (ValueError, TypeError, ValidationError):

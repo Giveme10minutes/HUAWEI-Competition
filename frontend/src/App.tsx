@@ -510,11 +510,12 @@ export default function App() {
           openPanel("profile");
           toast.success(d.items.length ? "已整理候选线索，请逐条审核" : "没有提取到有原话支持的新线索");
         } else {
-          const d = await api<{ plan: PlanContent }>(`/api/messages/${m.id}/extract`, "POST", { kind });
+          const d = await api<{ plan: PlanContent; warnings?: string[] }>(`/api/messages/${m.id}/extract`, "POST", { kind });
           setEditor(d.plan);
           setDraftId(null);
           openPanel("plan");
-          toast.success("已放入编辑区，尚未保存或确认");
+          if (d.warnings?.length) toast.warning(d.warnings.join("；"), { duration: 10000 });
+          else toast.success("已放入编辑区，尚未保存或确认");
         }
       } finally { setExtracting(null); }
     });
