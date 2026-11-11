@@ -34,3 +34,9 @@ build/
 
 # Local roadmap reference snapshot; not a distributable project asset
 /references/roadmap_source/local_snapshot/
+
+# roadmap.sh official PDF capture (2026-11-04); keep local, not distributed
+/references/raw/roadmap-pdfs/
+
+# roadmap.sh derived AI dataset (official content, local only)
+/references/raw/roadmap-ai/
